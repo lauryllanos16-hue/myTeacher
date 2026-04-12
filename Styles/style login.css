@@ -135,3 +135,37 @@ label {
         padding: 20px;
     }
 }
+/* FONDO OSCURO */
+.modal{
+    display: none;
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: rgba(0,0,0,0.4);
+
+    justify-content:center;
+    align-items:center;
+}
+
+/* CAJA */
+.modal-content{
+    background:white;
+    padding:20px;
+    border-radius:8px;
+    text-align:center;
+    width:300px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* BOTON */
+.modal-content button{
+    margin-top:15px;
+    padding:8px 15px;
+    border:none;
+    background:#2d7ff9;
+    color:white;
+    border-radius:5px;
+    cursor:pointer;
+}
