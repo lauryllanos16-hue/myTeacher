@@ -1,35 +1,51 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Registro - myTeacher</title>
-    <link rel="stylesheet" href="/Styles/Syles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iniciar sesión - myTeacher</title>
+<link rel="stylesheet" href="/Styles/style login.css">
 </head>
+
 <body>
-    <div class="container">
-    <div class="card">
-        <img src="/Imagenes/Logo.png" class="logo">
 
-        <h2>Crear cuenta</h2>
+<div class="container">
 
-        <form id="formRegistro">
-            <input type="text" placeholder="Nombre completo" required>
-            <input type="email" placeholder="Correo electrónico" required>
-            <input type="password" placeholder="Contraseña" required>
-            <input type="password" placeholder="Confirmar contraseña" required>
-
-            <div class="tipo">
-                <label><input type="checkbox"> Estudiante</label>
-                <label><input type="checkbox"> Tutor</label>
-            </div>
-
-            <button type="submit">Registrarse</button>
-        </form>
-
-        <p class="login">¿Ya tienes cuenta? <a href="#">Iniciar sesión</a></p>
+    <div class="logo">
+        <img src="/Imagenes/Logo.png" alt="myTeacher">
     </div>
+
+    <div class="login-box">
+        <h2>Iniciar sesión</h2>
+
+        <label>Correo</label>
+        <div class="input-group">
+            <input type="email" placeholder="correo@ejemplo.com">
+            <span>✉️</span>
+        </div>
+
+        <label>Contraseña</label>
+        <div class="input-group">
+            <input type="password" placeholder="********">
+            <span>👁️</span>
+        </div>
+
+        <div class="remember">
+            <input type="checkbox">
+            <span>Mantener sesión</span>
+        </div>
+
+        <button class="btn">Iniciar sesion</button>
+
+    </div>
+
+    <div class="links">
+        <a href="#">¿Olvidaste tu contraseña?</a>
+        <div class="divider"></div>
+        <p>¿No tienes cuenta? <a href="/HTML/registro.html">Registrarse</a></p>
+    </div>
+
 </div>
 
-<script src="Scripts/Scripts.js"></script>
 </body>
 </html>
