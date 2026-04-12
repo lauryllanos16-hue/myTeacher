@@ -1,0 +1,97 @@
+/* RESET */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+
+    /* CENTRADO PERFECTO */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* FONDO DEGRADADO */
+    background: linear-gradient(to right, #4facfe, #f6d365);
+}
+
+/* CONTENEDOR */
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* TARJETA (EL CUADRO) */
+.card {
+    background: #ffffff;
+    padding: 35px;
+    border-radius: 12px;
+    width: 350px;
+    text-align: center;
+
+    /* SOMBRA PRO */
+    box-shadow: 0px 10px 25px rgba(0,0,0,0.15);
+}
+
+/* LOGO */
+.logo {
+    width: 120px;
+    margin-bottom: 10px;
+}
+
+/* TITULO */
+h2 {
+    margin-bottom: 20px;
+}
+
+/* INPUTS */
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+/* EFECTO AL ESCRIBIR */
+input:focus {
+    outline: none;
+    border-color: #2d89ef;
+}
+
+/* TIPO DE CUENTA */
+.tipo {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+/* BOTON */
+button {
+    width: 100%;
+    padding: 12px;
+    background: #2d89ef;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* HOVER BOTON */
+button:hover {
+    background: #1b5fbf;
+}
+
+/* TEXTO LOGIN */
+.login {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.login a {
+    color: #2d89ef;
+    text-decoration: none;
+}
