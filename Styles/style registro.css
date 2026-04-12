@@ -7,7 +7,7 @@ body {
     justify-content: center;
     align-items: center;
 
-    background: linear-gradient(to right, #4facfe, #f6d365);
+    background: linear-gradient(135deg, #4facfe, #f6a56f);
 }
 
 .container {
