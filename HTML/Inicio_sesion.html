@@ -27,7 +27,7 @@
         <label>Contraseña</label>
         <div class="input-group">
             <input type="password" placeholder="********">
-            <span>👁️</span>
+            <span id="togglePassword">👁️</span>
         </div>
 
         <div class="remember">
@@ -35,17 +35,28 @@
             <span>Mantener sesión</span>
         </div>
 
-        <button class="btn">Iniciar sesion</button>
+        <form>
+            <!-- inputs -->
+            <button class="btn">Iniciar sesion</button>
+        </form>
 
     </div>
 
     <div class="links">
-        <a href="#">¿Olvidaste tu contraseña?</a>
+        <a href="#" id="abrirModal">¿Olvidaste tu contraseña?</a>
         <div class="divider"></div>
         <p>¿No tienes cuenta? <a href="/HTML/registro.html">Registrarse</a></p>
     </div>
+    <!-- MODAL -->
+    <div class="modal" id="modalRecuperar">
+        <div class="modal-content">
+            <h3>Restauración de contraseña</h3>
+            <p>Se ha enviado un correo de restauración de contraseña a tu correo.</p>
+            <button id="cerrarModal">Cerrar</button>
+        </div>
+    </div>
 
 </div>
-
+<script src="/Scripts/script_inicio.js"></script>
 </body>
 </html>
