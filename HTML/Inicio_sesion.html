@@ -48,14 +48,25 @@
         <p>¿No tienes cuenta? <a href="/HTML/registro.html">Registrarse</a></p>
     </div>
     <!-- MODAL -->
-    <div class="modal" id="modalRecuperar">
+     <div class="modal" id="modalRecuperar">
         <div class="modal-content">
-            <h3>Restauración de contraseña</h3>
-            <p>Se ha enviado un correo de restauración de contraseña a tu correo.</p>
-            <button id="cerrarModal">Cerrar</button>
-        </div>
-    </div>
+            <h3>Restaurar contraseña</h3>
 
+            <!-- PASO 1: INGRESAR CORREO -->
+            <div id="pasoCorreo">
+                <p>Ingresa tu correo para enviarte el enlace</p>
+                <input type="email" id="correoRecuperar" placeholder="correo@ejemplo.com">
+                <button id="enviarCorreo">Enviar</button>
+            </div>
+
+            <!-- PASO 2: MENSAJE -->
+            <div id="pasoMensaje" style="display:none;">
+                <p>Se ha enviado un correo de restauración.</p>
+                <button id="cerrarModal">Cerrar</button>
+            </div>
+
+     </div>
+</div>  
 </div>
 <script src="/Scripts/script_inicio.js"></script>
 </body>

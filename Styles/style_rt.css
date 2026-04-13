@@ -1,0 +1,68 @@
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, Helvetica, sans-serif; }
+
+.page-bg {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #4facfe, #f6a56f);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 2rem 1rem;
+}
+.logo-area { text-align: center; margin-bottom: 1.2rem; }
+.logo-area img { width: clamp(400px, 14vw, 400px); margin-bottom: 2px; }
+.brand { font-size: clamp(20px, 3vw, 28px); font-weight: 700; color: #222; }
+.tagline { font-size: clamp(9px, 1.2vw, 12px); letter-spacing: 2px; color: #555; text-transform: uppercase; }
+
+.card {
+  background: #fff;
+  border-radius: 14px;
+  padding: clamp(16px, 3vw, 28px);
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+.card h2 { text-align: center; font-size: clamp(16px, 2.5vw, 20px); font-weight: 700; margin-bottom: 1.2rem; color: #222; }
+
+.field { margin-bottom: 14px; }
+.field label { display: block; font-size: 13px; color: #555; margin-bottom: 5px; text-align: center; }
+
+.field input, .field select, .field textarea {
+  width: 100%;
+  padding: 9px 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #333;
+  outline: none;
+}
+.field select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23aaa' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-color: #fff;
+}
+.field textarea { border-radius: 14px; resize: none; }
+
+.modalidad-row { display: flex; justify-content: center; gap: 24px; margin-top: 4px; }
+.modalidad-row label { display: flex; align-items: center; gap: 6px; font-size: 13px; color: #444; cursor: pointer; }
+.modalidad-row input[type="checkbox"] { width: 15px; height: 15px; accent-color: #2d7ff9; }
+
+.btn-guardar {
+  width: 100%;
+  padding: 11px;
+  background: #2d7ff9;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 6px;
+}
+.btn-guardar:hover { background: #1f6ae0; }
+
+@media (max-width: 480px) {
+  .card { padding: 20px; }
+}

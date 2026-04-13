@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Crear cuenta - myTeacher</title>
+  <link rel="stylesheet" href="/Styles/style_rt.css" />
+</head>
+<body>
+  <div class="page-bg">
+    <div class="logo-area">
+      <img src="/Imagenes/Logo.png" alt="myTeacher logo" />
+    </div>
+
+    <div class="card">
+      <h2>Crear cuenta</h2>
+
+      <div class="field">
+        <label>Materias que impartes</label>
+        <select id="materia">
+          <option value="" disabled selected>Matematicas</option>
+          <option>Matemáticas</option>
+          <option>Física</option>
+          <option>Química</option>
+          <option>Inglés</option>
+          <option>Historia</option>
+          <option>Programación</option>
+          <option>Biología</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Precio por hora</label>
+        <input type="text" id="precio" placeholder="$$$$$$$" />
+      </div>
+
+      <div class="field">
+        <label>Modalidad</label>
+        <div class="modalidad-row">
+          <label><input type="checkbox" id="presencial" /> Presencial</label>
+          <label><input type="checkbox" id="virtual" /> Virtual</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Ubicacion</label>
+        <input type="text" id="ubicacion" placeholder="Kra 123 #123b 123" />
+      </div>
+
+      <div class="field">
+        <label>Descripcion profesional</label>
+        <textarea id="descripcion" rows="2" placeholder="Tutor con 5 años de experiencia"></textarea>
+      </div>
+
+      <button class="btn-guardar" id="btnGuardar">Guardar perfil</button>
+    </div>
+  </div>
+
+  <script src="/Scripts/script_rt.js"></script>
+</body>
+</html>

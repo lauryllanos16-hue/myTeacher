@@ -169,3 +169,10 @@ label {
     border-radius:5px;
     cursor:pointer;
 }
+.modal-content input{
+    width: 90%;
+    padding: 8px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
