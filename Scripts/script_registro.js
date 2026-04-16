@@ -30,7 +30,7 @@ document.querySelector('.btn-registrar').addEventListener('click', function () {
 
   // Redirección según tipo de cuenta
   if (tutor) {
-    window.location.href = 'inicio_sesion.html'; // <-- página del tutor
+    window.location.href = 'registro_tutor.html'; // <-- página del tutor
   } else {
     window.location.href = 'perfil-estudiante.html'; // <-- página del estudiante
   }
