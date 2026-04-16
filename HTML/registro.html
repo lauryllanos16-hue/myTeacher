@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Registro - myTeacher</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="/Styles/style_registro.css" />
 </head>
 <body>
@@ -28,23 +29,27 @@
         <label>Correo electronico</label>
         <div class="input-group">
           <input type="email" placeholder="Correo@ejemplo.com" />
-          <span>✉</span>
+          <span class="icon"><i class="fa-regular fa-envelope"></i></span>
         </div>
       </div>
 
       <div class="field">
         <label>Contraseña</label>
         <div class="input-group">
-          <input type="password" id="pass1" placeholder="············" />
-          <span onclick="togglePass('pass1', this)">👁</span>
+          <input type="password" id="pass1" placeholder="············"  autocomplete="new-password"/>
+          <span class="icon" id="toggle1">
+        <i class="fa-regular fa-eye-slash"></i>
+    </span>
         </div>
       </div>
 
       <div class="field">
         <label>Confirmar contraseña</label>
         <div class="input-group">
-          <input type="password" id="pass2" placeholder="············" />
-          <span onclick="togglePass('pass2', this)">👁</span>
+          <input type="password" id="pass2" placeholder="············"  autocomplete="new-password" />
+          <span class="icon" id="toggle2">
+        <i class="fa-regular fa-eye-slash"></i>
+    </span>
         </div>
       </div>
 

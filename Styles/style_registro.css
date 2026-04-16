@@ -16,7 +16,13 @@ body {
   align-items: flex-start;
   padding: 1.5rem 1rem;
 }
-
+.input-group span i {
+    color: #aaa;
+    transition: color 0.2s;
+}
+.input-group span:hover i {
+    color: #2d7ff9;
+}
 .container {
   width: 100%;
   max-width: 420px;
@@ -175,4 +181,22 @@ body {
   .card {
     padding: 18px;
   }
+}
+#password::-ms-reveal,
+#password::-ms-clear {
+    display: none;
+}
+/* Ocultar ojo nativo del navegador */
+#pass1::-ms-reveal,
+#pass1::-ms-clear,
+#pass2::-ms-reveal,
+#pass2::-ms-clear {
+    display: none;
+}
+
+#pass1::-webkit-credentials-auto-fill-button,
+#pass2::-webkit-credentials-auto-fill-button {
+    display: none !important;
+    visibility: hidden;
+    pointer-events: none;
 }

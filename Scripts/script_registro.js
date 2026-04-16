@@ -1,8 +1,18 @@
-function togglePass(id) {
-  const input = document.getElementById(id);
-  input.type = input.type === 'password' ? 'text' : 'password';
+function togglePass(inputId, spanId) {
+    const input = document.getElementById(inputId);
+    const icono = document.querySelector(`#${spanId} i`);
+
+    if (input.type === "password") {
+        input.type = "text";
+        icono.classList.replace("fa-eye-slash", "fa-eye");
+    } else {
+        input.type = "password";
+        icono.classList.replace("fa-eye", "fa-eye-slash");
+    }
 }
 
+document.getElementById("toggle1").addEventListener("click", () => togglePass("pass1", "toggle1"));
+document.getElementById("toggle2").addEventListener("click", () => togglePass("pass2", "toggle2"));
 document.querySelector('.btn-registrar').addEventListener('click', function () {
   const nombre    = document.querySelector('input[placeholder="Nombre y apellido"]').value.trim();
   const correo    = document.querySelector('input[type="email"]').value.trim();

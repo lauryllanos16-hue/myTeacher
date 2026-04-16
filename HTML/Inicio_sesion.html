@@ -1,45 +1,39 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Iniciar sesión - myTeacher</title>
-<link rel="stylesheet" href="/Styles/style login.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesión - myTeacher</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="/Styles/style login.css">
 </head>
-
 <body>
-
 <div class="container">
-
     <div class="logo">
         <img src="/Imagenes/Logo.png" alt="myTeacher">
     </div>
-
     <div class="login-box">
         <h2>Iniciar sesión</h2>
 
         <label>Correo</label>
         <div class="input-group">
-            <input type="email" placeholder="correo@ejemplo.com">
-            <span>✉</span>
+            <input type="email" id="correo" placeholder="correo@ejemplo.com">
+            <span class="icon"><i class="fa-regular fa-envelope"></i></span>
         </div>
 
         <label>Contraseña</label>
         <div class="input-group">
-            <input type="password" placeholder="********">
-            <span id="togglePassword">👁</span>
-        </div>
-
+    <input type="password" id="password" placeholder="********" autocomplete="new-password">
+    <span class="icon" id="togglePassword">
+        <i class="fa-regular fa-eye-slash"></i>
+    </span>
+</div>
         <div class="remember">
-            <input type="checkbox">
+            <input type="checkbox" id="mantener">
             <span>Mantener sesión</span>
         </div>
 
-        <form>
-            <!-- inputs -->
-            <button class="btn">Iniciar sesion</button>
-        </form>
-
+        <button class="btn">Iniciar sesión</button>
     </div>
 
     <div class="links">
@@ -47,27 +41,24 @@
         <div class="divider"></div>
         <p>¿No tienes cuenta? <a href="/HTML/registro.html">Registrarse</a></p>
     </div>
-    <!-- MODAL -->
-     <div class="modal" id="modalRecuperar">
-        <div class="modal-content">
-            <h3>Restaurar contraseña</h3>
-
-            <!-- PASO 1: INGRESAR CORREO -->
-            <div id="pasoCorreo">
-                <p>Ingresa tu correo para enviarte el enlace</p>
-                <input type="email" id="correoRecuperar" placeholder="correo@ejemplo.com">
-                <button id="enviarCorreo">Enviar</button>
-            </div>
-
-            <!-- PASO 2: MENSAJE -->
-            <div id="pasoMensaje" style="display:none;">
-                <p>Se ha enviado un correo de restauración.</p>
-                <button id="cerrarModal">Cerrar</button>
-            </div>
-
-     </div>
-</div>  
 </div>
+
+<!-- MODAL -->
+<div class="modal" id="modalRecuperar">
+    <div class="modal-content">
+        <h3>Restaurar contraseña</h3>
+        <div id="pasoCorreo">
+            <p>Ingresa tu correo para enviarte el enlace</p>
+            <input type="email" id="correoRecuperar" placeholder="correo@ejemplo.com">
+            <button id="enviarCorreo">Enviar</button>
+        </div>
+        <div id="pasoMensaje" style="display:none;">
+            <p>Se ha enviado un correo de restauración.</p>
+            <button id="cerrarModal">Cerrar</button>
+        </div>
+    </div>
+</div>
+
 <script src="/Scripts/script_inicio.js"></script>
 </body>
 </html>
