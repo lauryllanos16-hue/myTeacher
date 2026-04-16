@@ -1,0 +1,178 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background-image: url('/Imagenes/fondo.png'); /* <-- pon el nombre de tu imagen aquí */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 1.5rem 1rem;
+}
+
+.container {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* LOGO */
+.logo-area {
+  text-align: center;
+  margin-bottom: 0rem;
+}
+
+.logo-area img {
+  width: clamp(400px, 12vw, 400px);
+  margin-bottom: 6px;
+}
+
+.brand {
+  font-size: clamp(20px, 3vw, 28px);
+  font-weight: 700;
+  color: #222;
+}
+
+.tagline {
+  font-size: clamp(9px, 1.2vw, 11px);
+  letter-spacing: 2px;
+  color: #555;
+  text-transform: uppercase;
+}
+
+/* CARD */
+.card {
+  background: #fff;
+  border-radius: 14px;
+  padding: clamp(16px, 3vw, 28px);
+  width: 100%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+  text-align: center;
+  font-size: clamp(16px, 2.5vw, 20px);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #222;
+}
+
+/* CAMPOS */
+.field {
+  margin-bottom: 12px;
+}
+
+.field > label {
+  display: block;
+  font-size: 13px;
+  color: #000000;
+  margin-bottom: 4px;
+  text-align: center;
+}
+
+.input-group {
+  position: relative;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 9px 36px 9px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #333;
+  outline: none;
+  background: #fff;
+}
+
+.input-group input::placeholder {
+  color: #bbb;
+}
+
+.input-group span {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 15px;
+  color: #aaa;
+  user-select: none;
+}
+
+/* TIPO DE CUENTA */
+.tipo-row {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin-top: 4px;
+}
+
+.check-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #444;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 5px 14px;
+}
+
+.check-label input[type="checkbox"] {
+  width: 14px;
+  height: 14px;
+  accent-color: #2d7ff9;
+}
+
+/* BOTON */
+.btn-registrar {
+  width: 100%;
+  padding: 11px;
+  background: #2d7ff9;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 8px;
+  letter-spacing: 0.5px;
+}
+
+.btn-registrar:hover {
+  background: #1f6ae0;
+}
+
+/* LINK INFERIOR */
+.login-link {
+  margin-top: 14px;
+  font-size: 13px;
+  color: #444;
+}
+
+.login-link a {
+  color: #2d7ff9;
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+/* RESPONSIVE */
+@media (max-width: 480px) {
+  .card {
+    padding: 18px;
+  }
+}

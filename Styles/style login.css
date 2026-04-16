@@ -5,12 +5,18 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-body {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(135deg, #4facfe, #f6a56f);
+body{
+    margin:0;
+    height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background-image: url("/Imagenes/fondo.png");
+    background-size: cover;        /* ajusta a toda la pantalla */
+    background-position: center;   /* centra la imagen */
+    background-repeat: no-repeat;  /* no se repite */
 }
 
 .container {

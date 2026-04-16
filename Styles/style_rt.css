@@ -1,13 +1,17 @@
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, Helvetica, sans-serif; }
 
-.page-bg {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #4facfe, #f6a56f);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 2rem 1rem;
+body{
+    margin:0;
+    height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background-image: url("/Imagenes/fondo.png");
+    background-size: cover;        /* ajusta a toda la pantalla */
+    background-position: center;   /* centra la imagen */
+    background-repeat: no-repeat;  /* no se repite */
 }
 .logo-area { text-align: center; margin-bottom: 1.2rem; }
 .logo-area img { width: clamp(400px, 14vw, 400px); margin-bottom: 2px; }
