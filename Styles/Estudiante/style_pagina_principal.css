@@ -123,14 +123,14 @@ nav {
 }
 
 .field-row select:focus { 
-  outline: 2px solid #5577ee; 
+  outline: 2px solid #85B1F8; 
 }
 
 .btn-buscar {
   display: block; 
   margin: 18px auto 0;
-  background: #5577ee; 
-  color: white;
+  background: #85B1F8; 
+  color: rgb(0, 0, 0);
   border: none; 
   border-radius: 7px;
   padding: 10px 50px; 
@@ -141,7 +141,7 @@ nav {
 }
 
 .btn-buscar:hover { 
-  background: #4466dd; 
+  background: #90a7f8; 
 }
 
 /* ── ETIQUETA SECCIÓN ── */
@@ -151,8 +151,8 @@ nav {
 }
 
 .section-label span {
-  background: #5577ee; 
-  color: white;
+  background: #85B1F8; 
+  color: rgb(0, 0, 0);
   border-radius: 20px; 
   padding: 8px 24px;
   font-size: 15px; 
@@ -241,9 +241,10 @@ nav {
 }
 
 .btn-ver { 
-  background: white; 
-  color: #5577ee; 
-  border: 1.5px solid #5577ee; 
+  background: #85B1F8; 
+  color: #000000; 
+  font-weight: 700;
+  border: 1.5px solid #85B1F8; 
 }
 
 .btn-ver:hover { 
@@ -251,9 +252,10 @@ nav {
 }
 
 .btn-reservar { 
-  background: #5577ee; 
-  color: white; 
-  border: 1.5px solid #5577ee; 
+  background: #85B1F8; 
+  color: black; 
+  font-weight: 700;
+  border: 1.5px solid #85B1F8; 
 }
 
 .btn-reservar:hover { 
@@ -267,12 +269,13 @@ nav {
 }
 
 .btn-ver-mas {
-  background: white; 
-  border: 1.5px solid #5577ee;
-  color: #5577ee; 
+  background: #85B1F8; 
+  border: 1.5px solid #85B1F8;
+  color: black; 
+  font-size: 16px;
   border-radius: 9px;
+  font-weight: 700;
   padding: 10px 44px; 
-  font-size: 14px;
   cursor: pointer; 
   transition: background .15s;
 }
@@ -350,7 +353,7 @@ footer {
   align-items: center; 
   justify-content: center;
   font-size: 14px; 
-  color: white; 
+  color: rgb(0, 0, 0); 
   text-decoration: none;
   font-weight: 700; 
   cursor: pointer; 
@@ -358,7 +361,7 @@ footer {
 }
 
 .social-icon:hover { 
-  background: #5577ee; 
+  background: #85B1F8; 
 }
 
 .footer-copy { 
