@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>myTeacher · Principal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/Styles/Tutor/style_tutor.css"/>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="32" height="32" rx="6" fill="#4a90d9"/>
+          <path d="M7 22 L16 10 L25 22" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <circle cx="16" cy="10" r="2.5" fill="#ffe066"/>
+          <path d="M11 22 L21 22" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="logo-text">
+        <span>myTeacher</span>
+        <span>connect &amp; learn</span>
+      </div>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="#">Mis clases</a></li>
+      <li><span class="nav-sep">|</span></li>
+      <li><a href="#">Disponibilidad</a></li>
+      <li><span class="nav-sep">|</span></li>
+      <li><a href="#" class="active">Perfil</a></li>
+      <li><span class="nav-sep">|</span></li>
+    </ul>
+
+    <button class="nav-bell" aria-label="Notificaciones">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
+        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+        <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+      </svg>
+    </button>
+  </nav>
+
+  <main>
+
+    <!-- PROXIMAS TUTORIAS -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="badge">🏫 Proximas tutorias</div>
+      </div>
+      <div class="info-grid">
+        <div class="info-row">
+          <div class="info-cell">Estudiante: Ana Gomez</div>
+          <div class="info-cell">Materia: Matematicas</div>
+        </div>
+        <div class="info-row">
+          <div class="info-cell">Fecha: 12 Marzo - 4:00 PM</div>
+          <div class="info-cell">Nivel: Universitario</div>
+        </div>
+        <div class="info-row">
+          <div class="info-cell">Modalidad : Virtual</div>
+          <div class="info-cell">Estado: 🟡 Próxima</div>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-primary">Iniciar clase</button>
+        <button class="btn btn-primary">Cancelar</button>
+      </div>
+      <div class="ver-mas-wrap">
+        <button class="btn btn-primary" style="padding: 9px 36px; margin-top: 8px;">Ver más</button>
+      </div>
+    </div>
+
+    <!-- RESUMEN -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="badge">📊 Resumen</div>
+      </div>
+      <div class="info-grid">
+        <div class="info-row">
+          <div class="info-cell">Clases este Mes: 12</div>
+          <div class="info-cell">Estudiantes atendidos: 8</div>
+        </div>
+        <div class="info-row">
+          <div class="info-cell">Ingresos estimados: $240</div>
+          <div class="info-cell">Horas de tutoría: 15</div>
+        </div>
+        <div class="info-row">
+          <div class="info-cell" style="justify-content: center; border-right: none;">
+            Calificacion promedio este mes: ⭐ 4.7
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="footer-logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" width="28" height="28">
+          <rect width="32" height="32" rx="6" fill="#4a90d9"/>
+          <path d="M7 22 L16 10 L25 22" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <circle cx="16" cy="10" r="2.5" fill="#ffe066"/>
+          <path d="M11 22 L21 22" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="logo-text">
+        <span>myTeacher</span>
+        <span>connect &amp; learn</span>
+      </div>
+    </div>
+
+    <div class="footer-section">
+      <h4>Contactos</h4>
+      <p>Numero: +57 302 xxxx xxx</p>
+      <p>Correo: soporte@unilibre.edu</p>
+    </div>
+
+    <div class="footer-section">
+      <h4>Síguenos</h4>
+      <div class="social-icons">
+        <a href="#" class="social-icon si-fb" aria-label="Facebook">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="white">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+          </svg>
+        </a>
+        <a href="#" class="social-icon si-ig" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+            fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+          </svg>
+        </a>
+        <a href="#" class="social-icon si-x" aria-label="X">
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="white">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-copy">© 2026 myTeacher · todos los derechos reservados</div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
