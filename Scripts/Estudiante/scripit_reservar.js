@@ -60,3 +60,12 @@ function cerrarModal() {
 document.getElementById('modalOverlay').addEventListener('click', function(e) {
   if (e.target === this) cerrarModal();
 });
+(function cargarDesdeStorage() {
+  const tutorGuardado = JSON.parse(localStorage.getItem("tutorSeleccionado"));
+
+  if (tutorGuardado) {
+    document.getElementById('tutorNombre').textContent  = tutorGuardado.nombre;
+    document.getElementById('tutorMateria').textContent = tutorGuardado.materia;
+    document.getElementById('tutorNivel').textContent   = tutorGuardado.nivel || "No definido";
+  }
+})();

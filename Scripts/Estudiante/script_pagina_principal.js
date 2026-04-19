@@ -38,6 +38,10 @@ function verPerfil(index) {
 }
 
 function reservarTutor(index) {
+  const tutor = tutores[index]; // 👈 AQUÍ ESTÁ LA CLAVE
+
+  localStorage.setItem("tutorSeleccionado", JSON.stringify(tutor));
+
   window.location.href = "reservar.html";
 }
   // Re-asignar eventos después de renderizar
