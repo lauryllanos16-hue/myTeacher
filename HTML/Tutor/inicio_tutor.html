@@ -11,18 +11,9 @@
 
   <nav>
     <div class="nav-logo">
-      <div class="logo-icon">
-        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="32" height="32" rx="6" fill="#4a90d9"/>
-          <path d="M7 22 L16 10 L25 22" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-          <circle cx="16" cy="10" r="2.5" fill="#ffe066"/>
-          <path d="M11 22 L21 22" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
-        </svg>
-      </div>
-      <div class="logo-text">
-        <span>myTeacher</span>
-        <span>connect &amp; learn</span>
-      </div>
+      <div class="logo-slot">
+  <img src="/Imagenes/Logo.png" alt="myTeacher logo">
+</div>
     </div>
 
     <ul class="nav-links">
@@ -34,13 +25,7 @@
       <li><span class="nav-sep">|</span></li>
     </ul>
 
-    <button class="nav-bell" aria-label="Notificaciones">
-      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
-        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
-        <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
-      </svg>
-    </button>
+    <span class="nav-bell" title="Notificaciones">&#128276;</span>
   </nav>
 
   <main>
@@ -97,32 +82,23 @@
 
   </main>
 
-  <footer>
+<footer>
+  <div class="footer-inner">
+
     <div class="footer-logo">
-      <div class="logo-icon">
-        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" width="28" height="28">
-          <rect width="32" height="32" rx="6" fill="#4a90d9"/>
-          <path d="M7 22 L16 10 L25 22" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-          <circle cx="16" cy="10" r="2.5" fill="#ffe066"/>
-          <path d="M11 22 L21 22" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
-        </svg>
-      </div>
-      <div class="logo-text">
-        <span>myTeacher</span>
-        <span>connect &amp; learn</span>
-      </div>
+      <img src="/Imagenes/logo letras blancas.png" alt="myTeacher logo">
     </div>
 
-    <div class="footer-section">
-      <h4>Contactos</h4>
-      <p>Numero: +57 302 xxxx xxx</p>
-      <p>Correo: soporte@unilibre.edu</p>
-    </div>
-
-    <div class="footer-section">
-      <h4>Síguenos</h4>
-      <div class="social-icons">
-        <a href="#" class="social-icon si-fb" aria-label="Facebook">
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h4>Contactos</h4>
+        <p>Numero: +57 302 xxxx xxx</p>
+        <p>Correo: soporte@unilibre.edu</p>
+      </div>
+      <div class="footer-col">
+        <h4>Síguenos</h4>
+        <div class="social-icons">
+         <a href="#" class="social-icon si-fb" aria-label="Facebook">
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="white">
             <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
           </svg>
@@ -140,11 +116,13 @@
             <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
           </svg>
         </a>
+        </div>
       </div>
     </div>
 
-    <div class="footer-copy">© 2026 myTeacher · todos los derechos reservados</div>
-  </footer>
+  </div>
+  <p class="footer-copy">© 2026 myTeacher · todos los derechos reservados</p>
+</footer>
 
   <script src="app.js"></script>
 </body>
