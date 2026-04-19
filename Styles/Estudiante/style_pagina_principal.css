@@ -129,8 +129,8 @@ nav {
 .btn-buscar {
   display: block; 
   margin: 18px auto 0;
-  background: #5577ee; 
-  color: white;
+  background: #85B1F8; 
+  color: rgb(0, 0, 0);
   border: none; 
   border-radius: 7px;
   padding: 10px 50px; 
@@ -141,7 +141,7 @@ nav {
 }
 
 .btn-buscar:hover { 
-  background: #4466dd; 
+  background: #aac8f8; 
 }
 
 /* ── ETIQUETA SECCIÓN ── */
@@ -151,8 +151,8 @@ nav {
 }
 
 .section-label span {
-  background: #5577ee; 
-  color: white;
+  background: #85B1F8; 
+  color: rgb(0, 0, 0);
   border-radius: 20px; 
   padding: 8px 24px;
   font-size: 15px; 
@@ -206,7 +206,7 @@ nav {
 }
 
 .sep { 
-  color: #bbb; 
+  color: #85B1F8; 
 }
 
 .star { 
@@ -241,23 +241,27 @@ nav {
 }
 
 .btn-ver { 
-  background: white; 
-  color: #5577ee; 
-  border: 1.5px solid #5577ee; 
+  background: #85B1F8; 
+  color: #000000; 
+  font-weight: 600;
+  border-radius: 7px;
+  border: 1.5px solid #85B1F8; 
 }
 
 .btn-ver:hover { 
-  background: #eef1ff; 
+  background: #aac8f8; 
 }
 
 .btn-reservar { 
-  background: #5577ee; 
-  color: white; 
-  border: 1.5px solid #5577ee; 
+  background: #85B1F8; 
+  color: #000000; 
+  font-weight: 600;
+  border-radius: 7px;
+  border: 1.5px solid #85B1F8; 
 }
 
 .btn-reservar:hover { 
-  background: #4466dd; 
+  background: #aac8f8; 
 }
 
 /* ── VER MÁS ── */
@@ -267,10 +271,11 @@ nav {
 }
 
 .btn-ver-mas {
-  background: white; 
-  border: 1.5px solid #5577ee;
-  color: #5577ee; 
+  background: #85B1F8; 
+  border: 1.5px solid #85B1F8;
+  color: #000000; 
   border-radius: 9px;
+  font-weight: 600;
   padding: 10px 44px; 
   font-size: 14px;
   cursor: pointer; 
@@ -278,7 +283,7 @@ nav {
 }
 
 .btn-ver-mas:hover { 
-  background: #eef1ff; 
+  background: #aac8f8; 
 }
 
 /* ── FOOTER (full width) ── */
