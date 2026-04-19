@@ -13,7 +13,7 @@ const tutores = [
 
 function renderTutores(lista) {
   const container = document.getElementById('tutorsContainer');
-  container.innerHTML = lista.map(t => `
+  container.innerHTML = lista.map((t, i) => `
     <div class="tutor-card">
       <img class="tutor-img" src="${t.foto || DEFAULT_AVATAR}" alt="${t.nombre}"
            onerror="this.src='${DEFAULT_AVATAR}'">
@@ -26,13 +26,20 @@ function renderTutores(lista) {
         </div>
         <div class="tutor-modality">Modalidad : <strong>${t.modalidad}</strong></div>
         <div class="tutor-btns">
-          <button class="btn-ver">Ver perfil</button>
-          <button class="btn-reservar">Reservar</button>
+          <button class="btn-ver" onclick="verPerfil(${i})">Ver perfil</button>
+          <button class="btn-reservar" onclick="reservarTutor(${i})">Reservar</button>
         </div>
       </div>
     </div>
   `).join('');
+}
+function verPerfil(index) {
+  alert("Ver perfil del tutor #" + index);
+}
 
+function reservarTutor(index) {
+  window.location.href = "reservar.html";
+}
   // Re-asignar eventos después de renderizar
   document.querySelectorAll('.btn-ver').forEach(btn => {
     btn.addEventListener('click', function() {
@@ -44,7 +51,7 @@ function renderTutores(lista) {
       alert('Reservar con: ' + this.closest('.tutor-card').querySelector('.tutor-name').textContent);
     });
   });
-}
+
 
 renderTutores(tutores);
  
@@ -60,13 +67,6 @@ renderTutores(tutores);
     btn.addEventListener('click', function() {
       const name = this.closest('.tutor-card').querySelector('.tutor-name').textContent;
       alert('Ver perfil de: ' + name);
-    });
-  });
- 
-  document.querySelectorAll('.btn-reservar').forEach(btn => {
-    btn.addEventListener('click', function() {
-      const name = this.closest('.tutor-card').querySelector('.tutor-name').textContent;
-      alert('Reservar clase con: ' + name);
     });
   });
  
