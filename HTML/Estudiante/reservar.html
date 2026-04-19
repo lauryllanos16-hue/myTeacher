@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>myTeacher - Reservar Tutoría</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="/Styles/Estudiante/style_reservar.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="logo-slot">
+      <img src="/Imagenes/Logo.png" alt="myTeacher logo">
+    </div>
+    <div class="nav-links">
+      <a href="/HTML/Estudiante/inicio_estudiante.html" class="active">Buscar</a>
+      <a href="#">Mis reservas</a>
+      <a href="/HTML/Estudiante/perfil_estudiante.html#tutorias">Historial</a>
+      <a href="/HTML/Estudiante/perfil_estudiante.html">Perfil</a>
+    </div>
+    <span class="nav-bell" title="Notificaciones">&#128276;</span>
+  </nav>
+
+  <div class="page">
+
+    <!-- TÍTULO SECCIÓN -->
+    <div class="section-label">
+      <span>&#127823; Reservar Tutoría</span>
+    </div>
+
+    <!-- CARD RESERVA -->
+    <div class="reserva-card">
+
+      <!-- FILA 1: Tutor | Materia -->
+      <div class="reserva-grid">
+        <div class="reserva-cell">
+          Tutor: <strong id="tutorNombre">Lionel Messi</strong>
+        </div>
+        <div class="reserva-divider"></div>
+        <div class="reserva-cell">
+          Materia: <strong id="tutorMateria">Matematicas</strong>
+        </div>
+      </div>
+
+      <!-- FILA 2: Fecha/Hora | Nivel -->
+      <div class="reserva-grid">
+        <div class="reserva-cell fecha-hora-cell">
+          <div class="fecha-hora-row">
+            <span>Fecha:</span>
+            <select id="selectFecha">
+              <option>12 Marzo</option>
+              <option>13 Marzo</option>
+              <option>14 Marzo</option>
+              <option>15 Marzo</option>
+              <option>16 Marzo</option>
+              <option>17 Marzo</option>
+              <option>18 Marzo</option>
+            </select>
+          </div>
+          <div class="fecha-hora-row">
+            <span>Hora:</span>
+            <select id="selectHora">
+              <option>8:00 AM</option>
+              <option>9:00 AM</option>
+              <option>10:00 AM</option>
+              <option>11:00 AM</option>
+              <option>12:00 PM</option>
+              <option>2:00 PM</option>
+              <option>3:00 PM</option>
+              <option selected>4:00 PM</option>
+              <option>5:00 PM</option>
+              <option>6:00 PM</option>
+            </select>
+          </div>
+        </div>
+        <div class="reserva-divider"></div>
+        <div class="reserva-cell">
+          Nivel: <strong id="tutorNivel">Secundaria</strong>
+        </div>
+      </div>
+
+      <!-- FILA 3: Modalidad -->
+      <div class="reserva-grid reserva-grid-full">
+        <div class="reserva-cell modalidad-cell">
+          <span>Modalidad :</span>
+          <label class="radio-label">
+            <input type="radio" name="modalidad" value="Presencial" id="radioPres">
+            Presencial
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="modalidad" value="Virtual" id="radioVirt" checked>
+            Virtual
+          </label>
+        </div>
+      </div>
+
+      <!-- BOTÓN CONFIRMAR -->
+      <div class="confirmar-wrap">
+        <button class="btn-confirmar" id="btnConfirmar" onclick="confirmarReserva()">
+          Confirmar reserva
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- MODAL CONFIRMACIÓN -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+      <div class="modal-icon">&#10003;</div>
+      <h3>¡Reserva confirmada!</h3>
+      <p id="modalDetalle"></p>
+      <button class="btn-modal-ok" onclick="cerrarModal()">Aceptar</button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <img src="/Imagenes/logo letras blancas.png" alt="myTeacher logo">
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Contactos</h4>
+          <p>
+            Numero: +57 302 xxxx xxx<br>
+            Correo: soporte@unilibre.edu
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Síguenos</h4>
+          <div class="social-icons">
+            <a class="social-icon" style="background:#1877f2;" href="#" title="Facebook">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a class="social-icon" style="background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);" href="#" title="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a class="social-icon" style="background:#000;" href="#" title="X / Twitter">
+              <i class="fab fa-x-twitter"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copy">&#169; 2025 myTeacher - Todos los derechos reservados</div>
+  </footer>
+
+  <script src="/Scripts/Estudiante/script_reservar.js"></script>
+</body>
+</html>

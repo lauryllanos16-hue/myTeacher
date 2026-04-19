@@ -18,7 +18,10 @@ body {
   min-height: calc(100vh - 82px - 150px);
   padding-bottom: 8px;
 }
-
+.social-icon i {
+  color: white;
+  font-size: 16px;
+}
 /* ── NAV (full width) ── */
 nav {
   background: rgb(133, 177, 248);
@@ -651,4 +654,5 @@ footer {
   html {
   scroll-behavior: smooth;
 }
+
 }

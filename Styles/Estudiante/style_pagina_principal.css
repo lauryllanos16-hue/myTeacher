@@ -373,7 +373,10 @@ footer {
   margin-left: auto;
   margin-right: auto;
 }
-
+.social-icon i {
+  color: white;
+  font-size: 16px;
+}
 /* ════════════════════════════════
    RESPONSIVE MÓVIL (≤ 600px)
    ════════════════════════════════ */
@@ -495,7 +498,10 @@ footer {
   .footer-col p {
     font-size: 12px;
   }
-
+.social-icon i {
+  color: white;
+  font-size: 16px;
+}
   .social-icon {
     width: 30px;
     height: 30px;

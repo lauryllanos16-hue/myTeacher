@@ -1,0 +1,476 @@
+* { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+}
+
+body { 
+  font-family: Arial, sans-serif; 
+  background: #eef1fb; 
+  min-height: 100vh; 
+}
+
+/* ── CONTENEDOR CENTRAL ── */
+.page { 
+  max-width: 900px; 
+  margin: 0 auto; 
+  background: #eef1fb; 
+  min-height: calc(100vh - 82px - 150px);
+  padding-bottom: 8px;
+}
+
+/* ── NAV (full width) ── */
+nav {
+  background: rgb(133, 177, 248);
+  display: flex;
+  align-items: center;
+  padding: 10px 32px;
+  border-bottom: 1px solid #dde4f5;
+  position: sticky; 
+  top: 0; 
+  z-index: 100;
+  width: 100%;
+}
+
+.logo-slot {
+  width: 90px; 
+  height: 62px;
+  border-radius: 8px;
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  overflow: hidden; 
+  flex-shrink: 0;
+  background: transparent;
+}
+
+.logo-slot img { 
+  width: 100%; 
+  height: 100%; 
+  object-fit: contain; 
+}
+
+.nav-links { 
+  display: flex; 
+  flex: 1; 
+  justify-content: center; 
+}
+
+.nav-links a {
+  font-size: 14.5px; 
+  color: #333; 
+  text-decoration: none;
+  padding: 0 16px;
+  border-right: 1.5px solid #ccc;
+}
+
+.nav-links a:last-child { 
+  border-right: none; 
+}
+
+.nav-links a.active { 
+  text-decoration: underline; 
+  font-weight: 600; 
+}
+
+.nav-bell { 
+  font-size: 20px; 
+  margin-left: auto;
+  cursor: pointer; 
+}
+
+/* ── ETIQUETA SECCIÓN ── */
+.section-label { 
+  text-align: center; 
+  margin: 32px 18px 20px; 
+}
+
+.section-label span {
+  background: #85B1F8; 
+  color: #000;
+  border-radius: 20px; 
+  padding: 10px 28px;
+  font-size: 16px; 
+  font-weight: 700;
+}
+
+/* ── CARD RESERVA ── */
+.reserva-card {
+  background: white;
+  margin: 0 18px 24px;
+  border-radius: 14px;
+  padding: 28px 32px;
+  box-shadow: 0 1px 4px rgba(80,100,180,0.06);
+}
+
+/* ── GRID DE FILAS ── */
+.reserva-grid {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  border: 1px solid #c8d8f8;
+  border-radius: 8px;
+  margin-bottom: 14px;
+  overflow: hidden;
+}
+
+.reserva-grid-full {
+  grid-template-columns: 1fr;
+}
+
+.reserva-cell {
+  padding: 14px 20px;
+  font-size: 15px;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.reserva-cell strong {
+  font-weight: 700;
+  color: #222;
+}
+
+.reserva-divider {
+  background: #c8d8f8;
+  width: 1px;
+}
+
+/* ── FECHA Y HORA ── */
+.fecha-hora-cell {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px 20px;
+}
+
+.fecha-hora-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  color: #333;
+}
+
+.fecha-hora-row select {
+  border: 1px solid #c0c8e0;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 14px;
+  color: #444;
+  background: white;
+  cursor: pointer;
+}
+
+.fecha-hora-row select:focus {
+  outline: 2px solid #85B1F8;
+}
+
+/* ── MODALIDAD ── */
+.modalidad-cell {
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 15px;
+  color: #333;
+  cursor: pointer;
+}
+
+.radio-label input[type="radio"] {
+  width: 17px;
+  height: 17px;
+  accent-color: #85B1F8;
+  cursor: pointer;
+}
+
+/* ── BOTÓN CONFIRMAR ── */
+.confirmar-wrap {
+  text-align: center;
+  margin-top: 24px;
+}
+
+.btn-confirmar {
+  background: #85B1F8;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 48px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #000;
+  cursor: pointer;
+  transition: background .2s;
+}
+
+.btn-confirmar:hover {
+  background: #aac8f8;
+}
+
+/* ── MODAL CONFIRMACIÓN ── */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal {
+  background: white;
+  border-radius: 14px;
+  padding: 36px 40px;
+  width: 90%;
+  max-width: 380px;
+  text-align: center;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+}
+
+.modal-icon {
+  width: 56px;
+  height: 56px;
+  background: #85B1F8;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  color: white;
+  font-weight: 700;
+  margin: 0 auto 16px;
+}
+
+.modal h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.modal p {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.7;
+  margin-bottom: 22px;
+}
+
+.btn-modal-ok {
+  background: #85B1F8;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 36px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #000;
+  cursor: pointer;
+  transition: background .15s;
+}
+
+.btn-modal-ok:hover {
+  background: #aac8f8;
+}
+
+/* ── FOOTER (full width) ── */
+footer { 
+  background: #1a1e2e; 
+  color: #ccc; 
+  padding: 32px 48px 20px;
+  width: 100%;
+}
+
+.footer-inner { 
+  display: flex; 
+  gap: 48px;
+  align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.footer-logo {
+  width: 130px; 
+  height: 90px;
+  border-radius: 8px;
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  overflow: hidden; 
+  flex-shrink: 0;
+  background: transparent;
+}
+
+.footer-logo img { 
+  width: 100%; 
+  height: 100%; 
+  object-fit: contain; 
+}
+
+.footer-cols { 
+  display: flex; 
+  gap: 60px; 
+  flex: 1;
+  align-items: flex-start;
+}
+
+.footer-col h4 { 
+  color: white; 
+  font-size: 15px; 
+  font-weight: 700; 
+  margin-bottom: 10px; 
+}
+
+.footer-col p { 
+  font-size: 14px; 
+  line-height: 1.85; 
+  color: #aab; 
+}
+
+.social-icons { 
+  display: flex; 
+  gap: 10px; 
+  margin-top: 8px; 
+}
+
+.social-icon {
+  width: 34px; 
+  height: 34px;
+  border-radius: 6px;
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  font-size: 14px; 
+  color: white; 
+  text-decoration: none;
+  cursor: pointer; 
+  transition: opacity .15s;
+}
+
+.social-icon:hover { 
+  opacity: 0.8;
+}
+
+.footer-copy { 
+  font-size: 12px; 
+  color: #556; 
+  margin-top: 22px; 
+  text-align: right;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ════════════════════════════════
+   RESPONSIVE MÓVIL (≤ 600px)
+   ════════════════════════════════ */
+@media (max-width: 600px) {
+
+  nav {
+    padding: 8px 12px;
+    gap: 8px;
+  }
+
+  .logo-slot {
+    width: 64px;
+    height: 44px;
+  }
+
+  .nav-links a {
+    font-size: 11px;
+    padding: 0 7px;
+  }
+
+  .nav-bell {
+    font-size: 17px;
+  }
+
+  .section-label {
+    margin: 20px 10px 14px;
+  }
+
+  .section-label span {
+    font-size: 14px;
+    padding: 8px 20px;
+  }
+
+  .reserva-card {
+    margin: 0 10px 18px;
+    padding: 18px 14px;
+  }
+
+  .reserva-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .reserva-divider {
+    height: 1px;
+    width: 100%;
+  }
+
+  .reserva-cell {
+    font-size: 13px;
+    padding: 10px 14px;
+  }
+
+  .fecha-hora-row {
+    font-size: 13px;
+  }
+
+  .radio-label {
+    font-size: 13px;
+  }
+
+  .btn-confirmar {
+    padding: 10px 36px;
+    font-size: 15px;
+  }
+
+  footer {
+    padding: 20px 16px 14px;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .footer-logo {
+    width: 100px;
+    height: 70px;
+  }
+
+  .footer-cols {
+    gap: 24px;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .footer-col h4 {
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+
+  .footer-col p {
+    font-size: 12px;
+  }
+
+  .social-icon {
+    width: 30px;
+    height: 30px;
+    font-size: 13px;
+  }
+
+  .footer-copy {
+    font-size: 10px;
+    text-align: center;
+    margin-top: 16px;
+  }
+}
