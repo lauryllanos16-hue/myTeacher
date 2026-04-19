@@ -648,4 +648,7 @@ footer {
     text-align: center;
     margin-top: 16px;
   }
+  html {
+  scroll-behavior: smooth;
+}
 }
