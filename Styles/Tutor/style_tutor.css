@@ -107,8 +107,8 @@ main {
 }
 
 .badge {
-  background: #5577ee;
-  color: white;
+  background: #85B1F8;
+  color: #000;
   border-radius: 20px;
   padding: 8px 24px;
   font-size: 14px;
@@ -185,23 +185,13 @@ main {
 }
 
 .btn-primary {
-  background: #5577ee;
-  color: white;
-  border: 1.5px solid #5577ee;
+  background: #85B1F8;
+  color: #000;
+  border: 1.5px solid #85B1F8;
 }
 
 .btn-primary:hover {
   background: #4466dd;
-}
-
-.btn-secondary {
-  background: white;
-  color: #5577ee;
-  border: 1.5px solid #5577ee;
-}
-
-.btn-secondary:hover {
-  background: #eef1ff;
 }
 
 /* ── FOOTER ── */
