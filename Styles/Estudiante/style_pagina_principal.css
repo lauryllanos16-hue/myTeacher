@@ -10,67 +10,44 @@ body {
   min-height: 100vh; 
 }
 
+/* ── CONTENEDOR CENTRAL ── */
 .page { 
-  max-width: 520px; 
+  max-width: 900px; 
   margin: 0 auto; 
   background: #eef1fb; 
-  min-height: 100vh; 
+  min-height: calc(100vh - 82px - 110px);
+  padding-bottom: 8px;
 }
 
-/* NAV */
+/* ── NAV (full width) ── */
 nav {
-  background: white;
+  background: rgb(133, 177, 248);
   display: flex;
   align-items: center;
-  padding: 10px 16px;
+  padding: 10px 32px;
   border-bottom: 1px solid #dde4f5;
   position: sticky; 
   top: 0; 
   z-index: 100;
+  width: 100%;
 }
 
 .logo-slot {
-  width: 72px; 
-  height: 50px;
-  background: #e8eeff;
+  width: 90px; 
+  height: 62px;
   border-radius: 8px;
   display: flex; 
   align-items: center; 
   justify-content: center;
   overflow: hidden; 
   flex-shrink: 0;
-  cursor: pointer; 
-  position: relative;
+  background: transparent;
 }
 
 .logo-slot img { 
   width: 100%; 
   height: 100%; 
   object-fit: contain; 
-}
-
-.logo-placeholder {
-  font-size: 10px; 
-  color: #8899bb;
-  text-align: center; 
-  line-height: 1.4; 
-  padding: 4px;
-  pointer-events: none;
-}
-
-.logo-upload-hint {
-  position: absolute; 
-  bottom: 2px; 
-  right: 2px;
-  font-size: 9px; 
-  background: #5577ee; 
-  color: white;
-  border-radius: 3px; 
-  padding: 1px 3px;
-}
-
-#logoInput { 
-  display: none; 
 }
 
 .nav-links { 
@@ -80,10 +57,10 @@ nav {
 }
 
 .nav-links a {
-  font-size: 12.5px; 
+  font-size: 14.5px; 
   color: #333; 
   text-decoration: none;
-  padding: 0 9px;
+  padding: 0 16px;
   border-right: 1.5px solid #ccc;
 }
 
@@ -97,40 +74,40 @@ nav {
 }
 
 .nav-bell { 
-  font-size: 18px; 
-  margin-left: 8px; 
+  font-size: 20px; 
+  margin-left: auto;
   cursor: pointer; 
 }
 
-/* SEARCH */
+/* ── BUSCADOR ── */
 .search-box {
   background: white;
-  margin: 16px 14px 0;
+  margin: 20px 18px 0;
   border-radius: 12px;
-  padding: 18px 20px 16px;
+  padding: 22px 28px 20px;
   box-shadow: 0 1px 4px rgba(80,100,180,0.06);
 }
 
 .search-title { 
   font-weight: 700; 
-  font-size: 16px; 
-  margin-bottom: 14px; 
+  font-size: 18px; 
+  margin-bottom: 18px; 
 }
 
 .search-title .icon { 
-  margin-right: 6px; 
+  margin-right: 8px; 
 }
 
 .field-row { 
   display: flex; 
   align-items: center; 
-  margin-bottom: 10px; 
-  gap: 12px; 
+  margin-bottom: 12px; 
+  gap: 16px; 
 }
 
 .field-label { 
-  font-size: 14px; 
-  min-width: 82px; 
+  font-size: 15px; 
+  min-width: 90px; 
   color: #222; 
 }
 
@@ -138,8 +115,8 @@ nav {
   flex: 1; 
   border: 1px solid #c0c8e0;
   border-radius: 6px; 
-  padding: 6px 8px;
-  font-size: 13px; 
+  padding: 8px 10px;
+  font-size: 14px; 
   color: #444; 
   background: white;
   cursor: pointer;
@@ -151,13 +128,13 @@ nav {
 
 .btn-buscar {
   display: block; 
-  margin: 14px auto 0;
+  margin: 18px auto 0;
   background: #5577ee; 
   color: white;
   border: none; 
   border-radius: 7px;
-  padding: 9px 40px; 
-  font-size: 14px;
+  padding: 10px 50px; 
+  font-size: 15px;
   font-weight: 600; 
   cursor: pointer; 
   transition: background .2s;
@@ -167,35 +144,36 @@ nav {
   background: #4466dd; 
 }
 
-/* SECTION LABEL */
+/* ── ETIQUETA SECCIÓN ── */
 .section-label { 
   text-align: center; 
-  margin: 20px 14px 12px; 
+  margin: 24px 18px 14px; 
 }
 
 .section-label span {
   background: #5577ee; 
   color: white;
   border-radius: 20px; 
-  padding: 7px 20px;
-  font-size: 14px; 
+  padding: 8px 24px;
+  font-size: 15px; 
   font-weight: 600;
 }
 
-/* TUTOR CARD */
+/* ── TARJETA TUTOR ── */
 .tutor-card {
   background: white;
-  margin: 0 14px 14px;
+  margin: 0 18px 16px;
   border-radius: 12px;
-  padding: 16px;
+  padding: 20px 28px;
   display: flex; 
-  gap: 14px;
+  gap: 24px;
+  align-items: center;
   box-shadow: 0 1px 4px rgba(80,100,180,0.06);
 }
 
 .tutor-img {
-  width: 96px; 
-  height: 96px;
+  width: 120px; 
+  height: 120px;
   border-radius: 8px; 
   object-fit: cover;
   flex-shrink: 0; 
@@ -203,25 +181,28 @@ nav {
 }
 
 .tutor-info { 
-  flex: 1; 
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
 }
 
 .tutor-name { 
-  font-size: 14px; 
+  font-size: 17px; 
   font-weight: 700; 
   color: #222; 
-  margin-bottom: 7px; 
-  text-align: center; 
+  text-align: center;
 }
 
 .tutor-meta {
   display: flex; 
   align-items: center; 
-  gap: 8px;
-  font-size: 13px; 
-  color: #444; 
-  margin-bottom: 5px;
+  gap: 10px;
+  font-size: 14px; 
+  color: #444;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .sep { 
@@ -230,14 +211,13 @@ nav {
 
 .star { 
   color: #f5a623; 
-  font-size: 14px; 
+  font-size: 15px; 
 }
 
 .tutor-modality { 
-  font-size: 13px; 
+  font-size: 14px; 
   color: #444; 
-  text-align: center; 
-  margin-bottom: 11px; 
+  text-align: center;
 }
 
 .tutor-modality strong { 
@@ -246,14 +226,16 @@ nav {
 
 .tutor-btns { 
   display: flex; 
-  gap: 10px; 
-  justify-content: center; 
+  gap: 12px; 
+  justify-content: center;
+  margin-top: 4px;
+  flex-wrap: wrap;
 }
 
 .tutor-btns button {
   border-radius: 7px; 
-  padding: 7px 18px;
-  font-size: 13px; 
+  padding: 8px 22px;
+  font-size: 14px; 
   cursor: pointer;
   transition: background .15s;
 }
@@ -278,10 +260,10 @@ nav {
   background: #4466dd; 
 }
 
-/* VER MAS */
+/* ── VER MÁS ── */
 .ver-mas-wrap { 
   text-align: center; 
-  margin: 4px 0 24px; 
+  margin: 6px 0 28px; 
 }
 
 .btn-ver-mas {
@@ -289,7 +271,7 @@ nav {
   border: 1.5px solid #5577ee;
   color: #5577ee; 
   border-radius: 9px;
-  padding: 9px 36px; 
+  padding: 10px 44px; 
   font-size: 14px;
   cursor: pointer; 
   transition: background .15s;
@@ -299,30 +281,32 @@ nav {
   background: #eef1ff; 
 }
 
-/* FOOTER */
+/* ── FOOTER (full width) ── */
 footer { 
   background: #1a1e2e; 
   color: #ccc; 
-  padding: 22px 18px 14px; 
-  margin-top: 4px; 
+  padding: 32px 48px 20px;
+  width: 100%;
 }
 
 .footer-inner { 
   display: flex; 
-  gap: 16px; 
-  align-items: flex-start; 
+  gap: 48px;
+  align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .footer-logo {
-  width: 64px; 
-  height: 46px;
-  background: #252c42; 
+  width: 130px; 
+  height: 90px;
   border-radius: 8px;
   display: flex; 
   align-items: center; 
   justify-content: center;
   overflow: hidden; 
   flex-shrink: 0;
+  background: transparent;
 }
 
 .footer-logo img { 
@@ -331,46 +315,41 @@ footer {
   object-fit: contain; 
 }
 
-.footer-logo-ph { 
-  font-size: 9px; 
-  color: #667; 
-  text-align: center; 
-}
-
 .footer-cols { 
   display: flex; 
-  gap: 20px; 
-  flex: 1; 
+  gap: 60px; 
+  flex: 1;
+  align-items: flex-start;
 }
 
 .footer-col h4 { 
   color: white; 
-  font-size: 13px; 
+  font-size: 15px; 
   font-weight: 700; 
-  margin-bottom: 8px; 
+  margin-bottom: 10px; 
 }
 
 .footer-col p { 
-  font-size: 12px; 
-  line-height: 1.75; 
+  font-size: 14px; 
+  line-height: 1.85; 
   color: #aab; 
 }
 
 .social-icons { 
   display: flex; 
-  gap: 8px; 
-  margin-top: 6px; 
+  gap: 10px; 
+  margin-top: 8px; 
 }
 
 .social-icon {
-  width: 28px; 
-  height: 28px;
+  width: 34px; 
+  height: 34px;
   background: #2e3550; 
-  border-radius: 5px;
+  border-radius: 6px;
   display: flex; 
   align-items: center; 
   justify-content: center;
-  font-size: 13px; 
+  font-size: 14px; 
   color: white; 
   text-decoration: none;
   font-weight: 700; 
@@ -383,8 +362,146 @@ footer {
 }
 
 .footer-copy { 
-  font-size: 10px; 
-  color: #445; 
-  margin-top: 16px; 
-  text-align: right; 
+  font-size: 12px; 
+  color: #556; 
+  margin-top: 22px; 
+  text-align: right;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ════════════════════════════════
+   RESPONSIVE MÓVIL (≤ 600px)
+   ════════════════════════════════ */
+@media (max-width: 600px) {
+
+  nav {
+    padding: 8px 12px;
+    gap: 8px;
+  }
+
+  .logo-slot {
+    width: 64px;
+    height: 44px;
+  }
+
+  .nav-links a {
+    font-size: 11px;
+    padding: 0 7px;
+  }
+
+  .nav-bell {
+    font-size: 17px;
+  }
+
+  .search-box {
+    margin: 12px 10px 0;
+    padding: 16px 14px 14px;
+  }
+
+  .search-title {
+    font-size: 15px;
+    margin-bottom: 12px;
+  }
+
+  .field-label {
+    font-size: 13px;
+    min-width: 74px;
+  }
+
+  .field-row select {
+    font-size: 12px;
+    padding: 6px 8px;
+  }
+
+  .btn-buscar {
+    padding: 9px 36px;
+    font-size: 14px;
+  }
+
+  .section-label {
+    margin: 16px 10px 10px;
+  }
+
+  .section-label span {
+    font-size: 13px;
+    padding: 7px 18px;
+  }
+
+  .tutor-card {
+    margin: 0 10px 12px;
+    padding: 14px 16px;
+    gap: 14px;
+  }
+
+  .tutor-img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .tutor-name {
+    font-size: 14px;
+  }
+
+  .tutor-meta {
+    font-size: 12px;
+    gap: 6px;
+  }
+
+  .tutor-modality {
+    font-size: 12px;
+  }
+
+  .tutor-btns button {
+    padding: 6px 14px;
+    font-size: 12px;
+  }
+
+  .btn-ver-mas {
+    padding: 8px 32px;
+    font-size: 13px;
+  }
+
+  footer {
+    padding: 20px 16px 14px;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .footer-logo {
+    width: 100px;
+    height: 70px;
+  }
+
+  .footer-cols {
+    gap: 24px;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .footer-col h4 {
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+
+  .footer-col p {
+    font-size: 12px;
+  }
+
+  .social-icon {
+    width: 30px;
+    height: 30px;
+    font-size: 13px;
+  }
+
+  .footer-copy {
+    font-size: 10px;
+    text-align: center;
+    margin-top: 16px;
+  }
 }
