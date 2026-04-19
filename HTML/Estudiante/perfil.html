@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>myTeacher - Perfil</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/Styles/Estudiante/style_perfil.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="logo-slot">
+      <img src="/Imagenes/Logo.png" alt="myTeacher logo">
+    </div>
+    <div class="nav-links">
+      <a href="/HTML/Estudiante/inicio_estudiante.html">Buscar</a>
+      <a href="#" data-page="reservas">Mis reservas</a>
+      <a href="#" data-page="historial">Historial</a>
+      <a href="#" data-page="perfil" class="active">Perfil</a>
+    </div>
+    <span class="nav-bell" title="Notificaciones">&#128276;</span>
+  </nav>
+
+  <div class="page">
+
+    <!-- FOTO Y DATOS -->
+    <div class="profile-header">
+      <div class="avatar-wrapper">
+        <img src="" alt="Foto de perfil" class="avatar-img" id="avatarImg">
+        <button class="avatar-edit-btn" onclick="document.getElementById('fotoInput').click()" title="Cambiar foto">&#9998;</button>
+        <input type="file" id="fotoInput" accept="image/*" onchange="cambiarFoto(event)">
+      </div>
+      <div class="profile-data">
+        <p><span class="data-label">Nombre:</span> <span id="nombreTexto">Tung Tung Sahur</span></p>
+        <p><span class="data-label">Correo:</span> <span id="correoTexto">TungTungSahur@gmail.com</span></p>
+        <p><span class="data-label">Nivel educativo:</span> <span id="nivelTexto">Universitario</span></p>
+      </div>
+    </div>
+
+    <!-- BOTÓN EDITAR -->
+    <div class="edit-section">
+      <button class="btn-editar" id="btnEditar" onclick="toggleEditar()">Editar perfil</button>
+    </div>
+
+    <!-- FORMULARIO DE EDICIÓN (oculto por defecto) -->
+    <div class="edit-form" id="editForm" style="display:none;">
+      <div class="form-row">
+        <label>Nombre</label>
+        <input type="text" id="inputNombre" placeholder="Tu nombre completo">
+      </div>
+      <div class="form-row">
+        <label>Correo</label>
+        <input type="email" id="inputCorreo" placeholder="Tu correo electrónico">
+      </div>
+      <div class="form-row">
+        <label>Nivel educativo</label>
+        <select id="inputNivel">
+          <option>Universitario</option>
+          <option>Bachillerato</option>
+          <option>Primaria</option>
+        </select>
+      </div>
+      <div class="form-btns">
+        <button class="btn-cancelar" onclick="cancelarEditar()">Cancelar</button>
+        <button class="btn-guardar" onclick="guardarEditar()">Guardar</button>
+      </div>
+    </div>
+
+    <!-- TUTORÍAS RECIENTES -->
+    <div class="section-label">
+      <span>&#127891; Tutorías recientes</span>
+    </div>
+
+    <div class="tutorias-container" id="tutoriasContainer">
+      <!-- Se generan desde JS -->
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <img src="/Imagenes/logo letras blancas.png" alt="myTeacher logo">
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Contactos</h4>
+          <p>
+            Numero: +57 302 xxxx xxx<br>
+            Correo: soporte@unilibre.edu
+          </p>
+        </div>
+        <div class="footer-col">
+           <h4>Síguenos</h4>
+      <div class="social-icons">
+        <a href="#" class="social-icon si-fb" aria-label="Facebook">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="white">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+          </svg>
+        </a>
+        <a href="#" class="social-icon si-ig" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+            fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+          </svg>
+        </a>
+        <a href="#" class="social-icon si-x" aria-label="X">
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="white">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copy">&#169; 2025 myTeacher - Todos los derechos reservados</div>
+  </footer>
+
+  <script src="/Scripts/Estudiante/script_perfil.js"></script>
+</body>
+</html>
