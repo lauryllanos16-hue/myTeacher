@@ -1,76 +1,103 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>myTeacher</title>
-<link rel="stylesheet" href="/Styles/style_pagina_principal.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>myTeacher - Connect & Learn</title>
+  <link rel="stylesheet" href="/Styles/Estudiante/style_pagina_principal.css">
 </head>
 <body>
+<div class="page">
 
-<!-- NAVBAR -->
-<header class="navbar">
-    <div class="logo">📚 myTeacher</div>
-    <nav>
-        <a href="#">Buscar</a>
-        <a href="#">Mis reservas</a>
-        <a href="#">Historial</a>
-        <a href="#">Perfil</a>
-        <span class="bell">🔔</span>
-    </nav>
-</header>
-
-<!-- BUSCADOR -->
-<section class="search-box">
-    <h3>🔎 Buscar tutor</h3>
-
-    <div class="filters">
-        <label>Materia</label>
-        <select>
-            <option>Matemáticas</option>
-        </select>
-
-        <label>Modalidad</label>
-        <select>
-            <option>Presencial</option>
-        </select>
-
-        <label>Nivel</label>
-        <select>
-            <option>Universitario</option>
-        </select>
+  <!-- NAVBAR -->
+  <nav>
+    <div class="logo-slot">
+      <img src="/Imagenes/Logo.png" alt="myTeacher logo">
     </div>
-
-    <button>Buscar</button>
-</section>
-
-<!-- LISTA DE TUTORES -->
-<section class="tutors">
-    <h3 class="section-title">📚 Tutores recomendados</h3>
-
-    <div id="tutor-list"></div>
-
-    <button class="more-btn">Ver más</button>
-</section>
-
-<!-- FOOTER -->
-<footer>
-    <div class="footer-left">
-        <h4>📚 myTeacher</h4>
-        <p>Contactos</p>
-        <p>Número: +57 302 xxx xxx</p>
-        <p>Correo: soporte@unilibre.edu</p>
+    <div class="nav-links">
+      <a href="#" data-page="buscar" class="active">Buscar</a>
+      <a href="#" data-page="reservas">Mis reservas</a>
+      <a href="#" data-page="historial">Historial</a>
+      <a href="#" data-page="perfil">Perfil</a>
     </div>
+    <span class="nav-bell" title="Notificaciones">&#128276;</span>
+  </nav>
 
-    <div class="footer-right">
-        <p>Síguenos</p>
-        <div class="socials">
-            <span>📘</span>
-            <span>📸</span>
-            <span>❌</span>
+  <!-- BUSCADOR -->
+  <div class="search-box">
+    <div class="search-title"><span class="icon">&#128269;</span> Buscar tutor</div>
+    <div class="field-row">
+      <span class="field-label">Materia</span>
+      <select id="materiaSelect">
+        <option>Matematicas</option>
+        <option>Física</option>
+        <option>Química</option>
+        <option>Inglés</option>
+        <option>Coreano</option>
+        <option>Historia</option>
+      </select>
+    </div>
+    <div class="field-row">
+      <span class="field-label">Modalidad</span>
+      <select id="modalidadSelect">
+        <option>Presencial</option>
+        <option>Virtual</option>
+        <option>Virtual / Presencial</option>
+      </select>
+    </div>
+    <div class="field-row">
+      <span class="field-label">Nivel</span>
+      <select id="nivelSelect">
+        <option>Universitario</option>
+        <option>Bachillerato</option>
+        <option>Primaria</option>
+      </select>
+    </div>
+    <button class="btn-buscar" id="btnBuscar">Buscar</button>
+  </div>
+
+  <!-- TUTORES RECOMENDADOS -->
+  <div class="section-label">
+    <span>&#127891; Tutores recomendados</span>
+  </div>
+
+  <!-- CONTENEDOR DE TUTORES -->
+  <div class="tutors-container" id="tutorsContainer">
+    <!-- Las tarjetas se generarán dinámicamente con JS -->
+  </div>
+
+  <div class="ver-mas-wrap">
+    <button class="btn-ver-mas" id="btnVerMas">Ver más</button>
+  </div>
+
+  <!-- FOOTER -->
+ <footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <img src="/Imagenes/Logo.png" alt="myTeacher logo" style="width:100%;height:100%;object-fit:contain;">
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h4>Contactos</h4>
+        <p>
+          Numero: +57 302 xxxx xxx<br>
+          Correo: soporte@unilibre.edu
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>Síguenos</h4>
+        <div class="social-icons">
+          <a class="social-icon" href="#" title="Facebook">f</a>
+          <a class="social-icon" href="#" title="Instagram">&#9711;</a>
+          <a class="social-icon" href="#" title="X / Twitter">X</a>
         </div>
+      </div>
     </div>
+  </div>
+  <div class="footer-copy">&#169; 2025 myTeacher - Todos los derechos reservados</div>
 </footer>
+</div>
 
-<script src="/Scripts/script_pagina_principal.js"></script>
+<script src="/Scripts/Estudiante/script_pagina_principal.js"></script>
 </body>
 </html>
