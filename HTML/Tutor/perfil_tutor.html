@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>myTeacher · Perfil</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/Styles/Tutor/style_perfil_tutor.css"/>
+</head>
+<body>
+
+  <nav>
+    <div class="logo-slot">
+      <img src="/Imagenes/Logo.png" alt="myTeacher logo">
+    </div>
+    <ul class="nav-links">
+      <li><a href="#">Mis clases</a></li>
+      <li><span class="nav-sep">|</span></li>
+      <li><a href="#">Disponibilidad</a></li>
+      <li><span class="nav-sep">|</span></li>
+      <li><a href="#" class="active">Perfil</a></li>
+      <li><span class="nav-sep">|</span></li>
+    </ul>
+    <span class="nav-bell" title="Notificaciones">&#128276;</span>
+  </nav>
+
+  <main>
+
+    <!-- PERFIL -->
+    <div class="section-card">
+      <div class="profile-avatar">
+        <svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 24 24" fill="#555">
+          <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+        </svg>
+      </div>
+      <div class="profile-info">
+        <p class="profile-name">Nombre: Juan Perez</p>
+        <p class="profile-email">Correo: JuanPerez@email.com</p>
+        <p class="profile-rating">⭐ 4.8 <span class="reviews">(25 reseñas)</span></p>
+      </div>
+
+      <div class="info-grid" style="margin-top: 16px;">
+        <div class="info-row">
+          <div class="info-cell">Materias: Matematicas, Algebra</div>
+          <div class="info-cell">Ubicacion: Barranquilla</div>
+        </div>
+        <div class="info-row">
+          <div class="info-cell">Precio por hora: $20</div>
+          <div class="info-cell">Modalidad: Virtual/Presencial</div>
+        </div>
+      </div>
+
+      <div class="descripcion-box">
+        <p class="desc-title">Descripcion</p>
+        <p class="desc-text">Profesor de matemáticas con 5 años de experiencia ayudando a estudiantes universitarios y de secundaria.</p>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-primary">Editar perfil</button>
+      </div>
+    </div>
+
+    <!-- ESTADISTICAS -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="badge">📊 Estadísticas</div>
+      </div>
+      <div class="info-grid">
+        <div class="info-row">
+          <div class="info-cell">Clases impartidas: 120</div>
+          <div class="info-cell">Estudiantes atendidos: 60</div>
+        </div>
+        <div class="info-row">
+          <div class="info-cell" style="justify-content: center; border-right: none;">
+            Calificacion promedio: ⭐ 4.8
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DISPONIBILIDAD -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="badge">🏫 Disponibilidad</div>
+      </div>
+      <div class="info-grid">
+        <div class="info-row">
+          <div class="info-cell">Lunes: 3:00PM – 7:00PM</div>
+          <div class="info-cell">Martes: 2:00PM – 6:00PM</div>
+        </div>
+        <div class="info-row">
+          <div class="info-cell">Miércoles: 4:00PM – 8:00PM</div>
+          <div class="info-cell"></div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="/Scripts/Tutor/script_perfiltutor.js"></script>
+</body>
+</html>
