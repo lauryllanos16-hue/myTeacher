@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>myTeacher · Calificaciones</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="/Styles/Estudiante/style_reseñas.css"/>
+</head>
+<body>
+ 
+  <nav>
+    <div class="logo-slot">
+      <img src="/Imagenes/Logo.png" alt="myTeacher logo">
+    </div>
+    <ul class="nav-links">
+      <li><a href="#">Buscar</a></li>
+      <li><span class="nav-sep">|</span></li>
+      <li><a href="#">Mis reservas</a></li>
+      <li><span class="nav-sep">|</span></li>
+      <li><a href="#">Historial</a></li>
+      <li><span class="nav-sep">|</span></li>
+      <li><a href="#" class="active">Perfil</a></li>
+      <li><span class="nav-sep">|</span></li>
+    </ul>
+    <span class="nav-bell" title="Notificaciones">&#128276;</span>
+  </nav>
+ 
+  <main>
+ 
+    <!-- ENCABEZADO -->
+    <div class="page-title">
+      <h2>Calificaciones y comentarios</h2>
+      <p class="rating-summary">⭐ <span id="promedioGlobal">4.8</span>/5 (<span id="totalResenas">25</span> reseñas)</p>
+    </div>
+ 
+    <hr class="divider"/>
+ 
+    <!-- FORMULARIO OPINIÓN -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="badge">Deja tu opinion</div>
+      </div>
+ 
+      <div class="form-inner">
+        <p class="form-label">Calificación</p>
+        <div class="star-selector" id="starSelector">
+          <span class="star" data-val="1">★</span>
+          <span class="star" data-val="2">★</span>
+          <span class="star" data-val="3">★</span>
+          <span class="star" data-val="4">★</span>
+          <span class="star" data-val="5">★</span>
+        </div>
+ 
+        <p class="form-label">Comentario</p>
+        <textarea id="inputComentario" placeholder="Escribe tu experiencia con el tutor" rows="4"></textarea>
+ 
+        <div class="btn-wrap">
+          <button class="btn-enviar" onclick="enviarComentario()">Enviar comentario</button>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- LISTA DE COMENTARIOS -->
+    <div class="section-card">
+      <div class="section-header">
+        <div class="badge">Lista de comentarios</div>
+      </div>
+ 
+      <div id="listaComentarios" class="comentarios-list">
+        <!-- Los comentarios se renderizan desde JS -->
+      </div>
+ 
+      <div class="btn-wrap" style="padding-bottom: 20px;">
+        <button class="btn-vermas" id="btnVerMas" onclick="verMas()">Ver mas</button>
+      </div>
+    </div>
+ 
+  </main>
+ 
+  <script src="/Scripts/Estudiante/script_reseñas.js"></script>
+</body>
+</html>

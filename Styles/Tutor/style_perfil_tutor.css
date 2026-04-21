@@ -276,7 +276,7 @@ main {
   border-radius: 7px;
   border: 1.5px solid #b0c8e8;
   background: #85B1F8;
-  color: #1a2a3a;
+  color: #000;
   cursor: pointer;
   transition: background .2s;
 }
