@@ -6,6 +6,7 @@
   <title>myTeacher - Perfil</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="/Styles/Estudiante/style_perfil.css">
+  <link rel="stylesheet" href="/Styles/notificacion.css">
 </head>
 <body>
 
@@ -20,7 +21,13 @@
       <a href="#" data-page="historial">Historial</a>
       <a href="#" data-page="perfil" class="active">Perfil</a>
     </div>
-    <span class="nav-bell" title="Notificaciones">&#128276;</span>
+    <div class="nav-bell" id="bell">
+  🔔
+</div>
+
+<div class="notif-panel" id="notifPanel">
+  <p>Recordatorio que tiene una clase en 20 minutos</p>
+</div>
   </nav>
 
   <div class="page">
@@ -113,5 +120,6 @@
   </footer>
 
   <script src="/Scripts/Estudiante/script_perfil.js"></script>
+  <script src="/Scripts/notificaciones.js"></script>
 </body>
 </html>

@@ -6,6 +6,7 @@
   <title>myTeacher - Mis Reservas</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="/Styles/Estudiante/mis_reservas.css">
+  <link rel="stylesheet" href="/Styles/notificacion.css">
 </head>
 <body>
 
@@ -20,7 +21,13 @@
       <a href="/HTML/Estudiante/perfil_estudiante.html#tutorias">Historial</a>
       <a href="/HTML/Estudiante/perfil.html">Perfil</a>
     </div>
-    <span class="nav-bell" title="Notificaciones">&#128276;</span>
+    <div class="nav-bell" id="bell">
+  🔔
+</div>
+
+<div class="notif-panel" id="notifPanel">
+  <p>Recordatorio que tiene una clase en 20 minutos</p>
+</div>
   </nav>
 
   <div class="page">
@@ -100,5 +107,6 @@
   </footer>
 
   <script src="/Scripts/Estudiante/mis_reservas.js"></script>
+  <script src="/Scripts/notificaciones.js"></script>
 </body>
 </html>

@@ -1,0 +1,15 @@
+.notif-panel {
+  position: absolute;
+  top: 70px; /* ajusta según tu navbar */
+  right: 20px;
+  width: 260px;
+  background: #fffbfb;
+  border: 1px solid #000000;
+  padding: 16px;
+  display: none; /* 👈 oculto por defecto */
+  z-index: 200;
+}
+
+.notif-panel.active {
+  display: block;
+}
