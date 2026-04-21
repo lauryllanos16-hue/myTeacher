@@ -150,60 +150,6 @@ main {
   border-right: 1.5px solid #b0c8e8;
 }
 
-/* ── BOTONES ── */
-.btn-row {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  margin-top: 18px;
-}
-
-.ver-mas-wrap {
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
-}
-
-.btn {
-  font-family: 'Nunito', sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-  border: none;
-  border-radius: 7px;
-  padding: 10px 28px;
-  cursor: pointer;
-  transition: background .2s, transform .1s;
-}
-
-.btn:hover {
-  filter: brightness(1.07);
-  transform: translateY(-1px);
-}
-
-.btn:active {
-  transform: translateY(0);
-}
-
-.btn-primary {
-  background: #85B1F8;
-  color: #000;
-  border: 1.5px solid #85B1F8;
-}
-
-.btn-primary:hover {
-  background: #6a9af5;
-}
-
-.btn-secondary {
-  background: white;
-  color: #000;
-  border: 1.5px solid #85B1F8;
-}
-
-.btn-secondary:hover {
-  background: #eef1ff;
-}
-
 /* ── PERFIL ── */
 .profile-avatar {
   display: flex;
@@ -211,42 +157,146 @@ main {
   padding: 24px 0 10px;
 }
 
-.profile-avatar svg {
-  background: #dde4f5;
-  border-radius: 50%;
-  padding: 10px;
+.avatar-wrap {
+  position: relative;
+  width: 100px;
+  height: 100px;
 }
 
+.avatar-wrap img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.avatar-edit-btn {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  width: 26px;
+  height: 26px;
+  background: #85B1F8;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* ── INFO PERFIL ── */
 .profile-info {
   text-align: center;
-  padding: 8px 0 16px;
+  padding: 8px 0 4px;
   display: flex;
   flex-direction: column;
   gap: 5px;
 }
 
-.profile-name {
-  font-size: 15px;
-  font-weight: 700;
-  color: #1a2a3a;
-}
-
-.profile-email {
+.profile-name,
+.profile-email,
+.profile-rating {
   font-size: 14px;
   font-weight: 600;
   color: #1a2a3a;
 }
 
-.profile-rating {
-  font-size: 14px;
-  font-weight: 700;
-  color: #1a2a3a;
+/* ── LINK EDITAR ── */
+.editar-link-wrap {
+  padding: 12px 0 16px;
+  text-align: left;
+  padding-left: 24px;
 }
 
-.profile-rating .reviews {
+.editar-link-wrap a {
+  font-size: 13.5px;
   font-weight: 700;
-  color: #1a2a3a;
+  color: #5577ee;
+  text-decoration: underline;
+  cursor: pointer;
 }
+
+.editar-link-wrap a:hover {
+  color: #4466dd;
+}
+
+/* ── FORMULARIO EDICIÓN ── */
+.edit-form-inner {
+  width: 90%;
+  margin: 16px auto 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.edit-field {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.edit-field label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a2a3a;
+  min-width: 130px;
+}
+
+.edit-field input,
+.edit-field select {
+  flex: 1;
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a2a3a;
+  border: 1.5px solid #b0c8e8;
+  border-radius: 7px;
+  padding: 8px 12px;
+  outline: none;
+  background: white;
+}
+
+.edit-field input:focus,
+.edit-field select:focus {
+  border-color: #85B1F8;
+}
+
+.edit-form-btns {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.btn-cancelar {
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 9px 24px;
+  border-radius: 7px;
+  border: 1.5px solid #b0c8e8;
+  background: #85B1F8;
+  color: #1a2a3a;
+  cursor: pointer;
+  transition: background .2s;
+}
+
+.btn-cancelar:hover { background: #eef1ff; }
+
+.btn-guardar {
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 9px 24px;
+  border-radius: 7px;
+  border: none;
+  background: #85B1F8;
+  color: #000;
+  cursor: pointer;
+  transition: background .2s;
+}
+
+.btn-guardar:hover { background: #6a9af5; }
 
 /* ── DESCRIPCION ── */
 .descripcion-box {
@@ -269,6 +319,66 @@ main {
   font-weight: 600;
   color: #1a2a3a;
   line-height: 1.6;
+}
+
+/* ── GRID EDICIÓN ── */
+.edit-grid {
+  width: 88%;
+  margin: 0 auto;
+  border: 1.5px solid #b0c8e8;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.edit-grid-row {
+  display: flex;
+  border-bottom: 1.5px solid #b0c8e8;
+}
+
+.edit-grid-row:last-child {
+  border-bottom: none;
+}
+
+.edit-grid-cell {
+  flex: 1;
+  padding: 11px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #1a2a3a;
+  border-right: 1.5px solid #b0c8e8;
+}
+
+.edit-grid-cell:last-child {
+  border-right: none;
+}
+
+.edit-grid-cell label {
+  white-space: nowrap;
+  min-width: unset;
+  font-size: 13.5px;
+}
+
+.edit-grid-cell input,
+.edit-grid-cell select {
+  flex: 1;
+  font-family: 'Nunito', sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #1a2a3a;
+  border: 1.5px solid #b0c8e8;
+  border-radius: 7px;
+  padding: 6px 10px;
+  outline: none;
+  background: white;
+  min-width: 0;
+}
+
+.edit-grid-cell input:focus,
+.edit-grid-cell select:focus {
+  border-color: #85B1F8;
 }
 
 /* ── RESPONSIVE ── */
@@ -300,11 +410,6 @@ main {
   .info-cell {
     font-size: 12px;
     padding: 9px 10px;
-  }
-
-  .btn {
-    font-size: 13px;
-    padding: 8px 18px;
   }
 
   .descripcion-box {

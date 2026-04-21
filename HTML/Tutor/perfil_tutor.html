@@ -29,36 +29,104 @@
     <!-- PERFIL -->
     <div class="section-card">
       <div class="profile-avatar">
-        <svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 24 24" fill="#555">
-          <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
-        </svg>
-      </div>
-      <div class="profile-info">
-        <p class="profile-name">Nombre: Juan Perez</p>
-        <p class="profile-email">Correo: JuanPerez@email.com</p>
-        <p class="profile-rating">⭐ 4.8 <span class="reviews">(25 reseñas)</span></p>
+        <div class="avatar-wrap">
+          <img id="avatarImg" alt="Foto de perfil">
+          <label class="avatar-edit-btn" title="Cambiar foto">
+            <input type="file" accept="image/*" onchange="cambiarFoto(event)" style="display:none;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24"
+              fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+            </svg>
+          </label>
+        </div>
       </div>
 
+      <!-- Info visible -->
+      <div class="profile-info">
+        <p class="profile-name"><strong>Nombre:</strong> <span id="nombreTexto">Juan Perez</span></p>
+        <p class="profile-email"><strong>Correo:</strong> <span id="correoTexto">JuanPerez@email.com</span></p>
+        <p class="profile-rating">⭐ <span id="ratingTexto">4.8</span> <span class="reviews">(25 reseñas)</span></p>
+      </div>
+
+      <!-- Info grid -->
       <div class="info-grid" style="margin-top: 16px;">
         <div class="info-row">
-          <div class="info-cell">Materias: Matematicas, Algebra</div>
-          <div class="info-cell">Ubicacion: Barranquilla</div>
+          <div class="info-cell">Materias: <span id="materiasTexto">Matematicas, Algebra</span></div>
+          <div class="info-cell">Ubicacion: <span id="ubicacionTexto">Barranquilla</span></div>
         </div>
         <div class="info-row">
-          <div class="info-cell">Precio por hora: $20</div>
-          <div class="info-cell">Modalidad: Virtual/Presencial</div>
+          <div class="info-cell">Precio por hora: <span id="precioTexto">$20</span></div>
+          <div class="info-cell">Modalidad: <span id="modalidadTexto">Virtual/Presencial</span></div>
         </div>
       </div>
 
+      <!-- Descripcion -->
       <div class="descripcion-box">
         <p class="desc-title">Descripcion</p>
-        <p class="desc-text">Profesor de matemáticas con 5 años de experiencia ayudando a estudiantes universitarios y de secundaria.</p>
+        <p class="desc-text" id="descTexto">Profesor de matemáticas con 5 años de experiencia ayudando a estudiantes universitarios y de secundaria.</p>
       </div>
 
-      <div class="btn-row">
-        <button class="btn btn-primary">Editar perfil</button>
+      <!-- Link editar -->
+      <div class="editar-link-wrap">
+        <a href="#" id="btnEditar" onclick="event.preventDefault(); toggleEditar();">Editar perfil</a>
       </div>
     </div>
+
+    <!-- Formulario edición -->
+    <div id="editForm" class="section-card" style="display:none;">
+  <div class="edit-form-inner">
+    <div class="edit-field">
+      <label>Nombre</label>
+      <input type="text" id="inputNombre"/>
+    </div>
+    <div class="edit-field">
+      <label>Correo</label>
+      <input type="email" id="inputCorreo"/>
+    </div>
+  </div>
+
+  <!-- Cuadro en grid igual al perfil -->
+  <div class="edit-grid" style="margin-top: 4px;">
+    <div class="edit-grid-row">
+      <div class="edit-grid-cell">
+        <label>Materias:</label>
+        <input type="text" id="inputMaterias"/>
+      </div>
+      <div class="edit-grid-cell">
+        <label>Ubicación:</label>
+        <input type="text" id="inputUbicacion"/>
+      </div>
+    </div>
+    <div class="edit-grid-row">
+      <div class="edit-grid-cell">
+        <label>Precio/hora:</label>
+        <input type="text" id="inputPrecio"/>
+      </div>
+      <div class="edit-grid-cell">
+        <label>Modalidad:</label>
+        <select id="inputModalidad">
+          <option>Virtual</option>
+          <option>Presencial</option>
+          <option>Virtual/Presencial</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Descripción -->
+  <div class="descripcion-box" style="margin-top: 16px;">
+    <p class="desc-title">Descripción</p>
+    <textarea id="inputDesc" rows="3" style="width:100%; font-family:'Nunito',sans-serif; font-size:13.5px; font-weight:600; color:#1a2a3a; border:1.5px solid #b0c8e8; border-radius:7px; padding:8px 12px; outline:none; resize:none;"></textarea>
+  </div>
+
+  <div class="edit-form-inner" style="margin-top: 8px;">
+    <div class="edit-form-btns">
+      <button class="btn-cancelar" onclick="cancelarEditar()">Cancelar</button>
+      <button class="btn-guardar" onclick="guardarEditar()">Guardar</button>
+    </div>
+  </div>
+</div>
 
     <!-- ESTADISTICAS -->
     <div class="section-card">
