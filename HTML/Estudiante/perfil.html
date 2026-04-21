@@ -18,13 +18,15 @@
     <div class="nav-links">
       <a href="/HTML/Estudiante/inicio_estudiante.html">Buscar</a>
       <a href="mis_reservas.html">Mis reservas</a>
-      <a href="#" data-page="historial">Historial</a>
+      <a href="#tutorias" data-page="historial">Historial</a>
       <a href="#" data-page="perfil" class="active">Perfil</a>
     </div>
     <div class="nav-bell" id="bell">
   🔔
 </div>
-
+<div class="nav-user">
+  <button class="btn-logout" onclick="cerrarSesion()">Cerrar sesión</button>
+</div>
 <div class="notif-panel" id="notifPanel">
   <p>Recordatorio que tiene una clase en 20 minutos</p>
 </div>
@@ -76,7 +78,7 @@
     </div>
 
     <!-- TUTORÍAS RECIENTES -->
-    <div class="section-label">
+    <div class="section-label" id="tutorias">
       <span>📚 Tutorías recientes</span>
     </div>
 

@@ -9,3 +9,10 @@ document.addEventListener("click", (e) => {
     panel.classList.remove("active");
   }
 });
+function cerrarSesion() {
+  // limpiar datos si tienes localStorage/sessionStorage
+  localStorage.clear();
+
+  // redirigir al login
+  window.location.href = "../Autenticacion/inicio_sesion.html";
+}
