@@ -6,6 +6,7 @@
   <title>myTeacher · Perfil</title>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="/Styles/Tutor/style_perfil_tutor.css"/>
+  <link rel="stylesheet" href="/Styles/notificacion.css"/>
 </head>
 <body>
 
@@ -21,7 +22,13 @@
       <li><a href="#" class="active">Perfil</a></li>
       <li><span class="nav-sep">|</span></li>
     </ul>
-    <span class="nav-bell" title="Notificaciones">&#128276;</span>
+    <div class="nav-bell" id="bell">
+  🔔
+</div>
+
+<div class="notif-panel" id="notifPanel">
+  <p>Recordatorio que tiene una clase en 20 minutos</p>
+</div>
   </nav>
 
   <main>
@@ -166,5 +173,6 @@
   </main>
 
   <script src="/Scripts/Tutor/script_perfiltutor.js"></script>
+  <script src="/Scripts/notificaciones.js"></script>
 </body>
 </html>
