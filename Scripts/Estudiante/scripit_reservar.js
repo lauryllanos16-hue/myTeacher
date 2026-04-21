@@ -29,7 +29,8 @@ function confirmarReserva() {
   // Validar que haya modalidad seleccionada
   if (!modalidad) {
     alert('Por favor selecciona una modalidad.');
-    return;
+  }else{
+    alert('Reserva confirmada');
   }
 
   // Mostrar detalle en el modal
@@ -49,7 +50,7 @@ function confirmarReserva() {
 function abrirModal() {
   document.getElementById('modalOverlay').classList.add('active');
 }
-
+confirmarReserva
 function cerrarModal() {
   document.getElementById('modalOverlay').classList.remove('active');
   // Redirigir a mis reservas o inicio después de confirmar

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>myTeacher - Mis Reservas</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="/Styles/Estudiante/mis_reservas.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="logo-slot">
+      <img src="/Imagenes/Logo.png" alt="myTeacher logo">
+    </div>
+    <div class="nav-links">
+      <a href="/HTML/Estudiante/inicio_estudiante.html">Buscar</a>
+      <a href="#" class="active">Mis reservas</a>
+      <a href="/HTML/Estudiante/perfil_estudiante.html#tutorias">Historial</a>
+      <a href="/HTML/Estudiante/perfil.html">Perfil</a>
+    </div>
+    <span class="nav-bell" title="Notificaciones">&#128276;</span>
+  </nav>
+
+  <div class="page">
+
+    <!-- TÍTULO SECCIÓN -->
+    <div class="section-label">
+      <span>&#127891; Mis reservas</span>
+    </div>
+
+    <!-- CONTENEDOR DE RESERVAS -->
+    <div id="reservasContainer"></div>
+
+    <!-- VER MÁS -->
+    <div class="ver-mas-wrap">
+      <button class="btn-ver-mas" id="btnVerMas" onclick="verMas()">Ver más</button>
+    </div>
+
+  </div>
+
+  <!-- MODAL CANCELAR -->
+  <div class="modal-overlay" id="modalCancelar">
+    <div class="modal">
+      <div class="modal-icon cancel">&#33;</div>
+      <h3>¿Cancelar reserva?</h3>
+      <p id="modalCancelarDetalle"></p>
+      <div class="modal-btns">
+        <button class="btn-modal-no" onclick="cerrarModalCancelar()">No, volver</button>
+        <button class="btn-modal-si" onclick="confirmarCancelar()">Sí, cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL UNIRSE -->
+  <div class="modal-overlay" id="modalUnirse">
+    <div class="modal">
+      <div class="modal-icon join">&#9654;</div>
+      <h3>Unirse a la clase</h3>
+      <p id="modalUnirseDetalle"></p>
+      <div class="modal-btns">
+        <button class="btn-modal-no" onclick="cerrarModalUnirse()">Cancelar</button>
+        <button class="btn-modal-si" onclick="abrirEnlace()">Unirse ahora</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <img src="/Imagenes/logo letras blancas.png" alt="myTeacher logo">
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Contactos</h4>
+          <p>
+            Numero: +57 302 xxxx xxx<br>
+            Correo: soporte@unilibre.edu
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Síguenos</h4>
+          <div class="social-icons">
+            <a class="social-icon" style="background:#1877f2;" href="#" title="Facebook">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a class="social-icon" style="background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);" href="#" title="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a class="social-icon" style="background:#000;" href="#" title="X / Twitter">
+              <i class="fab fa-x-twitter"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copy">&#169; 2025 myTeacher - Todos los derechos reservados</div>
+  </footer>
+
+  <script src="/Scripts/Estudiante/mis_reservas.js"></script>
+</body>
+</html>
