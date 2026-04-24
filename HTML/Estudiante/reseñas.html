@@ -6,34 +6,41 @@
   <title>myTeacher · Calificaciones</title>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="/Styles/Estudiante/style_reseñas.css"/>
-  <link rel="stylesheet" href="/Styles/notificacion.css"/>
+  <link rel="stylesheet" href="/Styles/global.css"/>
 </head>
 <body>
  
   <nav>
-    <div class="logo-slot">
-      <img src="/Imagenes/Logo.png" alt="myTeacher logo">
-    </div>
-    <ul class="nav-links">
-      <li><a href="inicio_estudiante.html">Buscar</a></li>
-      <li><span class="nav-sep">|</span></li>
-      <li><a href="mis_reservas.html">Mis reservas</a></li>
-      <li><span class="nav-sep">|</span></li>
-      <li><a href="perfil.html#tutorias">Historial</a></li>
-      <li><span class="nav-sep">|</span></li>
-      <li><a href="perfil.html" class="active">Perfil</a></li>
-      <li><span class="nav-sep">|</span></li>
-    </ul>
-    <div class="nav-bell" id="bell">
-  🔔
-</div>
-<div class="nav-user">
-  <button class="btn-logout" onclick="cerrarSesion()">Cerrar sesión</button>
-</div>
-<div class="notif-panel" id="notifPanel">
-  <p>Recordatorio que tiene una clase en 20 minutos</p>
-</div>
-  </nav>
+  <div class="logo-slot">
+    <img src="/Imagenes/Logo.png" alt="myTeacher logo">
+  </div>
+
+  <!-- Links (desktop: horizontal | móvil: desplegable) -->
+  <div class="nav-links" id="navLinks">
+    <a href="#" class="active">Buscar</a>
+    <a href="mis_reservas.html">Mis reservas</a>
+    <a href="perfil.html#tutorias">Historial</a>
+    <a href="perfil.html">Perfil</a>
+    <!-- Solo visible en móvil dentro del menú -->
+    <button class="btn-cerrar-sesion-mobile" onclick="cerrarSesion()">Cerrar sesión</button>
+  </div>
+
+  <!-- Solo visible en desktop -->
+  <button class="btn-cerrar-sesion" onclick="cerrarSesion()">Cerrar sesión</button>
+
+  <!-- Campana -->
+  <div class="nav-bell" id="bell">🔔</div>
+  <div class="notif-panel" id="notifPanel">
+    <p>Recordatorio que tiene una clase en 20 minutos</p>
+  </div>
+
+  <!-- Hamburguesa (solo móvil, al final para que quede bien) -->
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
  
   <main>
  
@@ -88,6 +95,6 @@
   </main>
  
   <script src="/Scripts/Estudiante/script_reseñas.js"></script>
-  <script src="/Scripts/notificaciones.js"></script>
+  <script src="/Scripts/global.js"></script>
 </body>
 </html>

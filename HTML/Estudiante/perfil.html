@@ -6,31 +6,42 @@
   <title>myTeacher - Perfil</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="/Styles/Estudiante/style_perfil.css">
-  <link rel="stylesheet" href="/Styles/notificacion.css">
+  <link rel="stylesheet" href="/Styles/global.css">
 </head>
 <body>
 
   <!-- NAVBAR -->
   <nav>
-    <div class="logo-slot">
-      <img src="/Imagenes/Logo.png" alt="myTeacher logo">
-    </div>
-    <div class="nav-links">
-      <a href="/HTML/Estudiante/inicio_estudiante.html">Buscar</a>
-      <a href="mis_reservas.html">Mis reservas</a>
-      <a href="#tutorias" data-page="historial">Historial</a>
-      <a href="#" data-page="perfil" class="active">Perfil</a>
-    </div>
-    <div class="nav-bell" id="bell">
-  🔔
-</div>
-<div class="nav-user">
-  <button class="btn-logout" onclick="cerrarSesion()">Cerrar sesión</button>
-</div>
-<div class="notif-panel" id="notifPanel">
-  <p>Recordatorio que tiene una clase en 20 minutos</p>
-</div>
-  </nav>
+  <div class="logo-slot">
+    <img src="/Imagenes/Logo.png" alt="myTeacher logo">
+  </div>
+
+  <!-- Links (desktop: horizontal | móvil: desplegable) -->
+  <div class="nav-links" id="navLinks">
+    <a href="#" class="active">Buscar</a>
+    <a href="mis_reservas.html">Mis reservas</a>
+    <a href="perfil.html#tutorias">Historial</a>
+    <a href="perfil.html">Perfil</a>
+    <!-- Solo visible en móvil dentro del menú -->
+    <button class="btn-cerrar-sesion-mobile" onclick="cerrarSesion()">Cerrar sesión</button>
+  </div>
+
+  <!-- Solo visible en desktop -->
+  <button class="btn-cerrar-sesion" onclick="cerrarSesion()">Cerrar sesión</button>
+
+  <!-- Campana -->
+  <div class="nav-bell" id="bell">🔔</div>
+  <div class="notif-panel" id="notifPanel">
+    <p>Recordatorio que tiene una clase en 20 minutos</p>
+  </div>
+
+  <!-- Hamburguesa (solo móvil, al final para que quede bien) -->
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
 
   <div class="page">
 
@@ -122,6 +133,6 @@
   </footer>
 
   <script src="/Scripts/Estudiante/script_perfil.js"></script>
-  <script src="/Scripts/notificaciones.js"></script>
+  <script src="/Scripts/global.js"></script>
 </body>
 </html>

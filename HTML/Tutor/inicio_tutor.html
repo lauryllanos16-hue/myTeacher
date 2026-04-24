@@ -6,37 +6,40 @@
   <title>myTeacher · Principal</title>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="/Styles/Tutor/style_tutor.css"/>
-  <link rel="stylesheet" href="/Styles/notificacion.css"/>
+  <link rel="stylesheet" href="/Styles/global.css"/>
 </head>
 <body>
 
-  <nav>
-    <div class="nav-logo">
-      <div class="logo-slot">
-  <img src="/Imagenes/Logo.png" alt="myTeacher logo">
-</div>
+<nav>
+  <div class="logo-slot">
+    <img src="/Imagenes/Logo.png" alt="myTeacher logo">
+  </div>
+
+  <!-- Links centrados -->
+  <div class="nav-links" id="navLinks">
+    <a href="#" class="active">Mis Clases</a>
+    <a href="perfil_tutor.html#disponibilidad">Disponibilidad</a>
+    <a href="perfil_tutor.html">Perfil</a>
+    <!-- Solo móvil -->
+    <button class="btn-cerrar-sesion-mobile" onclick="cerrarSesion()">Cerrar sesión</button>
+  </div>
+
+  <!-- Desktop: cerrar sesión + campana a la derecha -->
+  <div class="nav-right">
+    <button class="btn-cerrar-sesion" onclick="cerrarSesion()">Cerrar sesión</button>
+    <div class="nav-bell" id="bell">🔔</div>
+    <div class="notif-panel" id="notifPanel">
+      <p>Recordatorio que tiene una clase en 20 minutos</p>
     </div>
+  </div>
 
-    <ul class="nav-links">
-      <li><a href="#">Mis clases</a></li>
-      <li><span class="nav-sep">|</span></li>
-      <li><a href="perfil_tutor.html#disponibilidad">Disponibilidad</a></li>
-      <li><span class="nav-sep">|</span></li>
-      <li><a href="perfil_tutor.html">Perfil</a></li>
-      <li><span class="nav-sep">|</span></li>
-    </ul>
-
-    <div class="nav-bell" id="bell">
-  🔔
-</div>
-<div class="nav-user">
-  <button class="btn-logout" onclick="cerrarSesion()">Cerrar sesión</button>
-</div>
-<div class="notif-panel" id="notifPanel">
-  <p>Recordatorio que tiene una clase en 20 minutos</p>
-</div>
-  </nav>
-
+  <!-- Hamburguesa solo móvil -->
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
   <main>
 
     <!-- PROXIMAS TUTORIAS -->
@@ -134,6 +137,6 @@
 </footer>
 
   <script src="/Scripts/Tutor/script_paginatutor.js"></script>
-  <script src="/Scripts/notificaciones.js"></script>
+  <script src="/Scripts/global.js"></script>
 </body>
 </html>

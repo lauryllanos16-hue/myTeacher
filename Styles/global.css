@@ -1,0 +1,168 @@
+.notif-panel {
+  position: absolute;
+  top: 70px; /* ajusta según tu navbar */
+  right: 20px;
+  width: 260px;
+  background: #fffdfd;
+  border: 1px solid #000000;
+  padding: 16px;
+  display: none; /* 👈 oculto por defecto */
+  z-index: 200;
+}
+
+.notif-panel.active {
+  display: block;
+}
+/* Orden en desktop */
+/* Orden en desktop */
+nav {
+  background: rgb(133, 177, 248);
+  display: flex;
+  align-items: center;
+  padding: 10px 32px;
+  border-bottom: 1px solid #dde4f5;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;          /* ← esto es clave */
+  box-sizing: border-box;
+}
+
+/* nav-links ocupa el espacio central */
+.nav-links {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
+
+/* Botón cerrar sesión desktop — a la derecha */
+.btn-cerrar-sesion {
+  background: white;
+  border: 1.5px solid #333;
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  cursor: pointer;
+  margin-left: 16px;
+  margin-right: 12px;
+  flex-shrink: 0;
+  transition: background .15s;
+}
+
+.btn-cerrar-sesion:hover { background: #f0f0f0; }
+
+/* Botón cerrar sesión móvil — oculto en desktop */
+.btn-cerrar-sesion-mobile {
+  display: none;
+}
+
+/* Hamburguesa — oculta en desktop */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  margin-left: 10px;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 3px;
+  background: #333;
+  border-radius: 3px;
+  transition: all .3s;
+}
+
+.hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+  position: relative; /* para el panel de notif */
+}
+/* ── MÓVIL ── */
+@media (max-width: 600px) {
+  .nav-right {
+    margin-left: 0;
+  }
+
+  /* Ocultar botón cerrar sesión desktop en móvil */
+  .btn-cerrar-sesion {
+    display: none;
+  }
+
+  /* Campana queda visible en móvil junto a la hamburguesa */
+  .nav-bell {
+    font-size: 17px;
+  }
+  nav {
+    flex-wrap: wrap;
+    padding: 10px 14px;
+  }
+
+  .hamburger {
+    display: flex;
+    margin-left: auto;  /* empuja hamburguesa a la derecha */
+  }
+
+  /* Ocultar botón desktop en móvil */
+  .btn-cerrar-sesion {
+    display: none;
+  }
+
+  /* Campana debajo de la hamburguesa */
+  .nav-bell {
+    order: 3;
+    margin-left: 10px;
+  }
+
+  /* Menú desplegable */
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    padding: 8px 0 12px;
+    margin-top: 8px;
+    border-top: 1px solid rgba(255,255,255,0.4);
+    order: 10; /* va al final del nav */
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links a {
+    width: 100%;
+    padding: 11px 18px;
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    font-size: 14px;
+  }
+
+  /* Botón cerrar sesión móvil — visible dentro del menú */
+  .btn-cerrar-sesion-mobile {
+    display: block;
+    background: white;
+    border: 1.5px solid #333;
+    border-radius: 8px;
+    padding: 9px 18px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    cursor: pointer;
+    margin: 10px 18px 0;
+    width: calc(100% - 36px);
+    text-align: center;
+  }
+}

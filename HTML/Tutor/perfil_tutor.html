@@ -6,32 +6,39 @@
   <title>myTeacher · Perfil</title>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="/Styles/Tutor/style_perfil_tutor.css"/>
-  <link rel="stylesheet" href="/Styles/notificacion.css"/>
+  <link rel="stylesheet" href="/Styles/global.css"/>
 </head>
 <body>
+<nav>
+  <div class="logo-slot">
+    <img src="/Imagenes/Logo.png" alt="myTeacher logo">
+  </div>
 
-  <nav>
-    <div class="logo-slot">
-      <img src="/Imagenes/Logo.png" alt="myTeacher logo">
+  <!-- Links centrados -->
+  <div class="nav-links" id="navLinks">
+    <a href="inicio_tutor.html">Mis Clases</a>
+    <a href="#disponibilidad">Disponibilidad</a>
+    <a href="#" class = "active">Perfil</a>
+    <!-- Solo móvil -->
+    <button class="btn-cerrar-sesion-mobile" onclick="cerrarSesion()">Cerrar sesión</button>
+  </div>
+
+  <!-- Desktop: cerrar sesión + campana a la derecha -->
+  <div class="nav-right">
+    <button class="btn-cerrar-sesion" onclick="cerrarSesion()">Cerrar sesión</button>
+    <div class="nav-bell" id="bell">🔔</div>
+    <div class="notif-panel" id="notifPanel">
+      <p>Recordatorio que tiene una clase en 20 minutos</p>
     </div>
-    <ul class="nav-links">
-      <li><a href="inicio_tutor.html">Mis clases</a></li>
-      <li><span class="nav-sep">|</span></li>
-      <li><a href="#disponibilidad">Disponibilidad</a></li>
-      <li><span class="nav-sep">|</span></li>
-      <li><a href="#" class="active">Perfil</a></li>
-      <li><span class="nav-sep">|</span></li>
-    </ul>
-    <div class="nav-bell" id="bell">
-  🔔
-</div>
-<div class="nav-user">
-  <button class="btn-logout" onclick="cerrarSesion()">Cerrar sesión</button>
-</div>
-<div class="notif-panel" id="notifPanel">
-  <p>Recordatorio que tiene una clase en 20 minutos</p>
-</div>
-  </nav>
+  </div>
+
+  <!-- Hamburguesa solo móvil -->
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
 
   <main>
 
@@ -175,6 +182,6 @@
   </main>
 
   <script src="/Scripts/Tutor/script_perfiltutor.js"></script>
-  <script src="/Scripts/notificaciones.js"></script>
+  <script src="/Scripts/global.js"></script>
 </body>
 </html>
