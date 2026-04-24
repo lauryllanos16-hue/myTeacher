@@ -57,50 +57,45 @@ function renderReservas() {
   container.innerHTML = visibles.map((r, i) => {
     const est = estadoInfo(r.estado);
     const cancelada = r.estado === 'cancelada';
-    return `
-      <div class="reserva-card" id="card-${i}">
+    return `<div class="section-card" id="card-${i}">
 
-        <div class="reserva-grid">
-          <div class="reserva-cell">Tutor: <strong>${r.tutor}</strong></div>
-          <div class="reserva-divider"></div>
-          <div class="reserva-cell">Materia: <strong>${r.materia}</strong></div>
-        </div>
-
-        <div class="reserva-grid">
-          <div class="reserva-cell">Fecha: <strong>${r.fecha}</strong></div>
-          <div class="reserva-divider"></div>
-          <div class="reserva-cell">Nivel: <strong>${r.nivel}</strong></div>
-        </div>
-
-        <div class="reserva-grid">
-          <div class="reserva-cell">Modalidad: <strong>${r.modalidad}</strong></div>
-          <div class="reserva-divider"></div>
-          <div class="reserva-cell">
-            Estado:&nbsp;
-            <span class="estado-proxima">
-              <span class="estado-dot ${est.clase}"></span>
-              <strong>${est.label}</strong>
-            </span>
-          </div>
-        </div>
-
-        <div class="reserva-btns">
-          <button
-            class="btn-unirse"
-            onclick="abrirModalUnirse(${i})"
-            ${cancelada ? 'disabled style="background:#e8e8e8;color:#999;cursor:not-allowed;"' : ''}>
-            Unirse a la clase
-          </button>
-          <button
-            class="btn-cancelar-reserva ${cancelada ? 'cancelada' : ''}"
-            onclick="${cancelada ? '' : `abrirModalCancelar(${i})`}"
-            ${cancelada ? 'disabled' : ''}>
-            ${cancelada ? 'Cancelada' : 'Cancelar'}
-          </button>
-        </div>
-
+  <div class="info-grid">
+    <div class="info-row">
+      <div class="info-cell">Tutor: <strong>${r.tutor}</strong></div>
+      <div class="info-cell">Materia: <strong>${r.materia}</strong></div>
+    </div>
+    <div class="info-row">
+      <div class="info-cell">Fecha: <strong>${r.fecha}</strong></div>
+      <div class="info-cell">Nivel: <strong>${r.nivel}</strong></div>
+    </div>
+    <div class="info-row">
+      <div class="info-cell">Modalidad: <strong>${r.modalidad}</strong></div>
+      <div class="info-cell">
+        Estado:&nbsp;
+        <span style="display:inline-flex;align-items:center;gap:6px;">
+          <span class="estado-dot ${est.clase}"></span>
+          <strong>${est.label}</strong>
+        </span>
       </div>
-    `;
+    </div>
+  </div>
+
+  <div class="btn-row" style="justify-content: center;">
+    <button
+      class="btn btn-primary"
+      onclick="abrirModalUnirse(${i})"
+      ${cancelada ? 'disabled style="background:#e8e8e8;color:#999;cursor:not-allowed;"' : ''}>
+      Unirse a la clase
+    </button>
+    <button
+      class="btn ${cancelada ? 'btn-disabled' : 'btn-primary'}"
+      onclick="${cancelada ? '' : `abrirModalCancelar(${i})`}"
+      ${cancelada ? 'disabled' : ''}>
+      ${cancelada ? 'Cancelada' : 'Cancelar'}
+    </button>
+  </div>
+
+</div>`;
   }).join('');
 
   // Mostrar/ocultar botón Ver más

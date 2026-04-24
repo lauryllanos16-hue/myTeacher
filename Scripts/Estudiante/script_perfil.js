@@ -114,7 +114,7 @@ function renderTutorias() {
       <div class="calificar-wrap">
         ${t.calificado
           ? `<span style="color:#f5a623;font-size:14px;font-weight:600;">&#11088; Ya calificado</span>`
-          : `<button class="btn-calificar" onclick="abrirModal(${i})">&#11088; Calificar tutor</button>`
+          : `<button class="btn btn-primary" onclick="abrirModal(${i})">&#11088; Calificar tutor</button>`
         }
       </div>
     </div>
@@ -141,8 +141,8 @@ const modalHTML = `
       </div>
       <textarea id="modalComentario" placeholder="Escribe un comentario (opcional)..."></textarea>
       <div class="modal-btns">
-        <button class="btn-modal-cancelar" onclick="cerrarModal()">Cancelar</button>
-        <button class="btn-modal-enviar" onclick="enviarCalificacion()">Enviar</button>
+        <button class="btn btn-primary" onclick="cerrarModal()">Cancelar</button>
+        <button class="btn btn-primary" onclick="enviarCalificacion()">Enviar</button>
       </div>
     </div>
   </div>

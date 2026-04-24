@@ -5,8 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>myTeacher - Connect & Learn</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+   <link rel="stylesheet" href="/Styles/global.css">
   <link rel="stylesheet" href="/Styles/Estudiante/style_pagina_principal.css">
-  <link rel="stylesheet" href="/Styles/global.css">
+ 
 </head>
 <body>
     <!-- NAVBAR -->
@@ -15,8 +16,8 @@
     <img src="/Imagenes/Logo.png" alt="myTeacher logo">
   </div>
 
-  <!-- Links (desktop: horizontal | móvil: desplegable) -->
-  <div class="nav-links" id="navLinks">
+  <!-- Links centrados -->
+<div class="nav-links" id="navLinks">
     <a href="#" class="active">Buscar</a>
     <a href="mis_reservas.html">Mis reservas</a>
     <a href="perfil.html#tutorias">Historial</a>
@@ -25,16 +26,16 @@
     <button class="btn-cerrar-sesion-mobile" onclick="cerrarSesion()">Cerrar sesión</button>
   </div>
 
-  <!-- Solo visible en desktop -->
-  <button class="btn-cerrar-sesion" onclick="cerrarSesion()">Cerrar sesión</button>
-
-  <!-- Campana -->
-  <div class="nav-bell" id="bell">🔔</div>
-  <div class="notif-panel" id="notifPanel">
-    <p>Recordatorio que tiene una clase en 20 minutos</p>
+  <!-- Desktop: cerrar sesión + campana a la derecha -->
+  <div class="nav-right">
+    <button class="btn-cerrar-sesion" onclick="cerrarSesion()">Cerrar sesión</button>
+    <div class="nav-bell" id="bell">🔔</div>
+    <div class="notif-panel" id="notifPanel">
+      <p>Recordatorio que tiene una clase en 20 minutos</p>
+    </div>
   </div>
 
-  <!-- Hamburguesa (solo móvil, al final para que quede bien) -->
+  <!-- Hamburguesa solo móvil -->
   <button class="hamburger" id="hamburger" onclick="toggleMenu()">
     <span></span>
     <span></span>
@@ -73,7 +74,7 @@
         <option>Primaria</option>
       </select>
     </div>
-    <button class="btn-buscar" id="btnBuscar">Buscar</button>
+    <button class="btn btn-primary btn-buscar">Buscar</button>
   </div>
 
   <!-- TUTORES RECOMENDADOS -->

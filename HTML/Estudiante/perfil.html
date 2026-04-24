@@ -16,33 +16,32 @@
     <img src="/Imagenes/Logo.png" alt="myTeacher logo">
   </div>
 
-  <!-- Links (desktop: horizontal | móvil: desplegable) -->
-  <div class="nav-links" id="navLinks">
-    <a href="#" class="active">Buscar</a>
+  <!-- Links centrados -->
+<div class="nav-links" id="navLinks">
+    <a href="inicio_estudiante.html">Buscar</a>
     <a href="mis_reservas.html">Mis reservas</a>
-    <a href="perfil.html#tutorias">Historial</a>
-    <a href="perfil.html">Perfil</a>
+    <a href="#tutorias">Historial</a>
+    <a href="#"class="active">Perfil</a>
     <!-- Solo visible en móvil dentro del menú -->
     <button class="btn-cerrar-sesion-mobile" onclick="cerrarSesion()">Cerrar sesión</button>
   </div>
 
-  <!-- Solo visible en desktop -->
-  <button class="btn-cerrar-sesion" onclick="cerrarSesion()">Cerrar sesión</button>
-
-  <!-- Campana -->
-  <div class="nav-bell" id="bell">🔔</div>
-  <div class="notif-panel" id="notifPanel">
-    <p>Recordatorio que tiene una clase en 20 minutos</p>
+  <!-- Desktop: cerrar sesión + campana a la derecha -->
+  <div class="nav-right">
+    <button class="btn-cerrar-sesion" onclick="cerrarSesion()">Cerrar sesión</button>
+    <div class="nav-bell" id="bell">🔔</div>
+    <div class="notif-panel" id="notifPanel">
+      <p>Recordatorio que tiene una clase en 20 minutos</p>
+    </div>
   </div>
 
-  <!-- Hamburguesa (solo móvil, al final para que quede bien) -->
+  <!-- Hamburguesa solo móvil -->
   <button class="hamburger" id="hamburger" onclick="toggleMenu()">
     <span></span>
     <span></span>
     <span></span>
   </button>
 </nav>
-
   <div class="page">
 
     <!-- FOTO Y DATOS -->
@@ -82,10 +81,11 @@
           <option>Primaria</option>
         </select>
       </div>
-      <div class="form-btns">
-        <button class="btn-cancelar" onclick="cancelarEditar()">Cancelar</button>
-        <button class="btn-guardar" onclick="guardarEditar()">Guardar</button>
-      </div>
+        <div class="form-btns">
+  <button class="btn btn-secondary" onclick="cancelarEditar()">Cancelar</button>
+  <button class="btn btn-primary" onclick="guardarEditar()">Guardar</button>
+</div>
+
     </div>
 
     <!-- TUTORÍAS RECIENTES -->

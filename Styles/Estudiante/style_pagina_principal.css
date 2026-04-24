@@ -1,83 +1,6 @@
-* { 
-  box-sizing: border-box; 
-  margin: 0; 
-  padding: 0; 
-}
-
-body { 
-  font-family: Arial, sans-serif; 
-  background: #eef1fb; 
-  min-height: 100vh; 
-}
-
-/* ── CONTENEDOR CENTRAL ── */
-.page { 
-  max-width: 900px; 
-  margin: 0 auto; 
-  background: #eef1fb; 
-  min-height: calc(100vh - 82px - 110px);
-  padding-bottom: 8px;
-}
-
-/* ── NAV (full width) ── */
-nav {
-  background: rgb(133, 177, 248);
-  display: flex;
-  align-items: center;
-  padding: 10px 32px;
-  border-bottom: 1px solid #dde4f5;
-  position: sticky; 
-  top: 0; 
-  z-index: 100;
-  width: 100%;
-}
-
-.logo-slot {
-  width: 90px; 
-  height: 62px;
-  border-radius: 8px;
-  display: flex; 
-  align-items: center; 
-  justify-content: center;
-  overflow: hidden; 
-  flex-shrink: 0;
-  background: transparent;
-}
-
-.logo-slot img { 
-  width: 100%; 
-  height: 100%; 
-  object-fit: contain; 
-}
-
-.nav-links { 
-  display: flex; 
-  flex: 1; 
-  justify-content: center; 
-}
-
-.nav-links a {
-  font-size: 14.5px; 
-  color: #333; 
-  text-decoration: none;
-  padding: 0 16px;
-  border-right: 1.5px solid #ccc;
-}
-
-.nav-links a:last-child { 
-  border-right: none; 
-}
-
-.nav-links a.active { 
-  text-decoration: underline; 
-  font-weight: 600; 
-}
-
-.nav-bell { 
-  font-size: 20px; 
-  margin-left: auto;
-  cursor: pointer; 
-}
+/* ══════════════════════════════
+   BUSCADOR Y TUTORES — SOLO PROPIO
+   ══════════════════════════════ */
 
 /* ── BUSCADOR ── */
 .search-box {
@@ -88,75 +11,48 @@ nav {
   box-shadow: 0 1px 4px rgba(80,100,180,0.06);
 }
 
-.search-title { 
-  font-weight: 700; 
-  font-size: 18px; 
-  margin-bottom: 18px; 
+.search-title {
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 18px;
 }
 
-.search-title .icon { 
-  margin-right: 8px; 
+.search-title .icon {
+  margin-right: 8px;
 }
 
-.field-row { 
-  display: flex; 
-  align-items: center; 
-  margin-bottom: 12px; 
-  gap: 16px; 
+.field-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  gap: 16px;
 }
 
-.field-label { 
-  font-size: 15px; 
-  min-width: 90px; 
-  color: #222; 
+.field-label {
+  font-size: 15px;
+  min-width: 90px;
+  color: #222;
 }
 
 .field-row select {
-  flex: 1; 
+  flex: 1;
   border: 1px solid #c0c8e0;
-  border-radius: 6px; 
+  border-radius: 6px;
   padding: 8px 10px;
-  font-size: 14px; 
-  color: #444; 
+  font-size: 14px;
   background: white;
   cursor: pointer;
 }
 
-.field-row select:focus { 
-  outline: 2px solid #85B1F8; 
+.field-row select:focus {
+  outline: 2px solid var(--color-primary);
 }
 
+/* Botón reutilizando global */
 .btn-buscar {
-  display: block; 
+  display: block;
   margin: 18px auto 0;
-  background: #85B1F8; 
-  color: rgb(0, 0, 0);
-  border: none; 
-  border-radius: 7px;
-  padding: 10px 50px; 
-  font-size: 15px;
-  font-weight: 600; 
-  cursor: pointer; 
-  transition: background .2s;
-}
-
-.btn-buscar:hover { 
-  background: #90a7f8; 
-}
-
-/* ── ETIQUETA SECCIÓN ── */
-.section-label { 
-  text-align: center; 
-  margin: 24px 18px 14px; 
-}
-
-.section-label span {
-  background: #85B1F8; 
-  color: rgb(0, 0, 0);
-  border-radius: 20px; 
-  padding: 8px 24px;
-  font-size: 15px; 
-  font-weight: 600;
+  padding: 10px 50px;
 }
 
 /* ── TARJETA TUTOR ── */
@@ -165,22 +61,22 @@ nav {
   margin: 0 18px 16px;
   border-radius: 12px;
   padding: 20px 28px;
-  display: flex; 
+  display: flex;
   gap: 24px;
   align-items: center;
   box-shadow: 0 1px 4px rgba(80,100,180,0.06);
 }
 
 .tutor-img {
-  width: 120px; 
+  width: 120px;
   height: 120px;
-  border-radius: 8px; 
+  border-radius: 8px;
   object-fit: cover;
-  flex-shrink: 0; 
+  flex-shrink: 0;
   background: #dde4f5;
 }
 
-.tutor-info { 
+.tutor-info {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -188,218 +84,41 @@ nav {
   gap: 6px;
 }
 
-.tutor-name { 
-  font-size: 17px; 
-  font-weight: 700; 
-  color: #222; 
+.tutor-name {
+  font-size: 17px;
+  font-weight: 700;
+  color: #222;
   text-align: center;
 }
 
 .tutor-meta {
-  display: flex; 
-  align-items: center; 
+  display: flex;
+  align-items: center;
   gap: 10px;
-  font-size: 14px; 
-  color: #444;
+  font-size: 14px;
   justify-content: center;
   flex-wrap: wrap;
 }
 
-.sep { 
-  color: #bbb; 
-}
-
-.star { 
-  color: #f5a623; 
-  font-size: 15px; 
-}
-
-.tutor-modality { 
-  font-size: 14px; 
-  color: #444; 
+.tutor-modality {
+  font-size: 14px;
   text-align: center;
 }
 
-.tutor-modality strong { 
-  font-weight: 600; 
-}
-
-.tutor-btns { 
-  display: flex; 
-  gap: 12px; 
+.tutor-btns {
+  display: flex;
+  gap: 12px;
   justify-content: center;
   margin-top: 4px;
   flex-wrap: wrap;
 }
 
-.tutor-btns button {
-  border-radius: 7px; 
-  padding: 8px 22px;
-  font-size: 14px; 
-  cursor: pointer;
-  transition: background .15s;
-}
 
-.btn-ver { 
-  background: #85B1F8; 
-  color: #000000; 
-  font-weight: 700;
-  border: 1.5px solid #85B1F8; 
-}
 
-.btn-ver:hover { 
-  background: #eef1ff; 
-}
-
-.btn-reservar { 
-  background: #85B1F8; 
-  color: black; 
-  font-weight: 700;
-  border: 1.5px solid #85B1F8; 
-}
-
-.btn-reservar:hover { 
-  background: #4466dd; 
-}
-
-/* ── VER MÁS ── */
-.ver-mas-wrap { 
-  text-align: center; 
-  margin: 6px 0 28px; 
-}
-
-.btn-ver-mas {
-  background: #85B1F8; 
-  border: 1.5px solid #85B1F8;
-  color: black; 
-  font-size: 16px;
-  border-radius: 9px;
-  font-weight: 700;
-  padding: 10px 44px; 
-  cursor: pointer; 
-  transition: background .15s;
-}
-
-.btn-ver-mas:hover { 
-  background: #eef1ff; 
-}
-
-/* ── FOOTER (full width) ── */
-footer { 
-  background: #1a1e2e; 
-  color: #ccc; 
-  padding: 32px 48px 20px;
-  width: 100%;
-}
-
-.footer-inner { 
-  display: flex; 
-  gap: 48px;
-  align-items: center;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.footer-logo {
-  width: 130px; 
-  height: 90px;
-  border-radius: 8px;
-  display: flex; 
-  align-items: center; 
-  justify-content: center;
-  overflow: hidden; 
-  flex-shrink: 0;
-  background: transparent;
-}
-
-.footer-logo img { 
-  width: 100%; 
-  height: 100%; 
-  object-fit: contain; 
-}
-
-.footer-cols { 
-  display: flex; 
-  gap: 60px; 
-  flex: 1;
-  align-items: flex-start;
-}
-
-.footer-col h4 { 
-  color: white; 
-  font-size: 15px; 
-  font-weight: 700; 
-  margin-bottom: 10px; 
-}
-
-.footer-col p { 
-  font-size: 14px; 
-  line-height: 1.85; 
-  color: #aab; 
-}
-
-.social-icons { 
-  display: flex; 
-  gap: 10px; 
-  margin-top: 8px; 
-}
-
-.social-icon {
-  width: 34px; 
-  height: 34px;
-  background: #2e3550; 
-  border-radius: 6px;
-  display: flex; 
-  align-items: center; 
-  justify-content: center;
-  font-size: 14px; 
-  color: rgb(0, 0, 0); 
-  text-decoration: none;
-  font-weight: 700; 
-  cursor: pointer; 
-  transition: background .15s;
-}
-
-.social-icon:hover { 
-  background: #85B1F8; 
-}
-
-.footer-copy { 
-  font-size: 12px; 
-  color: #556; 
-  margin-top: 22px; 
-  text-align: right;
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.social-icon i {
-  color: white;
-  font-size: 16px;
-}
-/* ════════════════════════════════
-   RESPONSIVE MÓVIL (≤ 600px)
-   ════════════════════════════════ */
+/* ══════════════════════════════
+   RESPONSIVE SOLO DE ESTA VISTA
+   ══════════════════════════════ */
 @media (max-width: 600px) {
-
-  nav {
-    padding: 8px 12px;
-    gap: 8px;
-  }
-
-  .logo-slot {
-    width: 64px;
-    height: 44px;
-  }
-
-  .nav-links a {
-    font-size: 11px;
-    padding: 0 7px;
-  }
-
-  .nav-bell {
-    font-size: 17px;
-  }
 
   .search-box {
     margin: 12px 10px 0;
@@ -424,15 +143,6 @@ footer {
   .btn-buscar {
     padding: 9px 36px;
     font-size: 14px;
-  }
-
-  .section-label {
-    margin: 16px 10px 10px;
-  }
-
-  .section-label span {
-    font-size: 13px;
-    padding: 7px 18px;
   }
 
   .tutor-card {
@@ -462,55 +172,5 @@ footer {
   .tutor-btns button {
     padding: 6px 14px;
     font-size: 12px;
-  }
-
-  .btn-ver-mas {
-    padding: 8px 32px;
-    font-size: 13px;
-  }
-
-  footer {
-    padding: 20px 16px 14px;
-  }
-
-  .footer-inner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
-  }
-
-  .footer-logo {
-    width: 100px;
-    height: 70px;
-  }
-
-  .footer-cols {
-    gap: 24px;
-    flex-wrap: wrap;
-    width: 100%;
-  }
-
-  .footer-col h4 {
-    font-size: 13px;
-    margin-bottom: 6px;
-  }
-
-  .footer-col p {
-    font-size: 12px;
-  }
-.social-icon i {
-  color: white;
-  font-size: 16px;
-}
-  .social-icon {
-    width: 30px;
-    height: 30px;
-    font-size: 13px;
-  }
-
-  .footer-copy {
-    font-size: 10px;
-    text-align: center;
-    margin-top: 16px;
   }
 }
