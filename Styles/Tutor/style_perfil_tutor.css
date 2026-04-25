@@ -8,7 +8,7 @@
 /* ── AVATAR ── */
 .profile-avatar {
   display: flex;
-  justify-content: center;  /* antes: flex-start */
+  justify-content: center; /* antes: flex-start */
   margin-bottom: 14px;
 }
 
@@ -33,13 +33,13 @@
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: #85B1F8;
+  background: #85b1f8;
   border: 2px solid white;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background .15s;
+  transition: background 0.15s;
 }
 
 .avatar-edit-btn:hover {
@@ -52,8 +52,8 @@
   flex-direction: column;
   gap: 6px;
   margin-bottom: 14px;
-  align-items: center; 
-  text-align: center;   
+  align-items: center;
+  text-align: center;
 }
 .profile-info p {
   font-size: 15px;
@@ -141,7 +141,7 @@
   border-radius: 7px;
   padding: 8px 12px;
   font-size: 13.5px;
-  font-family: 'Nunito', Arial, sans-serif;
+  font-family: "Nunito", Arial, sans-serif;
   font-weight: 600;
   color: #1a2a3a;
   outline: none;
@@ -151,7 +151,7 @@
 
 .edit-field input:focus,
 .edit-field select:focus {
-  border-color: #85B1F8;
+  border-color: #85b1f8;
 }
 
 /* Grid igual al de info del perfil */
@@ -196,7 +196,7 @@
   border-radius: 6px;
   padding: 6px 10px;
   font-size: 13px;
-  font-family: 'Nunito', Arial, sans-serif;
+  font-family: "Nunito", Arial, sans-serif;
   font-weight: 600;
   color: #1a2a3a;
   outline: none;
@@ -206,13 +206,13 @@
 
 .edit-grid-cell input:focus,
 .edit-grid-cell select:focus {
-  border-color: #85B1F8;
+  border-color: #85b1f8;
 }
 
 /* Textarea descripción edición */
 .descripcion-box textarea {
   width: 100%;
-  font-family: 'Nunito', Arial, sans-serif;
+  font-family: "Nunito", Arial, sans-serif;
   font-size: 13.5px;
   font-weight: 600;
   color: #1a2a3a;
@@ -224,7 +224,7 @@
 }
 
 .descripcion-box textarea:focus {
-  border-color: #85B1F8;
+  border-color: #85b1f8;
 }
 
 /* Botones guardar/cancelar */
@@ -237,21 +237,23 @@
 
 .btn-cancelar {
   background: white;
-  border: 1.5px solid #85B1F8;
+  border: 1.5px solid #85b1f8;
   color: #333;
   border-radius: 8px;
   padding: 8px 24px;
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  font-family: 'Nunito', Arial, sans-serif;
-  transition: background .15s;
+  font-family: "Nunito", Arial, sans-serif;
+  transition: background 0.15s;
 }
 
-.btn-cancelar:hover { background: #eef1ff; }
+.btn-cancelar:hover {
+  background: #eef1ff;
+}
 
 .btn-guardar {
-  background: #85B1F8;
+  background: #85b1f8;
   border: none;
   color: #000;
   font-weight: 700;
@@ -259,17 +261,18 @@
   padding: 8px 24px;
   font-size: 14px;
   cursor: pointer;
-  font-family: 'Nunito', Arial, sans-serif;
-  transition: background .15s;
+  font-family: "Nunito", Arial, sans-serif;
+  transition: background 0.15s;
 }
 
-.btn-guardar:hover { background: #aac8f8; }
+.btn-guardar:hover {
+  background: #aac8f8;
+}
 
 /* ══════════════════════════════
    RESPONSIVE MÓVIL
    ══════════════════════════════ */
 @media (max-width: 600px) {
-
   #avatarImg {
     width: 88px;
     height: 88px;
@@ -285,19 +288,18 @@
     gap: 12px;
   }
 
-  
   .edit-grid {
     border-radius: 8px;
   }
 
   .edit-grid-row {
-    grid-template-columns: 1fr;  
+    grid-template-columns: 1fr;
   }
 
   .edit-grid-cell {
     border-right: none;
     border-bottom: 1px solid #c8d8f8;
-    padding: 12px 14px;           
+    padding: 12px 14px;
   }
 
   .edit-grid-cell:last-child {
@@ -305,13 +307,13 @@
   }
 
   .edit-grid-cell label {
-    font-size: 13px;              
+    font-size: 13px;
   }
 
   .edit-grid-cell input,
   .edit-grid-cell select {
-    padding: 10px 12px;           
-    font-size: 14px;              
+    padding: 10px 12px;
+    font-size: 14px;
     border-radius: 8px;
   }
 
@@ -329,7 +331,7 @@
 
   .btn-cancelar,
   .btn-guardar {
-    padding: 10px 28px;           
+    padding: 10px 28px;
     font-size: 15px;
   }
 }

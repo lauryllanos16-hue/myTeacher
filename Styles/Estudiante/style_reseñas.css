@@ -70,7 +70,9 @@ main {
   font-size: 28px;
   color: #ccc;
   cursor: pointer;
-  transition: color .15s, transform .1s;
+  transition:
+    color 0.15s,
+    transform 0.1s;
 }
 
 .star.active {
@@ -153,7 +155,6 @@ textarea:focus {
    RESPONSIVE SOLO DE ESTA VISTA
    ══════════════════════════════ */
 @media (max-width: 600px) {
-
   main {
     padding-top: 82px;
     padding-left: 10px;

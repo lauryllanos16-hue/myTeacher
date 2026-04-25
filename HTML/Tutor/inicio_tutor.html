@@ -1,142 +1,173 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>myTeacher · Principal</title>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="/Styles/Tutor/style_tutor.css"/>
-  <link rel="stylesheet" href="/Styles/global.css"/>
-</head>
-<body>
-
-<nav>
-  <div class="logo-slot">
-    <img src="/Imagenes/Logo.png" alt="myTeacher logo">
-  </div>
-
-  <!-- Links centrados -->
-  <div class="nav-links" id="navLinks">
-    <a href="#" class="active">Mis Clases</a>
-    <a href="perfil_tutor.html#disponibilidad">Disponibilidad</a>
-    <a href="perfil_tutor.html">Perfil</a>
-    <!-- Solo móvil -->
-    <button class="btn-cerrar-sesion-mobile" onclick="cerrarSesion()">Cerrar sesión</button>
-  </div>
-
-  <!-- Desktop: cerrar sesión + campana a la derecha -->
-  <div class="nav-right">
-    <button class="btn-cerrar-sesion" onclick="cerrarSesion()">Cerrar sesión</button>
-    <div class="nav-bell" id="bell">🔔</div>
-    <div class="notif-panel" id="notifPanel">
-      <p>Recordatorio que tiene una clase en 20 minutos</p>
-    </div>
-  </div>
-
-  <!-- Hamburguesa solo móvil -->
-  <button class="hamburger" id="hamburger" onclick="toggleMenu()">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
-</nav>
-  <main>
-
-    <!-- PROXIMAS TUTORIAS -->
-    <div class="section-card">
-      <div class="section-header">
-        <div class="badge">🏫 Proximas tutorias</div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>myTeacher · Principal</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/Styles/Tutor/style_tutor.css" />
+    <link rel="stylesheet" href="/Styles/global.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="logo-slot">
+        <img src="/Imagenes/Logo.png" alt="myTeacher logo" />
       </div>
-      <div class="info-grid">
-        <div class="info-row">
-          <div class="info-cell">Estudiante: Ana Gomez</div>
-          <div class="info-cell">Materia: Matematicas</div>
-        </div>
-        <div class="info-row">
-          <div class="info-cell">Fecha: 12 Marzo - 4:00 PM</div>
-          <div class="info-cell">Nivel: Universitario</div>
-        </div>
-        <div class="info-row">
-          <div class="info-cell">Modalidad : Virtual</div>
-          <div class="info-cell">Estado: 🟡 Próxima</div>
+
+      <!-- Links centrados -->
+      <div class="nav-links" id="navLinks">
+        <a href="#" class="active">Mis Clases</a>
+        <a href="perfil_tutor.html#disponibilidad">Disponibilidad</a>
+        <a href="perfil_tutor.html">Perfil</a>
+        <!-- Solo móvil -->
+        <button class="btn-cerrar-sesion-mobile" onclick="cerrarSesion()">
+          Cerrar sesión
+        </button>
+      </div>
+
+      <!-- Desktop: cerrar sesión + campana a la derecha -->
+      <div class="nav-right">
+        <button class="btn-cerrar-sesion" onclick="cerrarSesion()">
+          Cerrar sesión
+        </button>
+        <div class="nav-bell" id="bell">🔔</div>
+        <div class="notif-panel" id="notifPanel">
+          <p>Recordatorio que tiene una clase en 20 minutos</p>
         </div>
       </div>
-      <div class="btn-row">
-        <button class="btn btn-primary">Iniciar clase</button>
-        <button class="btn btn-secondary">Cancelar</button> 
-      </div>
-      <div class="ver-mas-wrap" style="margin: 4px 0 0 0;">
-  <button class="btn btn-primary" style="padding: 9px 36px;">Ver más</button>
-</div>
-    </div>
 
-    <!-- RESUMEN -->
-    <div class="section-card">
-  <div class="section-header">
-    <div class="badge">📊 Resumen</div>
-  </div>
-  <div class="info-grid">
-    <div class="info-row">
-      <div class="info-cell">Clases este Mes: 12</div>
-      <div class="info-cell">Estudiantes atendidos: 8</div>
-    </div>
-    <div class="info-row">
-      <div class="info-cell">Ingresos estimados: $240</div>
-      <div class="info-cell">Horas de tutoría: 15</div>
-    </div>
-    <div class="info-row">
-      <div class="info-cell full-width">
-        Calificacion promedio este mes: ⭐ 4.7
-      </div>
-    </div>
-  </div>
-</div>
-
-  </main>
-
-<footer>
-  <div class="footer-inner">
-
-    <div class="footer-logo">
-      <img src="/Imagenes/logo letras blancas.png" alt="myTeacher logo">
-    </div>
-
-    <div class="footer-cols">
-      <div class="footer-col">
-        <h4>Contactos</h4>
-        <p>Numero: +57 302 xxxx xxx</p>
-        <p>Correo: soporte@unilibre.edu</p>
-      </div>
-      <div class="footer-col">
-        <h4>Síguenos</h4>
-        <div class="social-icons">
-         <a href="#" class="social-icon si-fb" aria-label="Facebook">
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="white">
-            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-          </svg>
-        </a>
-        <a href="#" class="social-icon si-ig" aria-label="Instagram">
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
-            fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-          </svg>
-        </a>
-        <a href="#" class="social-icon si-x" aria-label="X">
-          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="white">
-            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-          </svg>
-        </a>
+      <!-- Hamburguesa solo móvil -->
+      <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+    <main>
+      <!-- PROXIMAS TUTORIAS -->
+      <div class="section-card">
+        <div class="section-header">
+          <div class="badge">🏫 Proximas tutorias</div>
+        </div>
+        <div class="info-grid">
+          <div class="info-row">
+            <div class="info-cell">Estudiante: Ana Gomez</div>
+            <div class="info-cell">Materia: Matematicas</div>
+          </div>
+          <div class="info-row">
+            <div class="info-cell">Fecha: 12 Marzo - 4:00 PM</div>
+            <div class="info-cell">Nivel: Universitario</div>
+          </div>
+          <div class="info-row">
+            <div class="info-cell">Modalidad : Virtual</div>
+            <div class="info-cell">Estado: 🟡 Próxima</div>
+          </div>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-primary">Iniciar clase</button>
+          <button class="btn btn-secondary">Cancelar</button>
+        </div>
+        <div class="ver-mas-wrap" style="margin: 4px 0 0 0">
+          <button class="btn btn-primary" style="padding: 9px 36px">
+            Ver más
+          </button>
         </div>
       </div>
-    </div>
 
-  </div>
-  <p class="footer-copy">© 2026 myTeacher · todos los derechos reservados</p>
-</footer>
+      <!-- RESUMEN -->
+      <div class="section-card">
+        <div class="section-header">
+          <div class="badge">📊 Resumen</div>
+        </div>
+        <div class="info-grid">
+          <div class="info-row">
+            <div class="info-cell">Clases este Mes: 12</div>
+            <div class="info-cell">Estudiantes atendidos: 8</div>
+          </div>
+          <div class="info-row">
+            <div class="info-cell">Ingresos estimados: $240</div>
+            <div class="info-cell">Horas de tutoría: 15</div>
+          </div>
+          <div class="info-row">
+            <div class="info-cell full-width">
+              Calificacion promedio este mes: ⭐ 4.7
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
 
-  <script src="/Scripts/Tutor/script_paginatutor.js"></script>
-  <script src="/Scripts/global.js"></script>
-</body>
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-logo">
+          <img src="/Imagenes/logo letras blancas.png" alt="myTeacher logo" />
+        </div>
+
+        <div class="footer-cols">
+          <div class="footer-col">
+            <h4>Contactos</h4>
+            <p>Numero: +57 302 xxxx xxx</p>
+            <p>Correo: soporte@unilibre.edu</p>
+          </div>
+          <div class="footer-col">
+            <h4>Síguenos</h4>
+            <div class="social-icons">
+              <a href="#" class="social-icon si-fb" aria-label="Facebook">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="white"
+                >
+                  <path
+                    d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                  />
+                </svg>
+              </a>
+              <a href="#" class="social-icon si-ig" aria-label="Instagram">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                </svg>
+              </a>
+              <a href="#" class="social-icon si-x" aria-label="X">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="13"
+                  height="13"
+                  viewBox="0 0 24 24"
+                  fill="white"
+                >
+                  <path
+                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="footer-copy">
+        © 2026 myTeacher · todos los derechos reservados
+      </p>
+    </footer>
+
+    <script src="/Scripts/Tutor/script_paginatutor.js"></script>
+    <script src="/Scripts/global.js"></script>
+  </body>
 </html>
