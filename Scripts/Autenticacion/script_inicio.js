@@ -1,4 +1,4 @@
-// ---- OJO CONTRASEÑA ----
+// ---- Si le da al ojo que pueda mostrar o ocultar la contraseña ----
 const passwordInput = document.getElementById("password");
 const togglePassword = document.getElementById("togglePassword");
 const iconoOjo = togglePassword.querySelector("i");
@@ -13,7 +13,7 @@ togglePassword.addEventListener("click", () => {
   }
 });
 
-// ---- MODAL ----
+// ---- Ventana emergente ----
 const abrirModal = document.getElementById("abrirModal");
 const modal = document.getElementById("modalRecuperar");
 const enviarCorreo = document.getElementById("enviarCorreo");

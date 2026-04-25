@@ -1,6 +1,4 @@
-/* ══════════════════════════════════════
-   AVATAR POR DEFECTO
-   ══════════════════════════════════════ */
+//Avatar por defecto
 const DEFAULT_AVATAR =
   "data:image/svg+xml;charset=utf-8," +
   encodeURIComponent(`
@@ -17,9 +15,7 @@ avatarImg.onerror = function () {
   this.src = DEFAULT_AVATAR;
 };
 
-/* ══════════════════════════════════════
-   CAMBIAR FOTO DE PERFIL
-   ══════════════════════════════════════ */
+//Cambio de foto de perfil
 function cambiarFoto(event) {
   const file = event.target.files[0];
   if (!file) return;
@@ -30,9 +26,7 @@ function cambiarFoto(event) {
   reader.readAsDataURL(file);
 }
 
-/* ══════════════════════════════════════
-   EDITAR PERFIL
-   ══════════════════════════════════════ */
+//Funcion del boton de editar perfil
 let editando = false;
 
 function toggleEditar() {
@@ -41,7 +35,7 @@ function toggleEditar() {
   const btn = document.getElementById("btnEditar");
 
   if (editando) {
-    // Cargar valores actuales en el formulario
+    //Mostrar la informacion que ya estaba para que vea cual va a cambiar
     document.getElementById("inputNombre").value =
       document.getElementById("nombreTexto").textContent;
     document.getElementById("inputCorreo").value =
@@ -85,9 +79,7 @@ function guardarEditar() {
   cancelarEditar();
 }
 
-/* ══════════════════════════════════════
-   DATOS DE TUTORÍAS RECIENTES
-   ══════════════════════════════════════ */
+//Informacion de las tutorias recientes
 const tutorias = [
   {
     materia: "Matematicas",
@@ -105,7 +97,7 @@ const tutorias = [
   },
 ];
 
-/* ── Renderizar tarjetas ── */
+//Cargar las demas tutorias recientes
 function renderTutorias() {
   const container = document.getElementById("tutoriasContainer");
   container.innerHTML = tutorias
@@ -137,13 +129,11 @@ function renderTutorias() {
 
 renderTutorias();
 
-/* ══════════════════════════════════════
-   MODAL DE CALIFICACIÓN
-   ══════════════════════════════════════ */
+//Ventana emergente de la calificacion
 let tutoriaActual = null;
 let estrellaSeleccionada = 0;
 
-// Crear modal dinámicamente
+// Crear ventana emergente dinámicamente
 const modalHTML = `
   <div class="modal-overlay" id="modalOverlay">
     <div class="modal">
@@ -202,7 +192,7 @@ function enviarCalificacion() {
   renderTutorias();
 }
 
-// Cerrar modal al hacer clic fuera
+// Cerrar ventana emergente al hacer clic fuera
 document.getElementById("modalOverlay").addEventListener("click", function (e) {
   if (e.target === this) cerrarModal();
 });

@@ -1,6 +1,4 @@
-/* ══════════════════════════════════════
-   CAMPANA DE NOTIFICACIONES
-   ══════════════════════════════════════ */
+//Permite que la campana de nofiticaciones sirva
 const bell = document.getElementById("bell");
 const notifPanel = document.getElementById("notifPanel");
 
@@ -10,7 +8,7 @@ if (bell && notifPanel) {
     notifPanel.classList.toggle("visible");
   });
 
-  // Cerrar al hacer clic fuera
+  // Cerrar al hacer clic afuera
   document.addEventListener("click", function (e) {
     if (!bell.contains(e.target) && !notifPanel.contains(e.target)) {
       notifPanel.classList.remove("visible");
@@ -18,9 +16,7 @@ if (bell && notifPanel) {
   });
 }
 
-/* ══════════════════════════════════════
-   MENÚ HAMBURGUESA
-   ══════════════════════════════════════ */
+//Menu hamburgesa para el modo celular
 function toggleMenu() {
   const nav = document.getElementById("navLinks");
   const burger = document.getElementById("hamburger");
@@ -38,9 +34,7 @@ document.querySelectorAll(".nav-links a").forEach((link) => {
   });
 });
 
-/* ══════════════════════════════════════
-   CERRAR SESIÓN
-   ══════════════════════════════════════ */
+//cierra la sesion al dar click cerrar sesion
 function cerrarSesion() {
   if (confirm("¿Deseas cerrar sesión?")) {
     window.location.href = "../Autenticacion/inicio_sesion.html"; // cambia por tu ruta de login

@@ -1,6 +1,4 @@
-/* ══════════════════════════════════════
-   DATOS DE RESERVAS
-   ══════════════════════════════════════ */
+//Datos de la reserva
 const reservas = [
   {
     tutor: "Lionel Messi",
@@ -25,9 +23,7 @@ const reservas = [
 const RESERVAS_POR_PAGINA = 2;
 let reservasMostradas = RESERVAS_POR_PAGINA;
 
-/* ══════════════════════════════════════
-   ESTADO → TEXTO Y COLOR
-   ══════════════════════════════════════ */
+//Estado de las reservas si estan proximas o no
 function estadoInfo(estado) {
   const map = {
     proxima: { label: "Próxima", clase: "proxima" },
@@ -37,9 +33,7 @@ function estadoInfo(estado) {
   return map[estado] || map["proxima"];
 }
 
-/* ══════════════════════════════════════
-   RENDERIZAR TARJETAS
-   ══════════════════════════════════════ */
+//Precargar las tarjetas
 function renderReservas() {
   const container = document.getElementById("reservasContainer");
   const visibles = reservas.slice(0, reservasMostradas);
@@ -100,24 +94,20 @@ function renderReservas() {
     })
     .join("");
 
-  // Mostrar/ocultar botón Ver más
+  // Mostrar o ocultar el botón de ver más
   document.getElementById("btnVerMas").style.display =
     reservasMostradas >= reservas.length ? "none" : "inline-block";
 }
 
 renderReservas();
 
-/* ══════════════════════════════════════
-   VER MÁS
-   ══════════════════════════════════════ */
+//Mostrar mas reservas
 function verMas() {
   reservasMostradas += RESERVAS_POR_PAGINA;
   renderReservas();
 }
 
-/* ══════════════════════════════════════
-   MODAL CANCELAR
-   ══════════════════════════════════════ */
+//Cancelar la clase
 let indiceACancelar = null;
 
 function abrirModalCancelar(i) {
@@ -149,9 +139,7 @@ document
     if (e.target === this) cerrarModalCancelar();
   });
 
-/* ══════════════════════════════════════
-   MODAL UNIRSE
-   ══════════════════════════════════════ */
+//Unirse a la clase
 let indiceUnirse = null;
 
 function abrirModalUnirse(i) {

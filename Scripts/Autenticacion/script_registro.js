@@ -1,3 +1,4 @@
+//Mostrar o ocultar la constraseña
 function togglePass(inputId, spanId) {
   const input = document.getElementById(inputId);
   const icono = document.querySelector(`#${spanId} i`);
@@ -11,6 +12,7 @@ function togglePass(inputId, spanId) {
   }
 }
 
+//Verificaciones de que el estudiante haya selecionado y llenado los espacios
 document
   .getElementById("toggle1")
   .addEventListener("click", () => togglePass("pass1", "toggle1"));
@@ -27,7 +29,7 @@ document.querySelector(".btn-registrar").addEventListener("click", function () {
   const estudiante = document.getElementById("estudiante").checked;
   const tutor = document.getElementById("tutor").checked;
 
-  // Validaciones
+  // Validaciones para saber si la informacion es correcta
   if (!nombre) {
     alert("Por favor ingresa tu nombre completo.");
     return;
@@ -49,14 +51,14 @@ document.querySelector(".btn-registrar").addEventListener("click", function () {
     return;
   }
 
-  // Redirección según tipo de cuenta
+  // Redireccionamiento segun el tipo de cuenta que escoja 
   if (tutor) {
-    window.location.href = "registro_tutor.html"; // <-- página del tutor
+    window.location.href = "registro_tutor.html";
   } else {
-    window.location.href = "perfil-estudiante.html"; // <-- página del estudiante
+    window.location.href = "perfil-estudiante.html";
   }
 });
-// Agregar esto para que solo se pueda elegir una opción
+// Solo le permite escoger una sola opcion
 document.getElementById("estudiante").addEventListener("change", function () {
   if (this.checked) document.getElementById("tutor").checked = false;
 });

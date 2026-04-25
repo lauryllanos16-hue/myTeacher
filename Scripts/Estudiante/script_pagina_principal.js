@@ -1,3 +1,4 @@
+//Informacion de los tutores
 const DEFAULT_AVATAR =
   "data:image/svg+xml;charset=utf-8," +
   encodeURIComponent(`
@@ -61,7 +62,7 @@ function renderTutores(lista) {
     .join("");
 }
 
-/* ── EVENTOS (FORMA CORRECTA: delegación) ── */
+//Funcionalidad botones para ver mas de los tutores recomendados o para reservarlos
 document
   .getElementById("tutorsContainer")
   .addEventListener("click", function (e) {
@@ -82,7 +83,7 @@ document
     }
   });
 
-/* ── BUSCADOR ── */
+//Buscador de tutores al gusto del estudiante
 document.querySelector(".btn-buscar").addEventListener("click", function () {
   const selects = document.querySelectorAll(".field-row select");
   const materia = selects[0].value;
@@ -92,10 +93,10 @@ document.querySelector(".btn-buscar").addEventListener("click", function () {
   alert(`Buscando tutores de ${materia} (${modalidad}, ${nivel})`);
 });
 
-/* ── VER MÁS ── */
+// Para mostrarle mas tutores
 document.querySelector(".btn-ver-mas").addEventListener("click", function () {
   alert("Cargando más tutores...");
 });
 
-/* INIT */
+//Para cargarle los demas tutores
 renderTutores(tutores);

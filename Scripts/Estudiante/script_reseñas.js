@@ -1,6 +1,4 @@
-/* ══════════════════════════════════════
-   DATOS INICIALES
-   ══════════════════════════════════════ */
+//Datos de las reseñas
 const comentariosData = [
   {
     nombre: "María López",
@@ -49,9 +47,7 @@ const comentariosData = [
 const ITEMS_POR_PAGINA = 3;
 let mostrandoHasta = ITEMS_POR_PAGINA;
 
-/* ══════════════════════════════════════
-   RENDERIZAR COMENTARIOS
-   ══════════════════════════════════════ */
+//Cargar los demas comentarios
 function renderComentarios() {
   const lista = document.getElementById("listaComentarios");
   const btnVerMas = document.getElementById("btnVerMas");
@@ -81,9 +77,7 @@ function verMas() {
   renderComentarios();
 }
 
-/* ══════════════════════════════════════
-   ESTRELLAS INTERACTIVAS
-   ══════════════════════════════════════ */
+//Permite escoger las estrellas para darle una nota al tutor
 let calificacionSeleccionada = 0;
 
 const estrellas = document.querySelectorAll("#starSelector .star");
@@ -116,9 +110,7 @@ estrellas.forEach((star) => {
   });
 });
 
-/* ══════════════════════════════════════
-   ENVIAR COMENTARIO
-   ══════════════════════════════════════ */
+//Que guarde la informacion del comentario y vereficacion de que este todo llenado
 function enviarComentario() {
   const texto = document.getElementById("inputComentario").value.trim();
 
@@ -162,7 +154,4 @@ function enviarComentario() {
   renderComentarios();
 }
 
-/* ══════════════════════════════════════
-   INIT
-   ══════════════════════════════════════ */
 renderComentarios();

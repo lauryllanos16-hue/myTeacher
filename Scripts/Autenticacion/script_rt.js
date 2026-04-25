@@ -1,3 +1,4 @@
+//Validaciones de que lleno toda la informacion pedida
 document.getElementById("btnGuardar").addEventListener("click", function () {
   const materia = document.getElementById("materia").value;
   const precio = document.getElementById("precio").value.trim();
@@ -27,7 +28,7 @@ document.getElementById("btnGuardar").addEventListener("click", function () {
     return;
   }
 
-  // Aquí puedes enviar los datos al backend
+  // Envia todos los datos registrados
   console.log({ materia, precio, presencial, virtual, ubicacion, descripcion });
   alert("¡Perfil guardado correctamente!");
   window.location.href = "../Tutor/inicio_tutor.html";

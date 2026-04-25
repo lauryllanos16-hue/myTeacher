@@ -1,6 +1,4 @@
-/* ══════════════════════════════════════
-   AVATAR
-   ══════════════════════════════════════ */
+//Avatar por defecto
 const DEFAULT_AVATAR =
   "data:image/svg+xml;charset=utf-8," +
   encodeURIComponent(`
@@ -27,9 +25,7 @@ function cambiarFoto(event) {
   reader.readAsDataURL(file);
 }
 
-/* ══════════════════════════════════════
-   EDITAR PERFIL
-   ══════════════════════════════════════ */
+//Funcion del boton editar perfil
 let editando = false;
 
 function toggleEditar() {
@@ -50,8 +46,6 @@ function toggleEditar() {
       document.getElementById("precioTexto").textContent;
     document.getElementById("inputDesc").value =
       document.getElementById("descTexto").textContent;
-
-    // ✅ nivelTexto no existe en el HTML, se omite sin romper nada
 
     const modalidadActual =
       document.getElementById("modalidadTexto").textContent;

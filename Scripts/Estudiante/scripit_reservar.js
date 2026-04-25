@@ -1,8 +1,4 @@
-/* ══════════════════════════════════════
-   CARGAR DATOS DEL TUTOR DESDE URL
-   Si vienes desde la página de inicio con ?tutor=... se precarga
-   Ejemplo: reservar_tutoria.html?tutor=Lionel%20Messi&materia=Matematicas&nivel=Universitario
-   ══════════════════════════════════════ */
+// Cargar datos del tutor desde la URL
 (function cargarDatosURL() {
   const params = new URLSearchParams(window.location.search);
 
@@ -15,9 +11,7 @@
   if (nivel) document.getElementById("tutorNivel").textContent = nivel;
 })();
 
-/* ══════════════════════════════════════
-   CONFIRMAR RESERVA
-   ══════════════════════════════════════ */
+//Guarda la informacion cuando se le de confirmar reserva
 function confirmarReserva() {
   const tutor = document.getElementById("tutorNombre").textContent;
   const materia = document.getElementById("tutorMateria").textContent;
@@ -46,9 +40,7 @@ function confirmarReserva() {
   abrirModal();
 }
 
-/* ══════════════════════════════════════
-   MODAL
-   ══════════════════════════════════════ */
+//Abre la ventana emergente
 function abrirModal() {
   document.getElementById("modalOverlay").classList.add("active");
 }
@@ -56,10 +48,9 @@ confirmarReserva;
 function cerrarModal() {
   document.getElementById("modalOverlay").classList.remove("active");
   // Redirigir a mis reservas o inicio después de confirmar
-  // window.location.href = '/HTML/Estudiante/inicio_estudiante.html';
 }
 
-// Cerrar modal al hacer clic fuera
+// Cierra la ventana emergente si se la da click afuera del cuadro
 document.getElementById("modalOverlay").addEventListener("click", function (e) {
   if (e.target === this) cerrarModal();
 });

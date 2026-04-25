@@ -1,3 +1,4 @@
+//Funcionalidades de los botones  como iniciar la clase, cancelarla o ver las proximas
 document.querySelector(".btn-primary").addEventListener("click", () => {
   alert("Iniciando clase con Ana Gomez...");
 });
