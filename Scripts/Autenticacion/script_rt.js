@@ -25,4 +25,5 @@ document.getElementById('btnGuardar').addEventListener('click', function () {
   // Aquí puedes enviar los datos al backend
   console.log({ materia, precio, presencial, virtual, ubicacion, descripcion });
   alert('¡Perfil guardado correctamente!');
+  window.location.href = "../Tutor/inicio_tutor.html";
 });
