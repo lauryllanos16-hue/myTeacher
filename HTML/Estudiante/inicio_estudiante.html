@@ -10,23 +10,24 @@
  
 </head>
 <body>
-    <!-- NAVBAR -->
+    <!-- Barra de navegacion -->
 <nav>
   <div class="logo-slot">
     <img src="/Imagenes/Logo.png" alt="myTeacher logo">
   </div>
 
-  <!-- Links centrados -->
+  <!-- Opciones en la barra de navegacion -->
 <div class="nav-links" id="navLinks">
     <a href="#" class="active">Buscar</a>
     <a href="mis_reservas.html">Mis reservas</a>
     <a href="perfil.html#tutorias">Historial</a>
     <a href="perfil.html">Perfil</a>
-    <!-- Solo visible en móvil dentro del menú -->
+    
+    <!-- Boton cerrar sesion en mobile -->
     <button class="btn-cerrar-sesion-mobile" onclick="cerrarSesion()">Cerrar sesión</button>
   </div>
 
-  <!-- Desktop: cerrar sesión + campana a la derecha -->
+  <!-- Camapana de notificaciones y boton de cerrar sesion-->
   <div class="nav-right">
     <button class="btn-cerrar-sesion" onclick="cerrarSesion()">Cerrar sesión</button>
     <div class="nav-bell" id="bell">🔔</div>
@@ -35,7 +36,7 @@
     </div>
   </div>
 
-  <!-- Hamburguesa solo móvil -->
+  <!-- Menu Hamburguesa de la version mobile -->
   <button class="hamburger" id="hamburger" onclick="toggleMenu()">
     <span></span>
     <span></span>
@@ -44,7 +45,7 @@
 </nav>
 <div class="page">
 
-  <!-- BUSCADOR -->
+  <!-- Filtros para buscar un tutor con los gustos que quiera el estudiante -->
   <div class="search-box">
     <div class="search-title"><span class="icon">&#128269;</span> Buscar tutor</div>
     <div class="field-row">
@@ -77,14 +78,12 @@
     <button class="btn btn-primary btn-buscar">Buscar</button>
   </div>
 
-  <!-- TUTORES RECOMENDADOS -->
   <div class="section-label">
     <span>📚 Tutores recomendados</span>
   </div>
 
-  <!-- CONTENEDOR DE TUTORES -->
+  <!-- Cuadros donde estan la informacion de los tutores recomendados -->
   <div class="tutors-container" id="tutorsContainer">
-    <!-- Las tarjetas se generarán dinámicamente con JS -->
   </div>
 
   <div class="ver-mas-wrap">
@@ -93,7 +92,7 @@
 
  
 </div>
- <!-- FOOTER -->
+ <!-- Este es todo el proceso del pie de pagina -->
  
 <footer>
   <div class="footer-inner">

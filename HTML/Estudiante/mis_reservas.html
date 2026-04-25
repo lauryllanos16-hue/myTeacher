@@ -10,23 +10,22 @@
 </head>
 <body>
 
-  <!-- NAVBAR -->
+  <!-- Barra de navegacion  -->
   <nav>
   <div class="logo-slot">
     <img src="/Imagenes/Logo.png" alt="myTeacher logo">
   </div>
 
-  <!-- Links centrados -->
+  <!-- Opciones de la barra de navegacion -->
 <div class="nav-links" id="navLinks">
     <a href="inicio_estudiante.html">Buscar</a>
     <a href="#"class = "active">Mis reservas</a>
     <a href="perfil.html#tutorias">Historial</a>
     <a href="perfil.html">Perfil</a>
-    <!-- Solo visible en móvil dentro del menú -->
+    
     <button class="btn-cerrar-sesion-mobile" onclick="cerrarSesion()">Cerrar sesión</button>
   </div>
 
-  <!-- Desktop: cerrar sesión + campana a la derecha -->
   <div class="nav-right">
     <button class="btn-cerrar-sesion" onclick="cerrarSesion()">Cerrar sesión</button>
     <div class="nav-bell" id="bell">🔔</div>
@@ -35,7 +34,6 @@
     </div>
   </div>
 
-  <!-- Hamburguesa solo móvil -->
   <button class="hamburger" id="hamburger" onclick="toggleMenu()">
     <span></span>
     <span></span>
@@ -44,22 +42,21 @@
 </nav>
   <div class="page">
 
-    <!-- TÍTULO SECCIÓN -->
     <div class="section-label">
       <span>&#127891; Mis reservas</span>
     </div>
 
-    <!-- CONTENEDOR DE RESERVAS -->
+    <!-- Cuadro donde esta la informacion de la reserva -->
     <div id="reservasContainer"></div>
 
-    <!-- VER MÁS -->
+    <!-- Boton para ver mas reservas que tenga -->
     <div class="ver-mas-wrap">
       <button class="btn-ver-mas" id="btnVerMas" onclick="verMas()">Ver más</button>
     </div>
 
   </div>
 
-  <!-- MODAL CANCELAR -->
+  <!-- Ventana emergente que se despliega al dar cancelar en una reserva -->
   <div class="modal-overlay" id="modalCancelar">
     <div class="modal">
       <div class="modal-icon cancel">&#33;</div>
@@ -72,7 +69,7 @@
     </div>
   </div>
 
-  <!-- MODAL UNIRSE -->
+  <!-- Ventana emergente que se despliega al dar unirse en una reserva -->
   <div class="modal-overlay" id="modalUnirse">
     <div class="modal">
       <div class="modal-icon join">&#9654;</div>
@@ -85,7 +82,7 @@
     </div>
   </div>
 
-  <!-- FOOTER -->
+  <!-- Pie de pagina -->
   <footer>
     <div class="footer-inner">
       <div class="footer-logo">
