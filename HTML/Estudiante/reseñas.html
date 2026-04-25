@@ -15,26 +15,23 @@
     <img src="/Imagenes/Logo.png" alt="myTeacher logo">
   </div>
 
-  <!-- Links (desktop: horizontal | móvil: desplegable) -->
+  <!-- Barra de navegacion -->
   <div class="nav-links" id="navLinks">
     <a href="inicio_estudiante.html">Buscar</a>
     <a href="mis_reservas.html">Mis reservas</a>
     <a href="perfil.html#tutorias">Historial</a>
     <a href="perfil.html">Perfil</a>
-    <!-- Solo visible en móvil dentro del menú -->
+    
     <button class="btn-cerrar-sesion-mobile" onclick="cerrarSesion()">Cerrar sesión</button>
   </div>
 
-  <!-- Solo visible en desktop -->
   <button class="btn-cerrar-sesion" onclick="cerrarSesion()">Cerrar sesión</button>
 
-  <!-- Campana -->
   <div class="nav-bell" id="bell">🔔</div>
   <div class="notif-panel" id="notifPanel">
     <p>Recordatorio que tiene una clase en 20 minutos</p>
   </div>
 
-  <!-- Hamburguesa (solo móvil, al final para que quede bien) -->
   <button class="hamburger" id="hamburger" onclick="toggleMenu()">
     <span></span>
     <span></span>
@@ -44,7 +41,7 @@
  
   <main>
  
-    <!-- ENCABEZADO -->
+    <!-- Texto abajo de la barra de navegacion -->
     <div class="page-title">
       <h2>Calificaciones y comentarios</h2>
       <p class="rating-summary">⭐ <span id="promedioGlobal">4.8</span>/5 (<span id="totalResenas">25</span> reseñas)</p>
@@ -52,7 +49,7 @@
  
     <hr class="divider"/>
  
-    <!-- FORMULARIO OPINIÓN -->
+    <!-- Cuadro para colocar opinion y calificacion al tutor -->
     <div class="section-card">
       <div class="section-header">
         <div class="badge">Deja tu opinion</div>
@@ -77,15 +74,13 @@
       </div>
     </div>
  
-    <!-- LISTA DE COMENTARIOS -->
+    <!-- Historial de las opiones que ya hicieron -->
     <div class="section-card">
       <div class="section-header">
         <div class="badge">Lista de comentarios</div>
       </div>
  
-      <div id="listaComentarios" class="comentarios-list">
-        <!-- Los comentarios se renderizan desde JS -->
-      </div>
+      <div id="listaComentarios" class="comentarios-list"></div>
  
       <div class="btn-wrap" style="padding-bottom: 20px;">
         <button class="btn btn-primary" id="btnVerMas" onclick="verMas()">Ver mas</button>
