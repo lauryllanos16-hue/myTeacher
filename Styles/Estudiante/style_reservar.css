@@ -6,7 +6,7 @@
   margin: 0 18px 24px;
   border-radius: 14px;
   padding: 28px 32px;
-  box-shadow: 0 1px 4px rgba(80,100,180,0.06);
+  box-shadow: 0 1px 4px rgba(80, 100, 180, 0.06);
 }
 
 /* ══════════════════════════════
@@ -72,7 +72,7 @@
 }
 
 .fecha-hora-row select:focus {
-  outline: 2px solid #85B1F8;
+  outline: 2px solid #85b1f8;
 }
 
 /* ══════════════════════════════
@@ -95,7 +95,7 @@
 .radio-label input[type="radio"] {
   width: 17px;
   height: 17px;
-  accent-color: #85B1F8;
+  accent-color: #85b1f8;
 }
 
 /* ══════════════════════════════
@@ -109,7 +109,7 @@
    BOTÓN CONFIRMAR (controlado por JS)
    ══════════════════════════════ */
 .btn-confirmar {
-  background: #85B1F8;
+  background: #85b1f8;
   border: none;
   border-radius: 10px;
   padding: 12px 48px;
@@ -117,7 +117,9 @@
   font-weight: 700;
   color: #000;
   cursor: pointer;
-  transition: background .2s, opacity .2s;
+  transition:
+    background 0.2s,
+    opacity 0.2s;
 }
 
 /* Hover */
@@ -136,7 +138,7 @@
 
 /* Estado activo (cuando JS lo habilita) */
 .btn-confirmar.activo {
-  background: #85B1F8;
+  background: #85b1f8;
   color: #000;
   cursor: pointer;
   opacity: 1;
@@ -153,7 +155,7 @@
 .modal-icon {
   width: 56px;
   height: 56px;
-  background: #85B1F8;
+  background: #85b1f8;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -168,7 +170,6 @@
    RESPONSIVE
    ══════════════════════════════ */
 @media (max-width: 600px) {
-
   .reserva-card {
     margin: 0 10px 18px;
     padding: 18px 14px;

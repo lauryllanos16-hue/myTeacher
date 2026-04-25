@@ -1,187 +1,259 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>myTeacher · Perfil</title>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="/Styles/Tutor/style_perfil_tutor.css"/>
-  <link rel="stylesheet" href="/Styles/global.css"/>
-</head>
-<body>
-<nav>
-  <div class="logo-slot">
-    <img src="/Imagenes/Logo.png" alt="myTeacher logo">
-  </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>myTeacher · Perfil</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/Styles/Tutor/style_perfil_tutor.css" />
+    <link rel="stylesheet" href="/Styles/global.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="logo-slot">
+        <img src="/Imagenes/Logo.png" alt="myTeacher logo" />
+      </div>
 
-  <!-- Links centrados -->
-  <div class="nav-links" id="navLinks">
-    <a href="inicio_tutor.html">Mis Clases</a>
-    <a href="#disponibilidad">Disponibilidad</a>
-    <a href="#" class = "active">Perfil</a>
-    <!-- Solo móvil -->
-    <button class="btn-cerrar-sesion-mobile" onclick="cerrarSesion()">Cerrar sesión</button>
-  </div>
+      <!-- Links centrados -->
+      <div class="nav-links" id="navLinks">
+        <a href="inicio_tutor.html">Mis Clases</a>
+        <a href="#disponibilidad">Disponibilidad</a>
+        <a href="#" class="active">Perfil</a>
+        <!-- Solo móvil -->
+        <button class="btn-cerrar-sesion-mobile" onclick="cerrarSesion()">
+          Cerrar sesión
+        </button>
+      </div>
 
-  <!-- Desktop: cerrar sesión + campana a la derecha -->
-  <div class="nav-right">
-    <button class="btn-cerrar-sesion" onclick="cerrarSesion()">Cerrar sesión</button>
-    <div class="nav-bell" id="bell">🔔</div>
-    <div class="notif-panel" id="notifPanel">
-      <p>Recordatorio que tiene una clase en 20 minutos</p>
-    </div>
-  </div>
-
-  <!-- Hamburguesa solo móvil -->
-  <button class="hamburger" id="hamburger" onclick="toggleMenu()">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
-</nav>
-
-  <main>
-
-    <!-- PERFIL -->
-    <div class="section-card">
-      <div class="profile-avatar">
-        <div class="avatar-wrap">
-          <img id="avatarImg" alt="Foto de perfil">
-          <label class="avatar-edit-btn" title="Cambiar foto">
-            <input type="file" accept="image/*" onchange="cambiarFoto(event)" style="display:none;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24"
-              fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
-              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
-            </svg>
-          </label>
+      <!-- Desktop: cerrar sesión + campana a la derecha -->
+      <div class="nav-right">
+        <button class="btn-cerrar-sesion" onclick="cerrarSesion()">
+          Cerrar sesión
+        </button>
+        <div class="nav-bell" id="bell">🔔</div>
+        <div class="notif-panel" id="notifPanel">
+          <p>Recordatorio que tiene una clase en 20 minutos</p>
         </div>
       </div>
 
-      <!-- Info visible -->
-      <div class="profile-info">
-        <p class="profile-name"><strong>Nombre:</strong> <span id="nombreTexto">Juan Perez</span></p>
-        <p class="profile-email"><strong>Correo:</strong> <span id="correoTexto">JuanPerez@email.com</span></p>
-        <p class="profile-rating">⭐ <span id="ratingTexto">4.8</span> <span class="reviews">(25 reseñas)</span></p>
-      </div>
+      <!-- Hamburguesa solo móvil -->
+      <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
 
-      <!-- Info grid -->
-      <div class="info-grid" style="margin-top: 16px;">
-        <div class="info-row">
-          <div class="info-cell">Materias: <span id="materiasTexto">Matematicas, Algebra</span></div>
-          <div class="info-cell">Ubicacion: <span id="ubicacionTexto">Barranquilla</span></div>
+    <main>
+      <!-- PERFIL -->
+      <div class="section-card">
+        <div class="profile-avatar">
+          <div class="avatar-wrap">
+            <img id="avatarImg" alt="Foto de perfil" />
+            <label class="avatar-edit-btn" title="Cambiar foto">
+              <input
+                type="file"
+                accept="image/*"
+                onchange="cambiarFoto(event)"
+                style="display: none"
+              />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="13"
+                height="13"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="white"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"
+                />
+                <path
+                  d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"
+                />
+              </svg>
+            </label>
+          </div>
         </div>
-        <div class="info-row">
-          <div class="info-cell">Precio por hora: <span id="precioTexto">$20</span></div>
-          <div class="info-cell">Modalidad: <span id="modalidadTexto">Virtual/Presencial</span></div>
+
+        <!-- Info visible -->
+        <div class="profile-info">
+          <p class="profile-name">
+            <strong>Nombre:</strong> <span id="nombreTexto">Juan Perez</span>
+          </p>
+          <p class="profile-email">
+            <strong>Correo:</strong>
+            <span id="correoTexto">JuanPerez@email.com</span>
+          </p>
+          <p class="profile-rating">
+            ⭐ <span id="ratingTexto">4.8</span>
+            <span class="reviews">(25 reseñas)</span>
+          </p>
+        </div>
+
+        <!-- Info grid -->
+        <div class="info-grid" style="margin-top: 16px">
+          <div class="info-row">
+            <div class="info-cell">
+              Materias: <span id="materiasTexto">Matematicas, Algebra</span>
+            </div>
+            <div class="info-cell">
+              Ubicacion: <span id="ubicacionTexto">Barranquilla</span>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="info-cell">
+              Precio por hora: <span id="precioTexto">$20</span>
+            </div>
+            <div class="info-cell">
+              Modalidad: <span id="modalidadTexto">Virtual/Presencial</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Descripcion -->
+        <div class="descripcion-box">
+          <p class="desc-title">Descripcion</p>
+          <p class="desc-text" id="descTexto">
+            Profesor de matemáticas con 5 años de experiencia ayudando a
+            estudiantes universitarios y de secundaria.
+          </p>
+        </div>
+
+        <!-- Link editar -->
+        <div class="editar-link-wrap">
+          <a
+            href="#"
+            id="btnEditar"
+            onclick="
+              event.preventDefault();
+              toggleEditar();
+            "
+            >Editar perfil</a
+          >
         </div>
       </div>
 
-      <!-- Descripcion -->
-      <div class="descripcion-box">
-        <p class="desc-title">Descripcion</p>
-        <p class="desc-text" id="descTexto">Profesor de matemáticas con 5 años de experiencia ayudando a estudiantes universitarios y de secundaria.</p>
-      </div>
-
-      <!-- Link editar -->
-      <div class="editar-link-wrap">
-        <a href="#" id="btnEditar" onclick="event.preventDefault(); toggleEditar();">Editar perfil</a>
-      </div>
-    </div>
-
-    <!-- Formulario edición -->
-    <div id="editForm" class="section-card" style="display:none;">
-  <div class="edit-form-inner">
-    <div class="edit-field">
-      <label>Nombre</label>
-      <input type="text" id="inputNombre"/>
-    </div>
-    <div class="edit-field">
-      <label>Correo</label>
-      <input type="email" id="inputCorreo"/>
-    </div>
-  </div>
-
-  <!-- Cuadro en grid igual al perfil -->
-  <div class="edit-grid" style="margin-top: 4px;">
-    <div class="edit-grid-row">
-      <div class="edit-grid-cell">
-        <label>Materias:</label>
-        <input type="text" id="inputMaterias"/>
-      </div>
-      <div class="edit-grid-cell">
-        <label>Ubicación:</label>
-        <input type="text" id="inputUbicacion"/>
-      </div>
-    </div>
-    <div class="edit-grid-row">
-      <div class="edit-grid-cell">
-        <label>Precio/hora:</label>
-        <input type="text" id="inputPrecio"/>
-      </div>
-      <div class="edit-grid-cell">
-        <label>Modalidad:</label>
-        <select id="inputModalidad">
-          <option>Virtual</option>
-          <option>Presencial</option>
-          <option>Virtual/Presencial</option>
-        </select>
-      </div>
-    </div>
-  </div>
-
-  <!-- Descripción -->
-  <div class="descripcion-box" style="margin-top: 16px;">
-    <p class="desc-title">Descripción</p>
-    <textarea id="inputDesc" rows="3" style="width:100%; font-family:'Nunito',sans-serif; font-size:13.5px; font-weight:600; color:#1a2a3a; border:1.5px solid #b0c8e8; border-radius:7px; padding:8px 12px; outline:none; resize:none;"></textarea>
-  </div>
-
-  <div class="edit-form-inner" style="margin-top: 8px;">
-    <div class="edit-form-btns">
-      <button class="btn-cancelar" onclick="cancelarEditar()">Cancelar</button>
-      <button class="btn-guardar" onclick="guardarEditar()">Guardar</button>
-    </div>
-  </div>
-</div>
-
-    <!-- ESTADISTICAS -->
-    <div class="section-card">
-      <div class="section-header">
-        <div class="badge">📊 Estadísticas</div>
-      </div>
-      <div class="info-grid">
-        <div class="info-row">
-          <div class="info-cell">Clases impartidas: 120</div>
-          <div class="info-cell">Estudiantes atendidos: 60</div>
+      <!-- Formulario edición -->
+      <div id="editForm" class="section-card" style="display: none">
+        <div class="edit-form-inner">
+          <div class="edit-field">
+            <label>Nombre</label>
+            <input type="text" id="inputNombre" />
+          </div>
+          <div class="edit-field">
+            <label>Correo</label>
+            <input type="email" id="inputCorreo" />
+          </div>
         </div>
-        <div class="info-row">
-          <div class="info-cell" style="justify-content: center; border-right: none;">
-            Calificacion promedio: ⭐ 4.8
+
+        <!-- Cuadro en grid igual al perfil -->
+        <div class="edit-grid" style="margin-top: 4px">
+          <div class="edit-grid-row">
+            <div class="edit-grid-cell">
+              <label>Materias:</label>
+              <input type="text" id="inputMaterias" />
+            </div>
+            <div class="edit-grid-cell">
+              <label>Ubicación:</label>
+              <input type="text" id="inputUbicacion" />
+            </div>
+          </div>
+          <div class="edit-grid-row">
+            <div class="edit-grid-cell">
+              <label>Precio/hora:</label>
+              <input type="text" id="inputPrecio" />
+            </div>
+            <div class="edit-grid-cell">
+              <label>Modalidad:</label>
+              <select id="inputModalidad">
+                <option>Virtual</option>
+                <option>Presencial</option>
+                <option>Virtual/Presencial</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Descripción -->
+        <div class="descripcion-box" style="margin-top: 16px">
+          <p class="desc-title">Descripción</p>
+          <textarea
+            id="inputDesc"
+            rows="3"
+            style="
+              width: 100%;
+              font-family: &quot;Nunito&quot;, sans-serif;
+              font-size: 13.5px;
+              font-weight: 600;
+              color: #1a2a3a;
+              border: 1.5px solid #b0c8e8;
+              border-radius: 7px;
+              padding: 8px 12px;
+              outline: none;
+              resize: none;
+            "
+          ></textarea>
+        </div>
+
+        <div class="edit-form-inner" style="margin-top: 8px">
+          <div class="edit-form-btns">
+            <button class="btn-cancelar" onclick="cancelarEditar()">
+              Cancelar
+            </button>
+            <button class="btn-guardar" onclick="guardarEditar()">
+              Guardar
+            </button>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- DISPONIBILIDAD -->
-    <div class="section-card" id="disponibilidad">
-      <div class="section-header">
-        <div class="badge">🏫 Disponibilidad</div>
-      </div>
-      <div class="info-grid">
-        <div class="info-row">
-          <div class="info-cell">Lunes: 3:00PM – 7:00PM</div>
-          <div class="info-cell">Martes: 2:00PM – 6:00PM</div>
+      <!-- ESTADISTICAS -->
+      <div class="section-card">
+        <div class="section-header">
+          <div class="badge">📊 Estadísticas</div>
         </div>
-        <div class="info-row">
-          <div class="info-cell">Miércoles: 4:00PM – 8:00PM</div>
-          <div class="info-cell"></div>
+        <div class="info-grid">
+          <div class="info-row">
+            <div class="info-cell">Clases impartidas: 120</div>
+            <div class="info-cell">Estudiantes atendidos: 60</div>
+          </div>
+          <div class="info-row">
+            <div
+              class="info-cell"
+              style="justify-content: center; border-right: none"
+            >
+              Calificacion promedio: ⭐ 4.8
+            </div>
+          </div>
         </div>
       </div>
-    </div>
 
-  </main>
+      <!-- DISPONIBILIDAD -->
+      <div class="section-card" id="disponibilidad">
+        <div class="section-header">
+          <div class="badge">🏫 Disponibilidad</div>
+        </div>
+        <div class="info-grid">
+          <div class="info-row">
+            <div class="info-cell">Lunes: 3:00PM – 7:00PM</div>
+            <div class="info-cell">Martes: 2:00PM – 6:00PM</div>
+          </div>
+          <div class="info-row">
+            <div class="info-cell">Miércoles: 4:00PM – 8:00PM</div>
+            <div class="info-cell"></div>
+          </div>
+        </div>
+      </div>
+    </main>
 
-  <script src="/Scripts/Tutor/script_perfiltutor.js"></script>
-  <script src="/Scripts/global.js"></script>
-</body>
+    <script src="/Scripts/Tutor/script_perfiltutor.js"></script>
+    <script src="/Scripts/global.js"></script>
+  </body>
 </html>

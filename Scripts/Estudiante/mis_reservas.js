@@ -3,23 +3,23 @@
    ══════════════════════════════════════ */
 const reservas = [
   {
-    tutor:     'Lionel Messi',
-    materia:   'Matematicas',
-    fecha:     '12 Marzo - 4:00 PM',
-    nivel:     'Universitario',
-    modalidad: 'Presencial',
-    estado:    'proxima',
-    enlace:    '#'
+    tutor: "Lionel Messi",
+    materia: "Matematicas",
+    fecha: "12 Marzo - 4:00 PM",
+    nivel: "Universitario",
+    modalidad: "Presencial",
+    estado: "proxima",
+    enlace: "#",
   },
   {
-    tutor:     'Maria Fernandez',
-    materia:   'Coreano',
-    fecha:     '15 Marzo - 6:00 PM',
-    nivel:     'Universitario',
-    modalidad: 'Virtual',
-    estado:    'proxima',
-    enlace:    '#'
-  }
+    tutor: "Maria Fernandez",
+    materia: "Coreano",
+    fecha: "15 Marzo - 6:00 PM",
+    nivel: "Universitario",
+    modalidad: "Virtual",
+    estado: "proxima",
+    enlace: "#",
+  },
 ];
 
 const RESERVAS_POR_PAGINA = 2;
@@ -30,19 +30,19 @@ let reservasMostradas = RESERVAS_POR_PAGINA;
    ══════════════════════════════════════ */
 function estadoInfo(estado) {
   const map = {
-    proxima:   { label: 'Próxima',   clase: 'proxima'   },
-    activa:    { label: 'Activa',    clase: 'activa'    },
-    cancelada: { label: 'Cancelada', clase: 'cancelada' }
+    proxima: { label: "Próxima", clase: "proxima" },
+    activa: { label: "Activa", clase: "activa" },
+    cancelada: { label: "Cancelada", clase: "cancelada" },
   };
-  return map[estado] || map['proxima'];
+  return map[estado] || map["proxima"];
 }
 
 /* ══════════════════════════════════════
    RENDERIZAR TARJETAS
    ══════════════════════════════════════ */
 function renderReservas() {
-  const container = document.getElementById('reservasContainer');
-  const visibles  = reservas.slice(0, reservasMostradas);
+  const container = document.getElementById("reservasContainer");
+  const visibles = reservas.slice(0, reservasMostradas);
 
   if (reservas.length === 0) {
     container.innerHTML = `
@@ -50,14 +50,15 @@ function renderReservas() {
         <div class="empty-icon">&#128197;</div>
         <p>No tienes reservas activas por el momento.</p>
       </div>`;
-    document.getElementById('btnVerMas').style.display = 'none';
+    document.getElementById("btnVerMas").style.display = "none";
     return;
   }
 
-  container.innerHTML = visibles.map((r, i) => {
-    const est = estadoInfo(r.estado);
-    const cancelada = r.estado === 'cancelada';
-    return `<div class="section-card" id="card-${i}">
+  container.innerHTML = visibles
+    .map((r, i) => {
+      const est = estadoInfo(r.estado);
+      const cancelada = r.estado === "cancelada";
+      return `<div class="section-card" id="card-${i}">
 
   <div class="info-grid">
     <div class="info-row">
@@ -84,23 +85,24 @@ function renderReservas() {
     <button
       class="btn btn-primary"
       onclick="abrirModalUnirse(${i})"
-      ${cancelada ? 'disabled style="background:#e8e8e8;color:#999;cursor:not-allowed;"' : ''}>
+      ${cancelada ? 'disabled style="background:#e8e8e8;color:#999;cursor:not-allowed;"' : ""}>
       Unirse a la clase
     </button>
     <button
-      class="btn ${cancelada ? 'btn-disabled' : 'btn-primary'}"
-      onclick="${cancelada ? '' : `abrirModalCancelar(${i})`}"
-      ${cancelada ? 'disabled' : ''}>
-      ${cancelada ? 'Cancelada' : 'Cancelar'}
+      class="btn ${cancelada ? "btn-disabled" : "btn-primary"}"
+      onclick="${cancelada ? "" : `abrirModalCancelar(${i})`}"
+      ${cancelada ? "disabled" : ""}>
+      ${cancelada ? "Cancelada" : "Cancelar"}
     </button>
   </div>
 
 </div>`;
-  }).join('');
+    })
+    .join("");
 
   // Mostrar/ocultar botón Ver más
-  document.getElementById('btnVerMas').style.display =
-    reservasMostradas >= reservas.length ? 'none' : 'inline-block';
+  document.getElementById("btnVerMas").style.display =
+    reservasMostradas >= reservas.length ? "none" : "inline-block";
 }
 
 renderReservas();
@@ -121,29 +123,31 @@ let indiceACancelar = null;
 function abrirModalCancelar(i) {
   indiceACancelar = i;
   const r = reservas[i];
-  document.getElementById('modalCancelarDetalle').innerHTML =
+  document.getElementById("modalCancelarDetalle").innerHTML =
     `<strong>Tutor:</strong> ${r.tutor}<br>
      <strong>Materia:</strong> ${r.materia}<br>
      <strong>Fecha:</strong> ${r.fecha}`;
-  document.getElementById('modalCancelar').classList.add('active');
+  document.getElementById("modalCancelar").classList.add("active");
 }
 
 function cerrarModalCancelar() {
-  document.getElementById('modalCancelar').classList.remove('active');
+  document.getElementById("modalCancelar").classList.remove("active");
   indiceACancelar = null;
 }
 
 function confirmarCancelar() {
   if (indiceACancelar !== null) {
-    reservas[indiceACancelar].estado = 'cancelada';
+    reservas[indiceACancelar].estado = "cancelada";
     cerrarModalCancelar();
     renderReservas();
   }
 }
 
-document.getElementById('modalCancelar').addEventListener('click', function(e) {
-  if (e.target === this) cerrarModalCancelar();
-});
+document
+  .getElementById("modalCancelar")
+  .addEventListener("click", function (e) {
+    if (e.target === this) cerrarModalCancelar();
+  });
 
 /* ══════════════════════════════════════
    MODAL UNIRSE
@@ -153,31 +157,31 @@ let indiceUnirse = null;
 function abrirModalUnirse(i) {
   indiceUnirse = i;
   const r = reservas[i];
-  document.getElementById('modalUnirseDetalle').innerHTML =
+  document.getElementById("modalUnirseDetalle").innerHTML =
     `<strong>Tutor:</strong> ${r.tutor}<br>
      <strong>Materia:</strong> ${r.materia}<br>
      <strong>Fecha:</strong> ${r.fecha}<br>
      <strong>Modalidad:</strong> ${r.modalidad}`;
-  document.getElementById('modalUnirse').classList.add('active');
+  document.getElementById("modalUnirse").classList.add("active");
 }
 
 function cerrarModalUnirse() {
-  document.getElementById('modalUnirse').classList.remove('active');
+  document.getElementById("modalUnirse").classList.remove("active");
   indiceUnirse = null;
 }
 
 function abrirEnlace() {
   if (indiceUnirse !== null) {
     const enlace = reservas[indiceUnirse].enlace;
-    if (enlace && enlace !== '#') {
-      window.open(enlace, '_blank');
+    if (enlace && enlace !== "#") {
+      window.open(enlace, "_blank");
     } else {
-      alert('El enlace de la clase no está disponible aún.');
+      alert("El enlace de la clase no está disponible aún.");
     }
   }
   cerrarModalUnirse();
 }
 
-document.getElementById('modalUnirse').addEventListener('click', function(e) {
+document.getElementById("modalUnirse").addEventListener("click", function (e) {
   if (e.target === this) cerrarModalUnirse();
 });

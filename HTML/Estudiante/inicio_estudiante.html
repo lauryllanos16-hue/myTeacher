@@ -1,140 +1,180 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>myTeacher - Connect & Learn</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-   <link rel="stylesheet" href="/Styles/global.css">
-  <link rel="stylesheet" href="/Styles/Estudiante/style_pagina_principal.css">
- 
-</head>
-<body>
-    <!-- Barra de navegacion -->
-<nav>
-  <div class="logo-slot">
-    <img src="/Imagenes/Logo.png" alt="myTeacher logo">
-  </div>
-
-  <!-- Opciones en la barra de navegacion -->
-<div class="nav-links" id="navLinks">
-    <a href="#" class="active">Buscar</a>
-    <a href="mis_reservas.html">Mis reservas</a>
-    <a href="perfil.html#tutorias">Historial</a>
-    <a href="perfil.html">Perfil</a>
-    
-    <!-- Boton cerrar sesion en mobile -->
-    <button class="btn-cerrar-sesion-mobile" onclick="cerrarSesion()">Cerrar sesión</button>
-  </div>
-
-  <!-- Camapana de notificaciones y boton de cerrar sesion-->
-  <div class="nav-right">
-    <button class="btn-cerrar-sesion" onclick="cerrarSesion()">Cerrar sesión</button>
-    <div class="nav-bell" id="bell">🔔</div>
-    <div class="notif-panel" id="notifPanel">
-      <p>Recordatorio que tiene una clase en 20 minutos</p>
-    </div>
-  </div>
-
-  <!-- Menu Hamburguesa de la version mobile -->
-  <button class="hamburger" id="hamburger" onclick="toggleMenu()">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
-</nav>
-<div class="page">
-
-  <!-- Filtros para buscar un tutor con los gustos que quiera el estudiante -->
-  <div class="search-box">
-    <div class="search-title"><span class="icon">&#128269;</span> Buscar tutor</div>
-    <div class="field-row">
-      <span class="field-label">Materia</span>
-      <select id="materiaSelect">
-        <option>Matematicas</option>
-        <option>Física</option>
-        <option>Química</option>
-        <option>Inglés</option>
-        <option>Coreano</option>
-        <option>Historia</option>
-      </select>
-    </div>
-    <div class="field-row">
-      <span class="field-label">Modalidad</span>
-      <select id="modalidadSelect">
-        <option>Presencial</option>
-        <option>Virtual</option>
-        <option>Virtual / Presencial</option>
-      </select>
-    </div>
-    <div class="field-row">
-      <span class="field-label">Nivel</span>
-      <select id="nivelSelect">
-        <option>Universitario</option>
-        <option>Bachillerato</option>
-        <option>Primaria</option>
-      </select>
-    </div>
-    <button class="btn btn-primary btn-buscar">Buscar</button>
-  </div>
-
-  <div class="section-label">
-    <span>📚 Tutores recomendados</span>
-  </div>
-
-  <!-- Cuadros donde estan la informacion de los tutores recomendados -->
-  <div class="tutors-container" id="tutorsContainer">
-  </div>
-
-  <div class="ver-mas-wrap">
-    <button class="btn-ver-mas" id="btnVerMas">Ver más</button>
-  </div>
-
- 
-</div>
- <!-- Este es todo el proceso del pie de pagina -->
- 
-<footer>
-  <div class="footer-inner">
-    <div class="footer-logo">
-      <img src="/Imagenes/logo letras blancas.png" alt="myTeacher logo" style="width:100%;height:100%;object-fit:contain;">
-    </div>
-    <div class="footer-cols">
-      <div class="footer-col">
-        <h4>Contactos</h4>
-        <p>
-          Numero: +57 302 xxxx xxx<br>
-          Correo: soporte@unilibre.edu
-        </p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>myTeacher - Connect & Learn</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/Styles/global.css" />
+    <link
+      rel="stylesheet"
+      href="/Styles/Estudiante/style_pagina_principal.css"
+    />
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav>
+      <div class="logo-slot">
+        <img src="/Imagenes/Logo.png" alt="myTeacher logo" />
       </div>
-      <div class="footer-col">
-        <h4>Síguenos</h4>
-      <div class="social-icons">
-      <a href="#" class="social-icon si-fb" aria-label="Facebook">
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="white">
-            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-          </svg>
-        </a>
-        <a href="#" class="social-icon si-ig" aria-label="Instagram">
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
-            fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-          </svg>
-        </a>
-        <a href="#" class="social-icon si-x" aria-label="X">
-          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="white">
-            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-          </svg>
-        </a>
+
+      <!-- Links centrados -->
+      <div class="nav-links" id="navLinks">
+        <a href="#" class="active">Buscar</a>
+        <a href="mis_reservas.html">Mis reservas</a>
+        <a href="perfil.html#tutorias">Historial</a>
+        <a href="perfil.html">Perfil</a>
+        <!-- Solo visible en móvil dentro del menú -->
+        <button class="btn-cerrar-sesion-mobile" onclick="cerrarSesion()">
+          Cerrar sesión
+        </button>
+      </div>
+
+      <!-- Desktop: cerrar sesión + campana a la derecha -->
+      <div class="nav-right">
+        <button class="btn-cerrar-sesion" onclick="cerrarSesion()">
+          Cerrar sesión
+        </button>
+        <div class="nav-bell" id="bell">🔔</div>
+        <div class="notif-panel" id="notifPanel">
+          <p>Recordatorio que tiene una clase en 20 minutos</p>
         </div>
       </div>
+
+      <!-- Hamburguesa solo móvil -->
+      <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+    <div class="page">
+      <!-- BUSCADOR -->
+      <div class="search-box">
+        <div class="search-title">
+          <span class="icon">&#128269;</span> Buscar tutor
+        </div>
+        <div class="field-row">
+          <span class="field-label">Materia</span>
+          <select id="materiaSelect">
+            <option>Matematicas</option>
+            <option>Física</option>
+            <option>Química</option>
+            <option>Inglés</option>
+            <option>Coreano</option>
+            <option>Historia</option>
+          </select>
+        </div>
+        <div class="field-row">
+          <span class="field-label">Modalidad</span>
+          <select id="modalidadSelect">
+            <option>Presencial</option>
+            <option>Virtual</option>
+            <option>Virtual / Presencial</option>
+          </select>
+        </div>
+        <div class="field-row">
+          <span class="field-label">Nivel</span>
+          <select id="nivelSelect">
+            <option>Universitario</option>
+            <option>Bachillerato</option>
+            <option>Primaria</option>
+          </select>
+        </div>
+        <button class="btn btn-primary btn-buscar">Buscar</button>
+      </div>
+
+      <!-- TUTORES RECOMENDADOS -->
+      <div class="section-label">
+        <span>📚 Tutores recomendados</span>
+      </div>
+
+      <!-- CONTENEDOR DE TUTORES -->
+      <div class="tutors-container" id="tutorsContainer">
+        <!-- Las tarjetas se generarán dinámicamente con JS -->
+      </div>
+
+      <div class="ver-mas-wrap">
+        <button class="btn-ver-mas" id="btnVerMas">Ver más</button>
+      </div>
     </div>
-  </div>
-  <div class="footer-copy">&#169; 2026 myTeacher - Todos los derechos reservados</div>
-</footer>
-<script src="/Scripts/Estudiante/script_pagina_principal.js"></script>
-<script src="/Scripts/global.js"></script>
-</body>
+    <!-- FOOTER -->
+
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-logo">
+          <img
+            src="/Imagenes/logo letras blancas.png"
+            alt="myTeacher logo"
+            style="width: 100%; height: 100%; object-fit: contain"
+          />
+        </div>
+        <div class="footer-cols">
+          <div class="footer-col">
+            <h4>Contactos</h4>
+            <p>
+              Numero: +57 302 xxxx xxx<br />
+              Correo: soporte@unilibre.edu
+            </p>
+          </div>
+          <div class="footer-col">
+            <h4>Síguenos</h4>
+            <div class="social-icons">
+              <a href="#" class="social-icon si-fb" aria-label="Facebook">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="white"
+                >
+                  <path
+                    d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                  />
+                </svg>
+              </a>
+              <a href="#" class="social-icon si-ig" aria-label="Instagram">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                </svg>
+              </a>
+              <a href="#" class="social-icon si-x" aria-label="X">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="13"
+                  height="13"
+                  viewBox="0 0 24 24"
+                  fill="white"
+                >
+                  <path
+                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copy">
+        &#169; 2026 myTeacher - Todos los derechos reservados
+      </div>
+    </footer>
+    <script src="/Scripts/Estudiante/script_pagina_principal.js"></script>
+    <script src="/Scripts/global.js"></script>
+  </body>
 </html>

@@ -1,136 +1,198 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>myTeacher - Perfil</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="/Styles/Estudiante/style_perfil.css">
-  <link rel="stylesheet" href="/Styles/global.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>myTeacher - Perfil</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/Styles/Estudiante/style_perfil.css" />
+    <link rel="stylesheet" href="/Styles/global.css" />
+  </head>
+  <body>
+    <!-- Barra de navegacion -->
+    <nav>
+      <div class="logo-slot">
+        <img src="/Imagenes/Logo.png" alt="myTeacher logo" />
+      </div>
 
-  <!-- Barra de navegacion -->
-  <nav>
-  <div class="logo-slot">
-    <img src="/Imagenes/Logo.png" alt="myTeacher logo">
-  </div>
+      <div class="nav-links" id="navLinks">
+        <a href="inicio_estudiante.html">Buscar</a>
+        <a href="mis_reservas.html">Mis reservas</a>
+        <a href="#tutorias">Historial</a>
+        <a href="#" class="active">Perfil</a>
 
-<div class="nav-links" id="navLinks">
-    <a href="inicio_estudiante.html">Buscar</a>
-    <a href="mis_reservas.html">Mis reservas</a>
-    <a href="#tutorias">Historial</a>
-    <a href="#"class="active">Perfil</a>
-  
-    <button class="btn-cerrar-sesion-mobile" onclick="cerrarSesion()">Cerrar sesión</button>
-  </div>
+        <button class="btn-cerrar-sesion-mobile" onclick="cerrarSesion()">
+          Cerrar sesión
+        </button>
+      </div>
 
-  <div class="nav-right">
-    <button class="btn-cerrar-sesion" onclick="cerrarSesion()">Cerrar sesión</button>
-    <div class="nav-bell" id="bell">🔔</div>
-    <div class="notif-panel" id="notifPanel">
-      <p>Recordatorio que tiene una clase en 20 minutos</p>
-    </div>
-  </div>
+      <div class="nav-right">
+        <button class="btn-cerrar-sesion" onclick="cerrarSesion()">
+          Cerrar sesión
+        </button>
+        <div class="nav-bell" id="bell">🔔</div>
+        <div class="notif-panel" id="notifPanel">
+          <p>Recordatorio que tiene una clase en 20 minutos</p>
+        </div>
+      </div>
 
-  <button class="hamburger" id="hamburger" onclick="toggleMenu()">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
-</nav>
-  <div class="page">
-
-    <!-- Cuadro donde se muestra la foto que tenga de perfil y la informacion
+      <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+    <div class="page">
+      <!-- Cuadro donde se muestra la foto que tenga de perfil y la informacion
      del perfil -->
-    <div class="profile-header">
-      <div class="avatar-wrapper">
-        <img src="" alt="Foto de perfil" class="avatar-img" id="avatarImg">
-        <button class="avatar-edit-btn" onclick="document.getElementById('fotoInput').click()" title="Cambiar foto">&#9998;</button>
-        <input type="file" id="fotoInput" accept="image/*" onchange="cambiarFoto(event)">
-      </div>
-      <div class="profile-data">
-        <p><span class="data-label">Nombre:</span> <span id="nombreTexto">Tung Tung Sahur</span></p>
-        <p><span class="data-label">Correo:</span> <span id="correoTexto">TungTungSahur@gmail.com</span></p>
-        <p><span class="data-label">Nivel educativo:</span> <span id="nivelTexto">Universitario</span></p>
-      </div>
-    </div>
-
-    <!-- Boton de editar perfil -->
-    <div class="edit-section">
-      <button class="btn-editar" id="btnEditar" onclick="toggleEditar()">Editar perfil</button>
-    </div>
-
-    <!-- Formulario para cambiar la informacion del perfil que se encuentra
-     oculto hasta que se le da al boton de editar perfil-->
-    <div class="edit-form" id="editForm" style="display:none;">
-      <div class="form-row">
-        <label>Nombre</label>
-        <input type="text" id="inputNombre" placeholder="Tu nombre completo">
-      </div>
-      <div class="form-row">
-        <label>Correo</label>
-        <input type="email" id="inputCorreo" placeholder="Tu correo electrónico">
-      </div>
-      <div class="form-row">
-        <label>Nivel educativo</label>
-        <select id="inputNivel">
-          <option>Universitario</option>
-          <option>Bachillerato</option>
-          <option>Primaria</option>
-        </select>
-      </div>
-        <div class="form-btns">
-  <button class="btn btn-secondary" onclick="cancelarEditar()">Cancelar</button>
-  <button class="btn btn-primary" onclick="guardarEditar()">Guardar</button>
-</div>
-
-    </div>
-
-    <!-- Cuadro que le muestra las tutorias que ya realizo y puede calicar al tutor -->
-    <div class="section-label" id="tutorias">
-      <span>📚 Tutorías recientes</span>
-    </div>
-
-    <div class="tutorias-container" id="tutoriasContainer">
-    </div>
-
-  </div>
-
-  <!-- Pie de pagina -->
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-logo">
-        <img src="/Imagenes/logo letras blancas.png" alt="myTeacher logo">
-      </div>
-      <div class="footer-cols">
-        <div class="footer-col">
-          <h4>Contactos</h4>
+      <div class="profile-header">
+        <div class="avatar-wrapper">
+          <img src="" alt="Foto de perfil" class="avatar-img" id="avatarImg" />
+          <button
+            class="avatar-edit-btn"
+            onclick="document.getElementById('fotoInput').click()"
+            title="Cambiar foto"
+          >
+            &#9998;
+          </button>
+          <input
+            type="file"
+            id="fotoInput"
+            accept="image/*"
+            onchange="cambiarFoto(event)"
+          />
+        </div>
+        <div class="profile-data">
           <p>
-            Numero: +57 302 xxxx xxx<br>
-            Correo: soporte@unilibre.edu
+            <span class="data-label">Nombre:</span>
+            <span id="nombreTexto">Tung Tung Sahur</span>
+          </p>
+          <p>
+            <span class="data-label">Correo:</span>
+            <span id="correoTexto">TungTungSahur@gmail.com</span>
+          </p>
+          <p>
+            <span class="data-label">Nivel educativo:</span>
+            <span id="nivelTexto">Universitario</span>
           </p>
         </div>
-        <div class="footer-col">
-           <h4>Síguenos</h4>
-      <div class="social-icons">
-        <a class="social-icon" style="background:#1877f2;" href="#" title="Facebook">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-            <a class="social-icon" style="background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);" href="#" title="Instagram">
-              <i class="fab fa-instagram"></i>
-            </a>
-            <a class="social-icon" style="background:#000;" href="#" title="X / Twitter">
-              <i class="fab fa-x-twitter"></i>
-            </a>
+      </div>
+
+      <!-- Boton de editar perfil -->
+      <div class="edit-section">
+        <button class="btn-editar" id="btnEditar" onclick="toggleEditar()">
+          Editar perfil
+        </button>
+      </div>
+
+      <!-- Formulario para cambiar la informacion del perfil que se encuentra
+     oculto hasta que se le da al boton de editar perfil-->
+      <div class="edit-form" id="editForm" style="display: none">
+        <div class="form-row">
+          <label>Nombre</label>
+          <input
+            type="text"
+            id="inputNombre"
+            placeholder="Tu nombre completo"
+          />
+        </div>
+        <div class="form-row">
+          <label>Correo</label>
+          <input
+            type="email"
+            id="inputCorreo"
+            placeholder="Tu correo electrónico"
+          />
+        </div>
+        <div class="form-row">
+          <label>Nivel educativo</label>
+          <select id="inputNivel">
+            <option>Universitario</option>
+            <option>Bachillerato</option>
+            <option>Primaria</option>
+          </select>
+        </div>
+        <div class="form-btns">
+          <button class="btn btn-secondary" onclick="cancelarEditar()">
+            Cancelar
+          </button>
+          <button class="btn btn-primary" onclick="guardarEditar()">
+            Guardar
+          </button>
+        </div>
+      </div>
+
+      <!-- Cuadro que le muestra las tutorias que ya realizo y puede calicar al tutor -->
+      <div class="section-label" id="tutorias">
+        <span>📚 Tutorías recientes</span>
+      </div>
+
+      <div class="tutorias-container" id="tutoriasContainer"></div>
+    </div>
+
+    <!-- Pie de pagina -->
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-logo">
+          <img src="/Imagenes/logo letras blancas.png" alt="myTeacher logo" />
+        </div>
+        <div class="footer-cols">
+          <div class="footer-col">
+            <h4>Contactos</h4>
+            <p>
+              Numero: +57 302 xxxx xxx<br />
+              Correo: soporte@unilibre.edu
+            </p>
+          </div>
+          <div class="footer-col">
+            <h4>Síguenos</h4>
+            <div class="social-icons">
+              <a
+                class="social-icon"
+                style="background: #1877f2"
+                href="#"
+                title="Facebook"
+              >
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a
+                class="social-icon"
+                style="
+                  background: linear-gradient(
+                    45deg,
+                    #f09433,
+                    #e6683c,
+                    #dc2743,
+                    #cc2366,
+                    #bc1888
+                  );
+                "
+                href="#"
+                title="Instagram"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a
+                class="social-icon"
+                style="background: #000"
+                href="#"
+                title="X / Twitter"
+              >
+                <i class="fab fa-x-twitter"></i>
+              </a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="footer-copy">&#169; 2025 myTeacher - Todos los derechos reservados</div>
-  </footer>
+      <div class="footer-copy">
+        &#169; 2025 myTeacher - Todos los derechos reservados
+      </div>
+    </footer>
 
-  <script src="/Scripts/Estudiante/script_perfil.js"></script>
-  <script src="/Scripts/global.js"></script>
-</body>
+    <script src="/Scripts/Estudiante/script_perfil.js"></script>
+    <script src="/Scripts/global.js"></script>
+  </body>
 </html>

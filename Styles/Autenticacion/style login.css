@@ -1,198 +1,198 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-image: url("/Imagenes/fondo.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("/Imagenes/fondo.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .container {
-    text-align: center;
-    width: 100%;
-    max-width: 500px;
-    padding: 0 20px;
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
+  padding: 0 20px;
 }
 
 /* LOGO */
 .logo {
-    margin-bottom: 0px;
+  margin-bottom: 0px;
 }
 .logo img {
-    width: 85%;
-    max-width: 500px;
+  width: 85%;
+  max-width: 500px;
 }
 
 /* CAJA LOGIN */
 .login-box {
-    background: white;
-    padding: 25px;
-    margin-top: 1px;
-    border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  background: white;
+  padding: 25px;
+  margin-top: 1px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 .login-box h2 {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 /* INPUTS */
 label {
-    display: block;
-    text-align: left;
-    margin-top: 15px;
-    font-size: 14px;
+  display: block;
+  text-align: left;
+  margin-top: 15px;
+  font-size: 14px;
 }
 .input-group {
-    position: relative;
-    margin-top: 5px;
-    display: flex;
-    align-items: center;
+  position: relative;
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
 }
 .input-group input {
-    width: 100%;
-    padding: 10px 75px 10px 15px;
-    border-radius: 20px;
-    border: 1px solid #ccc;
-    outline: none;
-    font-size: 14px;
+  width: 100%;
+  padding: 10px 75px 10px 15px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 14px;
 }
 .icon {
-    position: absolute;
-    cursor: pointer;
-    font-size: 16px;
-    color: #888;
-    transition: color 0.2s;
+  position: absolute;
+  cursor: pointer;
+  font-size: 16px;
+  color: #888;
+  transition: color 0.2s;
 }
 .icon:hover {
-    color: #2d7ff9;
+  color: #2d7ff9;
 }
 
 /* Posición de los iconos del ojo */
 #toggleHide {
-    right: 38px;
+  right: 38px;
 }
 #toggleShow {
-    right: 12px;
+  right: 12px;
 }
 
 /* Icono del correo */
 .input-group:first-of-type .icon {
-    right: 12px;
+  right: 12px;
 }
 #togglePassword {
-    position: absolute;
-    right: 12px;
-    cursor: pointer;
-    font-size: 16px;
-    color: #888;
-    transition: color 0.2s;
+  position: absolute;
+  right: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #888;
+  transition: color 0.2s;
 }
 #password::-ms-reveal,
 #password::-ms-clear {
-    display: none;
+  display: none;
 }
 
 input[type="password"]::-webkit-credentials-auto-fill-button,
 input[type="password"]::-webkit-strong-password-auto-fill-button {
-    display: none !important;
-    visibility: hidden;
-    pointer-events: none;
+  display: none !important;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 #togglePassword:hover {
-    color: #2d7ff9;
+  color: #2d7ff9;
 }
 /* CHECKBOX */
 .remember {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin: 15px 0;
-    font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 15px 0;
+  font-size: 14px;
 }
 
 /* BOTON */
 .btn {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 20px;
-    background: #2d7ff9;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background 0.2s;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  background: #2d7ff9;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.2s;
 }
 .btn:hover {
-    background: #1f6ae0;
+  background: #1f6ae0;
 }
 
 /* LINKS */
 .links {
-    margin-top: 15px;
-    font-size: 14px;
+  margin-top: 15px;
+  font-size: 14px;
 }
 .links a {
-    color: #2d7ff9;
-    text-decoration: none;
+  color: #2d7ff9;
+  text-decoration: none;
 }
 .divider {
-    width: 100%;
-    height: 1px;
-    background: #ccc;
-    margin: 10px 0;
+  width: 100%;
+  height: 1px;
+  background: #ccc;
+  margin: 10px 0;
 }
 
 /* RESPONSIVE */
 @media (max-width: 480px) {
-    .container {
-        padding: 20px;
-    }
+  .container {
+    padding: 20px;
+  }
 }
 
 /* MODAL */
 .modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.4);
-    justify-content: center;
-    align-items: center;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  justify-content: center;
+  align-items: center;
 }
 .modal-content {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-    width: 300px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  width: 300px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 .modal-content button {
-    margin-top: 15px;
-    padding: 8px 15px;
-    border: none;
-    background: #2d7ff9;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
+  margin-top: 15px;
+  padding: 8px 15px;
+  border: none;
+  background: #2d7ff9;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
 }
 .modal-content input {
-    width: 90%;
-    padding: 8px;
-    margin: 10px 0;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+  width: 90%;
+  padding: 8px;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
 }

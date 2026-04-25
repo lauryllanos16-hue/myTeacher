@@ -1,6 +1,6 @@
 * /* ───────── VARIABLES (CLAVE 🔥) ───────── */
 :root {
-  --primary: #85B1F8;
+  --primary: #85b1f8;
   --primary-soft: #aac8f8;
   --border: #c8d8f8;
   --text: #333;
@@ -15,7 +15,7 @@
 }
 
 body {
-  font-family: 'Nunito', Arial, sans-serif;
+  font-family: "Nunito", Arial, sans-serif;
   background: var(--bg);
   min-height: 100vh;
   color: var(--text);
@@ -99,7 +99,7 @@ nav {
   font-size: 15px;
   font-weight: 700;
   cursor: pointer;
-  transition: .15s;
+  transition: 0.15s;
   font-family: inherit;
 }
 
@@ -121,10 +121,10 @@ nav {
   background: #eef1ff;
 }
 .btn-row {
-  display: flex;    
-  gap: 12px;         
+  display: flex;
+  gap: 12px;
   margin: 20px;
-  justify-content: center;  /* ← cambia flex-start por center */
+  justify-content: center; /* ← cambia flex-start por center */
   align-items: center;
   flex-wrap: wrap;
 }
@@ -147,7 +147,7 @@ nav {
   margin: 20px 18px;
   border-radius: 14px;
   padding: 24px 28px 3px 28px;
-  box-shadow: 0 1px 4px rgba(80,100,180,0.06);
+  box-shadow: 0 1px 4px rgba(80, 100, 180, 0.06);
 }
 
 /* ───────── BADGE ───────── */
@@ -177,7 +177,7 @@ nav {
   border-bottom: none;
 }
 .full-width {
-  grid-column: span 2; 
+  grid-column: span 2;
   padding: 12px;
   text-align: center;
   justify-content: center;
@@ -199,7 +199,7 @@ nav {
   border-radius: 10px;
   padding: 14px 16px;
   min-width: 240px;
-  box-shadow: 0 4px 16px rgba(80,100,180,0.12);
+  box-shadow: 0 4px 16px rgba(80, 100, 180, 0.12);
 }
 
 .notif-panel.visible {
@@ -233,13 +233,18 @@ footer {
   display: flex;
   align-items: center;
 }
-.si-fb { background: #1877f2; }
-.si-ig { background: linear-gradient(45deg,#f09433,#dc2743,#bc1888); }
-.si-x  { background: #000; }
+.si-fb {
+  background: #1877f2;
+}
+.si-ig {
+  background: linear-gradient(45deg, #f09433, #dc2743, #bc1888);
+}
+.si-x {
+  background: #000;
+}
 
 /* ───────── RESPONSIVE ───────── */
 @media (max-width: 600px) {
-
   nav {
     flex-wrap: wrap;
     padding: 10px 14px;
@@ -259,8 +264,6 @@ footer {
     grid-template-columns: 1fr;
   }
 
-
- 
   .section-card {
     margin: 14px 10px;
     padding: 16px;

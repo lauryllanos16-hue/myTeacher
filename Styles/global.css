@@ -12,7 +12,7 @@
 }
 
 body {
-  font-family: 'Nunito', Arial, sans-serif;
+  font-family: "Nunito", Arial, sans-serif;
   background: #eef1fb;
   min-height: 100vh;
 }
@@ -96,8 +96,8 @@ nav {
   color: #333;
   cursor: pointer;
   flex-shrink: 0;
-  transition: background .15s;
-  font-family: 'Nunito', Arial, sans-serif;
+  transition: background 0.15s;
+  font-family: "Nunito", Arial, sans-serif;
 }
 
 .btn-cerrar-sesion:hover {
@@ -127,7 +127,7 @@ nav {
   border-radius: 10px;
   padding: 14px 16px;
   min-width: 260px;
-  box-shadow: 0 4px 16px rgba(80,100,180,0.12);
+  box-shadow: 0 4px 16px rgba(80, 100, 180, 0.12);
   font-size: 13px;
   color: #333;
   z-index: 300;
@@ -155,12 +155,18 @@ nav {
   height: 3px;
   background: #333;
   border-radius: 3px;
-  transition: all .3s;
+  transition: all 0.3s;
 }
 
-.hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-.hamburger.open span:nth-child(2) { opacity: 0; }
-.hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+.hamburger.open span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
 
 /* ══════════════════════════════
    CONTENEDOR CENTRAL
@@ -185,7 +191,7 @@ main {
 .section-label span,
 .badge {
   display: inline-block;
-  background: #85B1F8;
+  background: #85b1f8;
   color: #000;
   border-radius: 20px;
   padding: 8px 24px;
@@ -201,7 +207,7 @@ main {
   margin: 20px 18px 16px;
   border-radius: 14px;
   padding: 24px 28px;
-  box-shadow: 0 1px 4px rgba(80,100,180,0.06);
+  box-shadow: 0 1px 4px rgba(80, 100, 180, 0.06);
 }
 
 .section-header {
@@ -252,12 +258,12 @@ main {
   font-size: 15px;
   font-weight: 700;
   cursor: pointer;
-  transition: background .15s;
-  font-family: 'Nunito', Arial, sans-serif;
+  transition: background 0.15s;
+  font-family: "Nunito", Arial, sans-serif;
 }
 
 .btn-primary {
-  background: #85B1F8;
+  background: #85b1f8;
   color: #000;
 }
 
@@ -266,7 +272,7 @@ main {
 }
 
 .btn-secondary {
-  background: #85B1F8;
+  background: #85b1f8;
   color: #000;
 }
 
@@ -281,7 +287,7 @@ main {
 }
 
 .btn-ver-mas {
-  background: #85B1F8;
+  background: #85b1f8;
   border: none;
   color: #000;
   font-weight: 700;
@@ -289,8 +295,8 @@ main {
   padding: 10px 44px;
   font-size: 15px;
   cursor: pointer;
-  transition: background .15s;
-  font-family: 'Nunito', Arial, sans-serif;
+  transition: background 0.15s;
+  font-family: "Nunito", Arial, sans-serif;
 }
 
 .btn-ver-mas:hover {
@@ -304,7 +310,7 @@ main {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.45);
+  background: rgba(0, 0, 0, 0.45);
   z-index: 200;
   align-items: center;
   justify-content: center;
@@ -321,7 +327,7 @@ main {
   width: 90%;
   max-width: 400px;
   text-align: center;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
 }
 
 .modal h3 {
@@ -346,14 +352,14 @@ main {
 
 .btn-modal-no {
   background: white;
-  border: 1.5px solid #85B1F8;
+  border: 1.5px solid #85b1f8;
   color: #333;
   border-radius: 8px;
   padding: 9px 22px;
   font-size: 14px;
   cursor: pointer;
-  font-family: 'Nunito', Arial, sans-serif;
-  transition: background .15s;
+  font-family: "Nunito", Arial, sans-serif;
+  transition: background 0.15s;
 }
 
 .btn-modal-no:hover {
@@ -361,7 +367,7 @@ main {
 }
 
 .btn-modal-si {
-  background: #85B1F8;
+  background: #85b1f8;
   border: none;
   color: #000;
   font-weight: 700;
@@ -369,8 +375,8 @@ main {
   padding: 9px 22px;
   font-size: 14px;
   cursor: pointer;
-  font-family: 'Nunito', Arial, sans-serif;
-  transition: background .15s;
+  font-family: "Nunito", Arial, sans-serif;
+  transition: background 0.15s;
 }
 
 .btn-modal-si:hover {
@@ -397,9 +403,15 @@ main {
   display: inline-block;
 }
 
-.estado-dot.proxima   { background: #f5c842; }
-.estado-dot.activa    { background: #4caf50; }
-.estado-dot.cancelada { background: #e24b4a; }
+.estado-dot.proxima {
+  background: #f5c842;
+}
+.estado-dot.activa {
+  background: #4caf50;
+}
+.estado-dot.cancelada {
+  background: #e24b4a;
+}
 
 /* ══════════════════════════════
    FOOTER (full width — todas las páginas)
@@ -472,7 +484,7 @@ footer {
   justify-content: center;
   text-decoration: none;
   cursor: pointer;
-  transition: opacity .15s;
+  transition: opacity 0.15s;
   flex-shrink: 0;
 }
 
@@ -480,9 +492,22 @@ footer {
   opacity: 0.8;
 }
 
-.si-fb { background: #1877f2; }
-.si-ig { background: linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); }
-.si-x  { background: #000; }
+.si-fb {
+  background: #1877f2;
+}
+.si-ig {
+  background: linear-gradient(
+    45deg,
+    #f09433,
+    #e6683c,
+    #dc2743,
+    #cc2366,
+    #bc1888
+  );
+}
+.si-x {
+  background: #000;
+}
 
 .footer-copy {
   font-size: 12px;
@@ -498,7 +523,6 @@ footer {
    RESPONSIVE MÓVIL (≤ 600px) — aplica a todas las páginas
    ══════════════════════════════════════════════════════ */
 @media (max-width: 600px) {
-
   /* Nav */
   nav {
     flex-wrap: wrap;
@@ -538,7 +562,7 @@ footer {
     width: 100%;
     padding: 8px 0 12px;
     margin-top: 8px;
-    border-top: 1px solid rgba(255,255,255,0.4);
+    border-top: 1px solid rgba(255, 255, 255, 0.4);
     order: 10;
     flex: unset;
   }
@@ -551,7 +575,7 @@ footer {
     width: 100%;
     padding: 11px 18px;
     border-right: none;
-    border-bottom: 1px solid rgba(255,255,255,0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     font-size: 14px;
   }
 
@@ -572,7 +596,7 @@ footer {
     margin: 10px 18px 0;
     width: calc(100% - 36px);
     text-align: center;
-    font-family: 'Nunito', Arial, sans-serif;
+    font-family: "Nunito", Arial, sans-serif;
   }
 
   /* Contenedor */
