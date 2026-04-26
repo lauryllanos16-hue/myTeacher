@@ -53,9 +53,9 @@ document.querySelector('.btn-registrar').addEventListener('click', function () {
 
   // Redireccionamiento segun el tipo de cuenta que escoja
   if (tutor) {
-    window.location.href = 'registro_tutor.html';
+    window.location.href = '../Autenticacion/registro_tutor.html';
   } else {
-    window.location.href = 'perfil-estudiante.html';
+    window.location.href = '../Estudiante/inicio_estudiante.html';
   }
 });
 // Solo le permite escoger una sola opcion
