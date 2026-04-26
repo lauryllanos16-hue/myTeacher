@@ -267,4 +267,16 @@
     padding: 4px 0;
     font-size: 13px;
   }
+   .info-cell {
+    text-align: center;
+    justify-content: center;
+  }
+
+  .editar-link-wrap {
+    text-align: center;
+  }
+
+  .descripcion-box {
+    text-align: center;
+  }
 }
