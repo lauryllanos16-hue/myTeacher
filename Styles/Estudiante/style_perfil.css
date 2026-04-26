@@ -181,14 +181,10 @@
 }
 
 /* ── TARJETA TUTORÍA ── */
-.tutoria-card {
-  background: white;
-  margin: 0 18px 16px;
-  border-radius: 12px;
-  padding: 18px 24px;
-  box-shadow: 0 1px 4px rgba(80, 100, 180, 0.06);
+.calificar-wrap {
+  text-align: center;
+  padding: 4px 0;
 }
-
 .tutoria-grid,
 .tutoria-row-2 {
   display: grid;
@@ -256,10 +252,7 @@
     width: 100%;
   }
 
-  .tutoria-card {
-    margin: 0 10px 12px;
-    padding: 14px;
-  }
+
 
   .tutoria-grid,
   .tutoria-row-2 {

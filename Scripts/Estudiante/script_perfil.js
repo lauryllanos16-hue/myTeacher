@@ -100,31 +100,26 @@ const tutorias = [
 //Cargar las demas tutorias recientes
 function renderTutorias() {
   const container = document.getElementById('tutoriasContainer');
-  container.innerHTML = tutorias
-    .map(
-      (t, i) => `
-    <div class="tutoria-card" id="tutoria-${i}">
-      <div class="tutoria-grid">
-        <div class="tutoria-cell">Materia: <strong>${t.materia}</strong></div>
-        <div class="tutoria-divider"></div>
-        <div class="tutoria-cell">Tutor: <strong>${t.tutor}</strong></div>
+  container.innerHTML = tutorias.map((t, i) => `
+    <div class="section-card" id="tutoria-${i}">
+      <div class="info-grid">
+        <div class="info-row">
+          <div class="info-cell">Materia: <strong>${t.materia}</strong></div>
+          <div class="info-cell">Tutor: <strong>${t.tutor}</strong></div>
+        </div>
+        <div class="info-row">
+          <div class="info-cell">Fecha: <strong>${t.fecha}</strong></div>
+          <div class="info-cell">Modalidad: <strong>${t.modalidad}</strong></div>
+        </div>
       </div>
-      <div class="tutoria-row-2">
-        <div class="tutoria-cell">Fecha: <strong>${t.fecha}</strong></div>
-        <div class="tutoria-divider"></div>
-        <div class="tutoria-cell">Modalidad: <strong>${t.modalidad}</strong></div>
-      </div>
-      <div class="calificar-wrap">
-        ${
-          t.calificado
-            ? `<span style="color:#f5a623;font-size:14px;font-weight:600;">&#11088; Ya calificado</span>`
-            : `<button class="btn btn-primary" onclick="abrirModal(${i})">&#11088; Calificar tutor</button>`
+      <div class="calificar-wrap" style="margin-top:14px;">
+        ${t.calificado
+          ? `<span style="color:#f5a623;font-size:14px;font-weight:600;">&#11088; Ya calificado</span>`
+          : `<button class="btn btn-primary" onclick="abrirModal(${i})">&#11088; Calificar tutor</button>`
         }
       </div>
     </div>
-  `,
-    )
-    .join('');
+  `).join('');
 }
 
 renderTutorias();
