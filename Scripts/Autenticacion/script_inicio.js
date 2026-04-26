@@ -50,3 +50,20 @@ document.addEventListener('click', (e) => {
 window.addEventListener('click', (e) => {
   if (e.target === modal) modal.style.display = 'none';
 });
+//Metodo para que mande a inicios distintos segun el correo
+
+function iniciarSesion() {
+  const correo = document.getElementById('correo').value.trim();      // ← 'correo' no 'inputCorreo'
+  const password = document.getElementById('password').value.trim();  // ← 'password' no 'inputPassword'
+
+  if (!correo || !password) {
+    alert('Por favor completa todos los campos.');
+    return;
+  }
+
+  if (correo.includes('tutor')) {
+    window.location.href = '/HTML/Tutor/inicio_tutor.html';
+  } else {
+    window.location.href = '/HTML/Estudiante/inicio_estudiante.html';
+  }
+}
