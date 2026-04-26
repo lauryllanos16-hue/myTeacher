@@ -1,6 +1,6 @@
 //Informacion de los tutores
 const DEFAULT_AVATAR =
-  "data:image/svg+xml;charset=utf-8," +
+  'data:image/svg+xml;charset=utf-8,' +
   encodeURIComponent(`
   <svg xmlns="http://www.w3.org/2000/svg" width="96" height="96">
     <rect width="96" height="96" fill="#dde4f5" rx="8"/>
@@ -11,25 +11,25 @@ const DEFAULT_AVATAR =
 
 const tutores = [
   {
-    nombre: "Lionel Andres Messi Cuccittini",
+    nombre: 'Lionel Andres Messi Cuccittini',
     rating: 5.0,
-    precio: "$40/Hora",
-    materia: "Matematicas",
-    modalidad: "Virtual / Presencial",
-    foto: "",
+    precio: '$40/Hora',
+    materia: 'Matematicas',
+    modalidad: 'Virtual / Presencial',
+    foto: '',
   },
   {
-    nombre: "Maria Jose Fernandez Galvan",
+    nombre: 'Maria Jose Fernandez Galvan',
     rating: 5.0,
-    precio: "$45/Hora",
-    materia: "Coreano",
-    modalidad: "Virtual",
-    foto: "",
+    precio: '$45/Hora',
+    materia: 'Coreano',
+    modalidad: 'Virtual',
+    foto: '',
   },
 ];
 
 function renderTutores(lista) {
-  const container = document.getElementById("tutorsContainer");
+  const container = document.getElementById('tutorsContainer');
 
   container.innerHTML = lista
     .map(
@@ -59,33 +59,33 @@ function renderTutores(lista) {
     </div>
   `,
     )
-    .join("");
+    .join('');
 }
 
 //Funcionalidad botones para ver mas de los tutores recomendados o para reservarlos
 document
-  .getElementById("tutorsContainer")
-  .addEventListener("click", function (e) {
-    const btnVer = e.target.closest(".btn-ver");
-    const btnReservar = e.target.closest(".btn-reservar");
+  .getElementById('tutorsContainer')
+  .addEventListener('click', function (e) {
+    const btnVer = e.target.closest('.btn-ver');
+    const btnReservar = e.target.closest('.btn-reservar');
 
     if (btnVer) {
       const index = btnVer.dataset.index;
-      alert("Ver perfil de: " + tutores[index].nombre);
+      alert('Ver perfil de: ' + tutores[index].nombre);
     }
 
     if (btnReservar) {
       const index = btnReservar.dataset.index;
       const tutor = tutores[index];
 
-      localStorage.setItem("tutorSeleccionado", JSON.stringify(tutor));
-      window.location.href = "reservar.html";
+      localStorage.setItem('tutorSeleccionado', JSON.stringify(tutor));
+      window.location.href = 'reservar.html';
     }
   });
 
 //Buscador de tutores al gusto del estudiante
-document.querySelector(".btn-buscar").addEventListener("click", function () {
-  const selects = document.querySelectorAll(".field-row select");
+document.querySelector('.btn-buscar').addEventListener('click', function () {
+  const selects = document.querySelectorAll('.field-row select');
   const materia = selects[0].value;
   const modalidad = selects[1].value;
   const nivel = selects[2].value;
@@ -94,8 +94,8 @@ document.querySelector(".btn-buscar").addEventListener("click", function () {
 });
 
 // Para mostrarle mas tutores
-document.querySelector(".btn-ver-mas").addEventListener("click", function () {
-  alert("Cargando más tutores...");
+document.querySelector('.btn-ver-mas').addEventListener('click', function () {
+  alert('Cargando más tutores...');
 });
 
 //Para cargarle los demas tutores

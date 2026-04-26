@@ -3,66 +3,66 @@ function togglePass(inputId, spanId) {
   const input = document.getElementById(inputId);
   const icono = document.querySelector(`#${spanId} i`);
 
-  if (input.type === "password") {
-    input.type = "text";
-    icono.classList.replace("fa-eye-slash", "fa-eye");
+  if (input.type === 'password') {
+    input.type = 'text';
+    icono.classList.replace('fa-eye-slash', 'fa-eye');
   } else {
-    input.type = "password";
-    icono.classList.replace("fa-eye", "fa-eye-slash");
+    input.type = 'password';
+    icono.classList.replace('fa-eye', 'fa-eye-slash');
   }
 }
 
 //Verificaciones de que el estudiante haya selecionado y llenado los espacios
 document
-  .getElementById("toggle1")
-  .addEventListener("click", () => togglePass("pass1", "toggle1"));
+  .getElementById('toggle1')
+  .addEventListener('click', () => togglePass('pass1', 'toggle1'));
 document
-  .getElementById("toggle2")
-  .addEventListener("click", () => togglePass("pass2", "toggle2"));
-document.querySelector(".btn-registrar").addEventListener("click", function () {
+  .getElementById('toggle2')
+  .addEventListener('click', () => togglePass('pass2', 'toggle2'));
+document.querySelector('.btn-registrar').addEventListener('click', function () {
   const nombre = document
     .querySelector('input[placeholder="Nombre y apellido"]')
     .value.trim();
   const correo = document.querySelector('input[type="email"]').value.trim();
-  const pass1 = document.getElementById("pass1").value;
-  const pass2 = document.getElementById("pass2").value;
-  const estudiante = document.getElementById("estudiante").checked;
-  const tutor = document.getElementById("tutor").checked;
+  const pass1 = document.getElementById('pass1').value;
+  const pass2 = document.getElementById('pass2').value;
+  const estudiante = document.getElementById('estudiante').checked;
+  const tutor = document.getElementById('tutor').checked;
 
   // Validaciones para saber si la informacion es correcta
   if (!nombre) {
-    alert("Por favor ingresa tu nombre completo.");
+    alert('Por favor ingresa tu nombre completo.');
     return;
   }
   if (!correo) {
-    alert("Por favor ingresa tu correo.");
+    alert('Por favor ingresa tu correo.');
     return;
   }
   if (!pass1) {
-    alert("Por favor ingresa una contraseña.");
+    alert('Por favor ingresa una contraseña.');
     return;
   }
   if (pass1 !== pass2) {
-    alert("Las contraseñas no coinciden.");
+    alert('Las contraseñas no coinciden.');
     return;
   }
   if (!estudiante && !tutor) {
-    alert("Por favor selecciona un tipo de cuenta.");
+    alert('Por favor selecciona un tipo de cuenta.');
     return;
   }
 
-  // Redireccionamiento segun el tipo de cuenta que escoja 
+  // Redireccionamiento segun el tipo de cuenta que escoja
   if (tutor) {
-    window.location.href = "registro_tutor.html";
+    window.location.href = 'registro_tutor.html';
   } else {
-    window.location.href = "perfil-estudiante.html";
+    window.location.href = 'perfil-estudiante.html';
   }
 });
 // Solo le permite escoger una sola opcion
-document.getElementById("estudiante").addEventListener("change", function () {
-  if (this.checked) document.getElementById("tutor").checked = false;
+document.getElementById('estudiante').addEventListener('change', function () {
+  if (this.checked) document.getElementById('tutor').checked = false;
 });
 
-document.getElementById("tutor").addEventListener("change", function () {
-  if (this.checked) document.getElementById("estudiante").checked = false;
+document.getElementById('tutor').addEventListener('change', function () {
+  if (this.checked) document.getElementById('estudiante').checked = false;
 });

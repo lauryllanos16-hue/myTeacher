@@ -11,7 +11,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url("/Imagenes/fondo.png");
+  background-image: url('/Imagenes/fondo.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -102,8 +102,8 @@ label {
   display: none;
 }
 
-input[type="password"]::-webkit-credentials-auto-fill-button,
-input[type="password"]::-webkit-strong-password-auto-fill-button {
+input[type='password']::-webkit-credentials-auto-fill-button,
+input[type='password']::-webkit-strong-password-auto-fill-button {
   display: none !important;
   visibility: hidden;
   pointer-events: none;

@@ -1,6 +1,6 @@
 //Avatar por defecto
 const DEFAULT_AVATAR =
-  "data:image/svg+xml;charset=utf-8," +
+  'data:image/svg+xml;charset=utf-8,' +
   encodeURIComponent(`
   <svg xmlns="http://www.w3.org/2000/svg" width="110" height="110">
     <rect width="110" height="110" fill="#dde4f5" rx="55"/>
@@ -9,7 +9,7 @@ const DEFAULT_AVATAR =
   </svg>
 `);
 
-const avatarImg = document.getElementById("avatarImg");
+const avatarImg = document.getElementById('avatarImg');
 avatarImg.src = DEFAULT_AVATAR;
 avatarImg.onerror = function () {
   this.src = DEFAULT_AVATAR;
@@ -31,50 +31,50 @@ let editando = false;
 
 function toggleEditar() {
   editando = !editando;
-  const form = document.getElementById("editForm");
-  const btn = document.getElementById("btnEditar");
+  const form = document.getElementById('editForm');
+  const btn = document.getElementById('btnEditar');
 
   if (editando) {
     //Mostrar la informacion que ya estaba para que vea cual va a cambiar
-    document.getElementById("inputNombre").value =
-      document.getElementById("nombreTexto").textContent;
-    document.getElementById("inputCorreo").value =
-      document.getElementById("correoTexto").textContent;
-    const nivelActual = document.getElementById("nivelTexto").textContent;
-    const sel = document.getElementById("inputNivel");
+    document.getElementById('inputNombre').value =
+      document.getElementById('nombreTexto').textContent;
+    document.getElementById('inputCorreo').value =
+      document.getElementById('correoTexto').textContent;
+    const nivelActual = document.getElementById('nivelTexto').textContent;
+    const sel = document.getElementById('inputNivel');
     for (let i = 0; i < sel.options.length; i++) {
       if (sel.options[i].text === nivelActual) {
         sel.selectedIndex = i;
         break;
       }
     }
-    form.style.display = "block";
-    btn.textContent = "Cancelar edición";
+    form.style.display = 'block';
+    btn.textContent = 'Cancelar edición';
   } else {
-    form.style.display = "none";
-    btn.textContent = "Editar perfil";
+    form.style.display = 'none';
+    btn.textContent = 'Editar perfil';
   }
 }
 
 function cancelarEditar() {
   editando = false;
-  document.getElementById("editForm").style.display = "none";
-  document.getElementById("btnEditar").textContent = "Editar perfil";
+  document.getElementById('editForm').style.display = 'none';
+  document.getElementById('btnEditar').textContent = 'Editar perfil';
 }
 
 function guardarEditar() {
-  const nombre = document.getElementById("inputNombre").value.trim();
-  const correo = document.getElementById("inputCorreo").value.trim();
-  const nivel = document.getElementById("inputNivel").value;
+  const nombre = document.getElementById('inputNombre').value.trim();
+  const correo = document.getElementById('inputCorreo').value.trim();
+  const nivel = document.getElementById('inputNivel').value;
 
   if (!nombre || !correo) {
-    alert("Por favor completa todos los campos.");
+    alert('Por favor completa todos los campos.');
     return;
   }
 
-  document.getElementById("nombreTexto").textContent = nombre;
-  document.getElementById("correoTexto").textContent = correo;
-  document.getElementById("nivelTexto").textContent = nivel;
+  document.getElementById('nombreTexto').textContent = nombre;
+  document.getElementById('correoTexto').textContent = correo;
+  document.getElementById('nivelTexto').textContent = nivel;
 
   cancelarEditar();
 }
@@ -82,24 +82,24 @@ function guardarEditar() {
 //Informacion de las tutorias recientes
 const tutorias = [
   {
-    materia: "Matematicas",
-    tutor: "Juan Perez",
-    fecha: "12 Marzo",
-    modalidad: "Virtual",
+    materia: 'Matematicas',
+    tutor: 'Juan Perez',
+    fecha: '12 Marzo',
+    modalidad: 'Virtual',
     calificado: false,
   },
   {
-    materia: "Historia",
-    tutor: "Laura Diaz",
-    fecha: "4 Marzo",
-    modalidad: "Presencial",
+    materia: 'Historia',
+    tutor: 'Laura Diaz',
+    fecha: '4 Marzo',
+    modalidad: 'Presencial',
     calificado: false,
   },
 ];
 
 //Cargar las demas tutorias recientes
 function renderTutorias() {
-  const container = document.getElementById("tutoriasContainer");
+  const container = document.getElementById('tutoriasContainer');
   container.innerHTML = tutorias
     .map(
       (t, i) => `
@@ -124,7 +124,7 @@ function renderTutorias() {
     </div>
   `,
     )
-    .join("");
+    .join('');
 }
 
 renderTutorias();
@@ -144,7 +144,7 @@ const modalHTML = `
             (n) =>
               `<button class="star-btn" data-val="${n}" onclick="seleccionarEstrella(${n})">&#11088;</button>`,
           )
-          .join("")}
+          .join('')}
       </div>
       <textarea id="modalComentario" placeholder="Escribe un comentario (opcional)..."></textarea>
       <div class="modal-btns">
@@ -154,20 +154,20 @@ const modalHTML = `
     </div>
   </div>
 `;
-document.body.insertAdjacentHTML("beforeend", modalHTML);
+document.body.insertAdjacentHTML('beforeend', modalHTML);
 
 function abrirModal(index) {
   tutoriaActual = index;
   estrellaSeleccionada = 0;
   actualizarEstrellas(0);
-  document.getElementById("modalComentario").value = "";
-  document.getElementById("modalTitulo").textContent =
-    "Calificar a " + tutorias[index].tutor;
-  document.getElementById("modalOverlay").classList.add("active");
+  document.getElementById('modalComentario').value = '';
+  document.getElementById('modalTitulo').textContent =
+    'Calificar a ' + tutorias[index].tutor;
+  document.getElementById('modalOverlay').classList.add('active');
 }
 
 function cerrarModal() {
-  document.getElementById("modalOverlay").classList.remove("active");
+  document.getElementById('modalOverlay').classList.remove('active');
   tutoriaActual = null;
 }
 
@@ -177,14 +177,14 @@ function seleccionarEstrella(n) {
 }
 
 function actualizarEstrellas(n) {
-  document.querySelectorAll(".star-btn").forEach((btn) => {
-    btn.classList.toggle("active", parseInt(btn.dataset.val) <= n);
+  document.querySelectorAll('.star-btn').forEach((btn) => {
+    btn.classList.toggle('active', parseInt(btn.dataset.val) <= n);
   });
 }
 
 function enviarCalificacion() {
   if (estrellaSeleccionada === 0) {
-    alert("Por favor selecciona una calificación.");
+    alert('Por favor selecciona una calificación.');
     return;
   }
   tutorias[tutoriaActual].calificado = true;
@@ -193,6 +193,6 @@ function enviarCalificacion() {
 }
 
 // Cerrar ventana emergente al hacer clic fuera
-document.getElementById("modalOverlay").addEventListener("click", function (e) {
+document.getElementById('modalOverlay').addEventListener('click', function (e) {
   if (e.target === this) cerrarModal();
 });

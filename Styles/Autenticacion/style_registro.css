@@ -7,7 +7,7 @@
 
 body {
   min-height: 100vh;
-  background-image: url("/Imagenes/fondo.png");
+  background-image: url('/Imagenes/fondo.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -135,7 +135,7 @@ body {
   padding: 5px 14px;
 }
 
-.check-label input[type="checkbox"] {
+.check-label input[type='checkbox'] {
   width: 14px;
   height: 14px;
   accent-color: #2d7ff9;
