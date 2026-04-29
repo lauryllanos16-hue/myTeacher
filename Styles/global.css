@@ -695,4 +695,24 @@ footer {
     text-align: center;
     margin-top: 16px;
   }
+  .info-cell {
+    text-align: center;
+    justify-content: center;
+  }
+
+  .editar-link-wrap {
+    text-align: center;
+  }
+
+  .calificar-wrap {
+    text-align: center;
+  }
+
+  .section-header {
+    text-align: center;
+  }
+
+  .btn-row {
+    justify-content: center;
+  }
 }

@@ -125,69 +125,8 @@ function renderTutorias() {
 renderTutorias();
 
 //Ventana emergente de la calificacion
-let tutoriaActual = null;
-let estrellaSeleccionada = 0;
-
-// Crear ventana emergente dinámicamente
-const modalHTML = `
-  <div class="modal-overlay" id="modalOverlay">
-    <div class="modal">
-      <h3 id="modalTitulo">Calificar tutor</h3>
-      <div class="stars-row" id="starsRow">
-        ${[1, 2, 3, 4, 5]
-          .map(
-            (n) =>
-              `<button class="star-btn" data-val="${n}" onclick="seleccionarEstrella(${n})">&#11088;</button>`,
-          )
-          .join('')}
-      </div>
-      <textarea id="modalComentario" placeholder="Escribe un comentario (opcional)..."></textarea>
-      <div class="modal-btns">
-        <button class="btn btn-primary" onclick="cerrarModal()">Cancelar</button>
-        <button class="btn btn-primary" onclick="enviarCalificacion()">Enviar</button>
-      </div>
-    </div>
-  </div>
-`;
-document.body.insertAdjacentHTML('beforeend', modalHTML);
-
+// Redirigir a reseñas al calificar
 function abrirModal(index) {
-  tutoriaActual = index;
-  estrellaSeleccionada = 0;
-  actualizarEstrellas(0);
-  document.getElementById('modalComentario').value = '';
-  document.getElementById('modalTitulo').textContent =
-    'Calificar a ' + tutorias[index].tutor;
-  document.getElementById('modalOverlay').classList.add('active');
+  const t = tutorias[index];
+  window.location.href = `/HTML/Estudiante/reseñas.html?tutor=${encodeURIComponent(t.tutor)}&materia=${encodeURIComponent(t.materia)}`;
 }
-
-function cerrarModal() {
-  document.getElementById('modalOverlay').classList.remove('active');
-  tutoriaActual = null;
-}
-
-function seleccionarEstrella(n) {
-  estrellaSeleccionada = n;
-  actualizarEstrellas(n);
-}
-
-function actualizarEstrellas(n) {
-  document.querySelectorAll('.star-btn').forEach((btn) => {
-    btn.classList.toggle('active', parseInt(btn.dataset.val) <= n);
-  });
-}
-
-function enviarCalificacion() {
-  if (estrellaSeleccionada === 0) {
-    alert('Por favor selecciona una calificación.');
-    return;
-  }
-  tutorias[tutoriaActual].calificado = true;
-  cerrarModal();
-  renderTutorias();
-}
-
-// Cerrar ventana emergente al hacer clic fuera
-document.getElementById('modalOverlay').addEventListener('click', function (e) {
-  if (e.target === this) cerrarModal();
-});
