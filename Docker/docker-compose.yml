@@ -1,0 +1,36 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: myteacher_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root1234
+      MYSQL_DATABASE: myteacher
+      MYSQL_USER: myteacher_user
+      MYSQL_PASSWORD: myteacher1234
+    ports:
+      - "3306:3306"
+    volumes:
+      - myteacher_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+ 
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: myteacher_phpmyadmin
+    restart: always
+    depends_on:
+      - mysql
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: myteacher_user
+      PMA_PASSWORD: myteacher1234
+    ports:
+      - "8080:80"
+ 
+volumes:
+  myteacher_data:
