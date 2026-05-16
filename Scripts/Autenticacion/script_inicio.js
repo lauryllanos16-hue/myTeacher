@@ -52,18 +52,40 @@ window.addEventListener('click', (e) => {
 });
 //Metodo para que mande a inicios distintos segun el correo
 
-function iniciarSesion() {
-  const correo = document.getElementById('correo').value.trim();      // ← 'correo' no 'inputCorreo'
-  const password = document.getElementById('password').value.trim();  // ← 'password' no 'inputPassword'
+async function iniciarSesion() {
+  const correo   = document.getElementById('correo').value.trim();
+  const password = document.getElementById('password').value.trim();
 
   if (!correo || !password) {
     alert('Por favor completa todos los campos.');
     return;
   }
 
-  if (correo.includes('tutor')) {
-    window.location.href = '/HTML/Tutor/inicio_tutor.html';
-  } else {
-    window.location.href = '/HTML/Estudiante/inicio_estudiante.html';
+  try {
+    const respuesta = await fetch('http://localhost:3000/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ correo, password }),
+    });
+
+    const datos = await respuesta.json();
+
+    if (!respuesta.ok) {
+      alert(datos.error || 'Correo o contraseña incorrectos.');
+      return;
+    }
+
+    // Guardar usuario en sessionStorage
+    sessionStorage.setItem('usuario', JSON.stringify(datos));
+
+    // Redirigir según rol
+    if (datos.rol === 'tutor') {
+      window.location.href = '/HTML/Tutor/inicio_tutor.html';
+    } else {
+      window.location.href = '/HTML/Estudiante/inicio_estudiante.html';
+    }
+
+  } catch (err) {
+    alert('No se pudo conectar al servidor. Verifica que el backend esté corriendo.');
   }
 }
