@@ -19,7 +19,7 @@ const connection = mysql.createConnection({
 
 connection.connect((err) => {
   if (err) {
-    console.error("Error MySQL:", err);
+    console.error(err);
   } else {
     console.log("Conectado a MySQL");
   }
@@ -27,6 +27,16 @@ connection.connect((err) => {
 
 app.get("/", (req, res) => {
   res.send("Backend funcionando");
+});
+
+app.get("/usuarios", (req, res) => {
+  connection.query("SELECT * FROM usuarios", (err, results) => {
+    if (err) {
+      return res.status(500).json(err);
+    }
+
+    res.json(results);
+  });
 });
 
 const PORT = process.env.PORT || 3000;
