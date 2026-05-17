@@ -34,7 +34,7 @@ async function cargarPerfil() {
     document.querySelector('.reviews').textContent = `(${datos.total_resenas || 0} reseñas)`;
 
     // Estadísticas
-    const statsGrid = document.querySelector('.section-card:nth-child(2) .info-grid');
+    const statsGrid = document.querySelector('#estadisticas .info-grid');
     if (statsGrid) {
       statsGrid.innerHTML = `
         <div class="info-row">
