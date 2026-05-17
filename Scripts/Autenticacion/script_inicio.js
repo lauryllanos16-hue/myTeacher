@@ -62,23 +62,15 @@ async function iniciarSesion() {
   }
 
   try {
-    const respuesta = await fetch('http://localhost:3000/api/auth/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ correo, password }),
-    });
+    const datos = await myTeacherAPI.login(correo, password);
 
-    const datos = await respuesta.json();
-
-    if (!respuesta.ok) {
-      alert(datos.error || 'Correo o contraseña incorrectos.');
+    if (datos.error) {
+      alert(datos.error);
       return;
     }
 
-    // Guardar usuario en sessionStorage
     sessionStorage.setItem('usuario', JSON.stringify(datos));
 
-    // Redirigir según rol
     if (datos.rol === 'tutor') {
       window.location.href = '/HTML/Tutor/inicio_tutor.html';
     } else {
