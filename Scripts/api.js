@@ -1,5 +1,5 @@
 // Scripts/api.js
-const API = 'https://myteacher-production-e87b.up.railway.app/api';
+window.myTeacherAPI = 'https://myteacher-production-e87b.up.railway.app/api';
 
 const myTeacherAPI = {
 
