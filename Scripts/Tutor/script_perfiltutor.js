@@ -21,14 +21,33 @@ async function cargarPerfil() {
     if (datos.error) { alert(datos.error); return; }
 
     avatarImg.src = datos.foto_perfil || DEFAULT_AVATAR;
-    document.getElementById('nombreTexto').textContent   = datos.nombre        || '';
-    document.getElementById('correoTexto').textContent   = datos.correo        || '';
-    document.getElementById('ratingTexto').textContent   = datos.calificacion  || '0.0';
-    document.getElementById('materiasTexto').textContent = datos.materias      || '';
-    document.getElementById('ubicacionTexto').textContent= datos.ubicacion     || '';
-    document.getElementById('precioTexto').textContent   = datos.precio_hora   ? `$${datos.precio_hora}` : '';
-    document.getElementById('modalidadTexto').textContent= datos.modalidad     || '';
-    document.getElementById('descTexto').textContent     = datos.descripcion   || '';
+    document.getElementById('nombreTexto').textContent    = datos.nombre       || '';
+    document.getElementById('correoTexto').textContent    = datos.correo       || '';
+    document.getElementById('ratingTexto').textContent    = datos.calificacion || '0.0';
+    document.getElementById('materiasTexto').textContent  = datos.materias     || '';
+    document.getElementById('ubicacionTexto').textContent = datos.ubicacion    || '';
+    document.getElementById('precioTexto').textContent    = datos.precio_hora  ? `$${datos.precio_hora}` : '';
+    document.getElementById('modalidadTexto').textContent = datos.modalidad    || '';
+    document.getElementById('descTexto').textContent      = datos.descripcion  || '';
+
+    // Reseñas
+    document.querySelector('.reviews').textContent = `(${datos.total_resenas || 0} reseñas)`;
+
+    // Estadísticas
+    const statsGrid = document.querySelector('.section-card:nth-child(2) .info-grid');
+    if (statsGrid) {
+      statsGrid.innerHTML = `
+        <div class="info-row">
+          <div class="info-cell">Clases impartidas: ${datos.total_resenas || 0}</div>
+          <div class="info-cell">Estudiantes atendidos: ${datos.total_resenas || 0}</div>
+        </div>
+        <div class="info-row" style="display:flex;justify-content:center;">
+          <div class="info-cell" style="border-right:none;text-align:center;justify-content:center;flex:none;">
+            Calificacion promedio: ⭐ ${datos.calificacion || '0.0'}
+          </div>
+        </div>
+      `;
+    }
 
     // Disponibilidad
     if (datos.disponibilidad && datos.disponibilidad.length) {
@@ -46,11 +65,11 @@ async function cargarPerfil() {
       }
       disp.innerHTML = filas.join('');
     }
+
   } catch (err) {
     alert('Error al cargar el perfil.');
   }
 }
-
 cargarPerfil();
 
 function cambiarFoto(event) {
