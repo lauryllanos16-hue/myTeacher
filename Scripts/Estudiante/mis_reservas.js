@@ -25,8 +25,11 @@ async function cargarReservas() {
     container.innerHTML = '<p style="text-align:center;color:#888;">Error al cargar reservas.</p>';
   }
 }
+if (!fechaStr) return '—';
+  const fecha = new Date(fechaStr);
+  return fecha.toLocaleDateString('es-CO', { day: 'numeric', month: 'long', year: 'numeric' });
 
-function estadoInfo(estado) {
+  function estadoInfo(estado) {
   const map = {
     proxima:   { label: 'Próxima',   clase: 'proxima'   },
     activa:    { label: 'Activa',    clase: 'activa'    },
@@ -51,7 +54,7 @@ function renderReservas() {
             <div class="info-cell">Materia: <strong>${r.materia}</strong></div>
           </div>
           <div class="info-row">
-            <div class="info-cell">Fecha: <strong>${r.fecha}</strong></div>
+           <div class="info-cell">Fecha: <strong>${formatearFecha(r.fecha)}</strong></div>
             <div class="info-cell">Nivel: <strong>${r.nivel}</strong></div>
           </div>
           <div class="info-row">
