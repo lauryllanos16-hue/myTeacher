@@ -3,6 +3,43 @@ const router = express.Router();
 const pool = require('../db');
 
 /* ══════════════════════════════
+   GET /api/reservas/tutor/:tutorId
+   Obtener reservas de un tutor (para vista del tutor)
+   ══════════════════════════════ */
+router.get('/tutor/:tutorId', async (req, res) => {
+  const { tutorId } = req.params;
+
+  try {
+    const [rows] = await pool.query(
+      `
+      SELECT
+        r.id,
+        r.fecha,
+        r.hora,
+        r.modalidad,
+        r.estado,
+        r.enlace_clase,
+        u.nombre AS estudiante,
+        m.nombre AS materia,
+        e.nivel_educativo AS nivel
+      FROM reservas r
+      JOIN estudiantes e ON e.id = r.estudiante_id
+      JOIN usuarios u    ON u.id = e.usuario_id
+      JOIN materias m    ON m.id = r.materia_id
+      WHERE r.tutor_id = ?
+      ORDER BY r.fecha ASC, r.hora ASC
+    `,
+      [tutorId],
+    );
+
+    res.json(rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Error interno del servidor.' });
+  }
+});
+
+/* ══════════════════════════════
    GET /api/reservas/:estudianteId
    Obtener reservas de un estudiante
    ══════════════════════════════ */
@@ -97,41 +134,6 @@ router.put('/:id/cancelar', async (req, res) => {
   }
 });
 
-/* ══════════════════════════════
-   GET /api/reservas/tutor/:tutorId
-   Obtener reservas de un tutor (para vista del tutor)
-   ══════════════════════════════ */
-router.get('/tutor/:tutorId', async (req, res) => {
-  const { tutorId } = req.params;
 
-  try {
-    const [rows] = await pool.query(
-      `
-      SELECT
-        r.id,
-        r.fecha,
-        r.hora,
-        r.modalidad,
-        r.estado,
-        r.enlace_clase,
-        u.nombre AS estudiante,
-        m.nombre AS materia,
-        e.nivel_educativo AS nivel
-      FROM reservas r
-      JOIN estudiantes e ON e.id = r.estudiante_id
-      JOIN usuarios u    ON u.id = e.usuario_id
-      JOIN materias m    ON m.id = r.materia_id
-      WHERE r.tutor_id = ?
-      ORDER BY r.fecha ASC, r.hora ASC
-    `,
-      [tutorId],
-    );
-
-    res.json(rows);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Error interno del servidor.' });
-  }
-});
 
 module.exports = router;
