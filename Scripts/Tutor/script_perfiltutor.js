@@ -1,6 +1,8 @@
 // v4
 // Scripts/Tutor/script_perfiltutor.js
-const DEFAULT_AVATAR = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(`
+const DEFAULT_AVATAR =
+  'data:image/svg+xml;charset=utf-8,' +
+  encodeURIComponent(`
   <svg xmlns="http://www.w3.org/2000/svg" width="110" height="110">
     <rect width="110" height="110" fill="#dde4f5" rx="55"/>
     <circle cx="55" cy="42" r="22" fill="#a0aecb"/>
@@ -9,7 +11,9 @@ const DEFAULT_AVATAR = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(
 `);
 
 const avatarImg = document.getElementById('avatarImg');
-avatarImg.onerror = () => { avatarImg.src = DEFAULT_AVATAR; };
+avatarImg.onerror = () => {
+  avatarImg.src = DEFAULT_AVATAR;
+};
 
 const usuario = JSON.parse(sessionStorage.getItem('usuario'));
 if (!usuario) window.location.href = '/HTML/Autenticacion/inicio_sesion.html';
@@ -18,20 +22,29 @@ if (!usuario) window.location.href = '/HTML/Autenticacion/inicio_sesion.html';
 async function cargarPerfil() {
   try {
     const datos = await window.myTeacherAPI.getTutor(usuario.id);
-    if (datos.error) { alert(datos.error); return; }
+    if (datos.error) {
+      alert(datos.error);
+      return;
+    }
 
     avatarImg.src = datos.foto_perfil || DEFAULT_AVATAR;
-    document.getElementById('nombreTexto').textContent    = datos.nombre       || '';
-    document.getElementById('correoTexto').textContent    = datos.correo       || '';
-    document.getElementById('ratingTexto').textContent    = datos.calificacion || '0.0';
-    document.getElementById('materiasTexto').textContent  = datos.materias     || '';
-    document.getElementById('ubicacionTexto').textContent = datos.ubicacion    || '';
-    document.getElementById('precioTexto').textContent    = datos.precio_hora  ? `$${datos.precio_hora}` : '';
-    document.getElementById('modalidadTexto').textContent = datos.modalidad    || '';
-    document.getElementById('descTexto').textContent      = datos.descripcion  || '';
+    document.getElementById('nombreTexto').textContent = datos.nombre || '';
+    document.getElementById('correoTexto').textContent = datos.correo || '';
+    document.getElementById('ratingTexto').textContent =
+      datos.calificacion || '0.0';
+    document.getElementById('materiasTexto').textContent = datos.materias || '';
+    document.getElementById('ubicacionTexto').textContent =
+      datos.ubicacion || '';
+    document.getElementById('precioTexto').textContent = datos.precio_hora
+      ? `$${datos.precio_hora}`
+      : '';
+    document.getElementById('modalidadTexto').textContent =
+      datos.modalidad || '';
+    document.getElementById('descTexto').textContent = datos.descripcion || '';
 
     // Reseñas
-    document.querySelector('.reviews').textContent = `(${datos.total_resenas || 0} reseñas)`;
+    document.querySelector('.reviews').textContent =
+      `(${datos.total_resenas || 0} reseñas)`;
 
     // Estadísticas
     const statsGrid = document.querySelector('#estadisticas .info-grid');
@@ -48,7 +61,6 @@ async function cargarPerfil() {
         </div>
       `;
     }
-
     // Disponibilidad
     if (datos.disponibilidad && datos.disponibilidad.length) {
       const disp = document.querySelector('#disponibilidad .info-grid');
@@ -57,15 +69,14 @@ async function cargarPerfil() {
         const a = datos.disponibilidad[i];
         const b = datos.disponibilidad[i + 1];
         filas.push(`
-          <div class="info-row">
-            <div class="info-cell">${a.dia}: ${a.hora_inicio} – ${a.hora_fin}</div>
-            <div class="info-cell">${b ? `${b.dia}: ${b.hora_inicio} – ${b.hora_fin}` : ''}</div>
-          </div>
-        `);
+      <div class="info-row">
+        <div class="info-cell">${a.dia}: ${a.hora_inicio.slice(0, 5)} – ${a.hora_fin.slice(0, 5)}</div>
+        <div class="info-cell">${b ? `${b.dia}: ${b.hora_inicio.slice(0, 5)} – ${b.hora_fin.slice(0, 5)}` : ''}</div>
+      </div>
+    `);
       }
       disp.innerHTML = filas.join('');
     }
-
   } catch (err) {
     alert('Error al cargar el perfil.');
   }
@@ -76,7 +87,9 @@ function cambiarFoto(event) {
   const file = event.target.files[0];
   if (!file) return;
   const reader = new FileReader();
-  reader.onload = e => { avatarImg.src = e.target.result; };
+  reader.onload = (e) => {
+    avatarImg.src = e.target.result;
+  };
   reader.readAsDataURL(file);
 }
 
@@ -85,18 +98,29 @@ let editando = false;
 function toggleEditar() {
   editando = !editando;
   const form = document.getElementById('editForm');
-  const btn  = document.getElementById('btnEditar');
+  const btn = document.getElementById('btnEditar');
   if (editando) {
-    document.getElementById('inputNombre').value    = document.getElementById('nombreTexto').textContent;
-    document.getElementById('inputCorreo').value    = document.getElementById('correoTexto').textContent;
-    document.getElementById('inputMaterias').value  = document.getElementById('materiasTexto').textContent;
-    document.getElementById('inputUbicacion').value = document.getElementById('ubicacionTexto').textContent;
-    document.getElementById('inputPrecio').value    = document.getElementById('precioTexto').textContent.replace('$','');
-    document.getElementById('inputDesc').value      = document.getElementById('descTexto').textContent;
-    const modalidadActual = document.getElementById('modalidadTexto').textContent;
+    document.getElementById('inputNombre').value =
+      document.getElementById('nombreTexto').textContent;
+    document.getElementById('inputCorreo').value =
+      document.getElementById('correoTexto').textContent;
+    document.getElementById('inputMaterias').value =
+      document.getElementById('materiasTexto').textContent;
+    document.getElementById('inputUbicacion').value =
+      document.getElementById('ubicacionTexto').textContent;
+    document.getElementById('inputPrecio').value = document
+      .getElementById('precioTexto')
+      .textContent.replace('$', '');
+    document.getElementById('inputDesc').value =
+      document.getElementById('descTexto').textContent;
+    const modalidadActual =
+      document.getElementById('modalidadTexto').textContent;
     const sel = document.getElementById('inputModalidad');
     for (let i = 0; i < sel.options.length; i++) {
-      if (sel.options[i].text === modalidadActual) { sel.selectedIndex = i; break; }
+      if (sel.options[i].text === modalidadActual) {
+        sel.selectedIndex = i;
+        break;
+      }
     }
     form.style.display = 'block';
     btn.textContent = 'Cancelar edición';
@@ -113,13 +137,13 @@ function cancelarEditar() {
 }
 
 async function guardarEditar() {
-  const nombre    = document.getElementById('inputNombre').value.trim();
-  const correo    = document.getElementById('inputCorreo').value.trim();
-  const materias  = document.getElementById('inputMaterias').value.trim();
+  const nombre = document.getElementById('inputNombre').value.trim();
+  const correo = document.getElementById('inputCorreo').value.trim();
+  const materias = document.getElementById('inputMaterias').value.trim();
   const ubicacion = document.getElementById('inputUbicacion').value.trim();
-  const precio    = document.getElementById('inputPrecio').value.trim();
+  const precio = document.getElementById('inputPrecio').value.trim();
   const modalidad = document.getElementById('inputModalidad').value;
-  const desc      = document.getElementById('inputDesc').value.trim();
+  const desc = document.getElementById('inputDesc').value.trim();
 
   if (!nombre || !correo) {
     alert('Por favor completa nombre y correo.');
@@ -128,48 +152,65 @@ async function guardarEditar() {
 
   // Disponibilidad
   const diasConfig = [
-    { id: 'inputLunes',     dia: 'Lunes' },
-    { id: 'inputMartes',    dia: 'Martes' },
+    { id: 'inputLunes', dia: 'Lunes' },
+    { id: 'inputMartes', dia: 'Martes' },
     { id: 'inputMiercoles', dia: 'Miércoles' },
-    { id: 'inputJueves',    dia: 'Jueves' },
-    { id: 'inputViernes',   dia: 'Viernes' },
-    { id: 'inputSabado',    dia: 'Sábado' },
+    { id: 'inputJueves', dia: 'Jueves' },
+    { id: 'inputViernes', dia: 'Viernes' },
+    { id: 'inputSabado', dia: 'Sábado' },
   ];
 
   const disponibilidad = diasConfig
     .map(({ id, dia }) => {
       const val = document.getElementById(id)?.value.trim();
       if (!val) return null;
-      const partes = val.split('–').map(s => s.trim());
+      const partes = val.split(/–|-/).map((s) => s.trim());
+      // Disponibilidad
+
       if (partes.length !== 2) return null;
       return { dia, hora_inicio: partes[0], hora_fin: partes[1] };
     })
     .filter(Boolean);
 
   try {
-    const datosPerfil = await window.myTeacherAPI.actualizarPerfilTutor(usuario.id, {
-      nombre,
-      descripcion: desc,
-      precio_hora: precio,
-      modalidad,
-      ubicacion,
-      materias: materias.split(',').map(m => m.trim()).filter(Boolean),
-    });
+    const datosPerfil = await window.myTeacherAPI.actualizarPerfilTutor(
+      usuario.id,
+      {
+        nombre,
+        descripcion: desc,
+        precio_hora: precio,
+        modalidad,
+        ubicacion,
+        materias: materias
+          .split(',')
+          .map((m) => m.trim())
+          .filter(Boolean),
+      },
+    );
 
-    if (datosPerfil.error) { alert(datosPerfil.error); return; }
-
-    if (disponibilidad.length > 0) {
-      const datosDisp = await window.myTeacherAPI.actualizarDisponibilidad(usuario.id, disponibilidad);
-      if (datosDisp.error) { alert(datosDisp.error); return; }
+    if (datosPerfil.error) {
+      alert(datosPerfil.error);
+      return;
     }
 
-    document.getElementById('nombreTexto').textContent    = nombre;
-    document.getElementById('correoTexto').textContent    = correo;
-    document.getElementById('materiasTexto').textContent  = materias;
+    if (disponibilidad.length > 0) {
+      const datosDisp = await window.myTeacherAPI.actualizarDisponibilidad(
+        usuario.id,
+        disponibilidad,
+      );
+      if (datosDisp.error) {
+        alert(datosDisp.error);
+        return;
+      }
+    }
+
+    document.getElementById('nombreTexto').textContent = nombre;
+    document.getElementById('correoTexto').textContent = correo;
+    document.getElementById('materiasTexto').textContent = materias;
     document.getElementById('ubicacionTexto').textContent = ubicacion;
-    document.getElementById('precioTexto').textContent    = `$${precio}`;
+    document.getElementById('precioTexto').textContent = `$${precio}`;
     document.getElementById('modalidadTexto').textContent = modalidad;
-    document.getElementById('descTexto').textContent      = desc;
+    document.getElementById('descTexto').textContent = desc;
 
     usuario.nombre = nombre;
     sessionStorage.setItem('usuario', JSON.stringify(usuario));
