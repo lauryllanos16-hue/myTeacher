@@ -165,5 +165,35 @@ router.put('/:id', async (req, res) => {
     res.status(500).json({ error: 'Error interno del servidor.' });
   }
 });
+/* ══════════════════════════════
+   PUT /api/tutores/:id/disponibilidad
+   Body: { disponibilidad: [{dia, hora_inicio, hora_fin}] }
+   ══════════════════════════════ */
+router.put('/:id/disponibilidad', async (req, res) => {
+  const { id } = req.params;
+  const { disponibilidad } = req.body;
+
+  try {
+    const [t] = await pool.query('SELECT id FROM tutores WHERE usuario_id = ?', [id]);
+    if (t.length === 0) return res.status(404).json({ error: 'Tutor no encontrado.' });
+    const tutorId = t[0].id;
+
+    await pool.query('DELETE FROM disponibilidad WHERE tutor_id = ?', [tutorId]);
+
+    for (const d of disponibilidad) {
+      if (d.hora_inicio && d.hora_fin) {
+        await pool.query(
+          'INSERT INTO disponibilidad (tutor_id, dia, hora_inicio, hora_fin) VALUES (?, ?, ?, ?)',
+          [tutorId, d.dia, d.hora_inicio, d.hora_fin]
+        );
+      }
+    }
+
+    res.json({ mensaje: 'Disponibilidad actualizada.' });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Error interno del servidor.' });
+  }
+});
 
 module.exports = router;
