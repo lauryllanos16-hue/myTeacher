@@ -1,11 +1,12 @@
-require("dotenv").config();
-
-const express = require("express");
-const mysql = require("mysql2");
-const cors = require("cors");
+const express = require('express');
+const cors    = require('cors');
+require('dotenv').config();
 
 const app = express();
 
+/* ══════════════════════════════
+   MIDDLEWARES
+   ══════════════════════════════ */
 app.use(cors({
   origin: [
     'https://my-teacher-3rcz.vercel.app',
@@ -15,40 +16,42 @@ app.use(cors({
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type'],
 }));
+
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-const connection = mysql.createConnection({
-  host: process.env.DB_HOST,
-  port: process.env.DB_PORT,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME
+/* ══════════════════════════════
+   RUTAS
+   ══════════════════════════════ */
+app.use('/api/auth',     require('./routes/auth'));
+app.use('/api/tutores',  require('./routes/tutores'));
+app.use('/api/reservas', require('./routes/reservas'));
+app.use('/api/resenas',  require('./routes/resenas'));
+app.use('/api/materias', require('./routes/materias'));
+
+/* ══════════════════════════════
+   RUTA BASE
+   ══════════════════════════════ */
+app.get('/', (req, res) => {
+  res.json({ mensaje: 'myTeacher API corriendo ✅', version: '1.0.0' });
 });
 
-connection.connect((err) => {
-  if (err) {
-    console.error(err);
-  } else {
-    console.log("Conectado a MySQL");
-  }
+/* ══════════════════════════════
+   MANEJO DE ERRORES
+   ══════════════════════════════ */
+app.use((req, res) => {
+  res.status(404).json({ error: 'Ruta no encontrada.' });
 });
 
-app.get("/", (req, res) => {
-  res.send("Backend funcionando");
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ error: 'Error interno del servidor.' });
 });
 
-app.get("/usuarios", (req, res) => {
-  connection.query("SELECT * FROM usuarios", (err, results) => {
-    if (err) {
-      return res.status(500).json(err);
-    }
-
-    res.json(results);
-  });
-});
-
+/* ══════════════════════════════
+   INICIAR SERVIDOR
+   ══════════════════════════════ */
 const PORT = process.env.PORT || 3000;
-
 app.listen(PORT, () => {
-  console.log(`Servidor corriendo en puerto ${PORT}`);
+  console.log(`✅ Servidor corriendo en http://localhost:${PORT}`);
 });
