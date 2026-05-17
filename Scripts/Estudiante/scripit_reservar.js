@@ -1,4 +1,3 @@
-const API = 'https://myteacher-production-e87b.up.railway.app/api';
 
 // ── Sesión y parámetros URL ────────────────────────────────────────────────────
 const user    = JSON.parse(sessionStorage.getItem('usuario'));
