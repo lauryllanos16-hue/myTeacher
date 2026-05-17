@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>myTeacher - Perfil del Tutor</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/Styles/global.css" />
+    <link rel="stylesheet" href="/Styles/Estudiante/styles_ver_tutor.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="logo-slot">
+        <img src="/Imagenes/Logo.png" alt="myTeacher logo" />
+      </div>
+ 
+      <div class="nav-links" id="navLinks">
+        <a href="inicio_estudiante.html" class="active">Buscar</a>
+        <a href="mis_reservas.html">Mis reservas</a>
+        <a href="perfil.html#tutorias">Historial</a>
+        <a href="perfil.html">Perfil</a>
+        <button class="btn-cerrar-sesion-mobile" onclick="cerrarSesion()">
+          Cerrar sesión
+        </button>
+      </div>
+ 
+      <div class="nav-right">
+        <button class="btn-cerrar-sesion" onclick="cerrarSesion()">
+          Cerrar sesión
+        </button>
+        <div class="nav-bell" id="bell">🔔</div>
+        <div class="notif-panel" id="notifPanel">
+          <p>Recordatorio que tiene una clase en 20 minutos</p>
+        </div>
+      </div>
+ 
+      <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+ 
+    <div class="page">
+      <div class="section-label">
+        <span>👤 Perfil del tutor</span>
+      </div>
+ 
+      <!-- Perfil principal -->
+      <div class="section-card">
+        <div class="profile-avatar">
+          <img id="avatarImg" alt="Foto de perfil" />
+        </div>
+ 
+        <div class="profile-info">
+          <p class="profile-name">
+            <strong>Nombre:</strong>
+            <span id="nombreTexto">—</span>
+          </p>
+          <p class="profile-email">
+            <strong>Correo:</strong>
+            <span id="correoTexto">—</span>
+          </p>
+          <p class="profile-rating">
+            ⭐ <span id="ratingTexto">0.0</span>
+            <span class="reviews" id="resenasTexto">(0 reseñas)</span>
+          </p>
+        </div>
+ 
+        <div class="info-grid" style="margin-top:16px">
+          <div class="info-row">
+            <div class="info-cell">Materias: <span id="materiasTexto">—</span></div>
+            <div class="info-cell">Ubicación: <span id="ubicacionTexto">—</span></div>
+          </div>
+          <div class="info-row">
+            <div class="info-cell">Precio por hora: <span id="precioTexto">—</span></div>
+            <div class="info-cell">Modalidad: <span id="modalidadTexto">—</span></div>
+          </div>
+        </div>
+ 
+        <div class="descripcion-box">
+          <p class="desc-title">Descripción</p>
+          <p class="desc-text" id="descTexto">—</p>
+        </div>
+ 
+        <div class="reservar-wrap">
+          <button class="btn-reservar" id="btnReservar">
+            Reservar sesión →
+          </button>
+        </div>
+      </div>
+ 
+      <!-- Disponibilidad -->
+      <div class="section-card" id="seccionDisponibilidad">
+        <div class="section-header">
+          <div class="badge">🗓️ Disponibilidad</div>
+        </div>
+        <div class="info-grid" id="disponibilidadGrid">
+          <div class="info-row">
+            <div class="info-cell">Cargando...</div>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- Reseñas -->
+      <div class="section-card" id="seccionResenas">
+        <div class="section-header">
+          <div class="badge">💬 Reseñas</div>
+        </div>
+        <div id="resenasContainer">
+          <p style="text-align:center;color:#888;">Cargando reseñas...</p>
+        </div>
+      </div>
+    </div>
+ 
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-logo">
+          <img src="/Imagenes/logo letras blancas.png" alt="myTeacher logo"
+            style="width:100%;height:100%;object-fit:contain" />
+        </div>
+        <div class="footer-cols">
+          <div class="footer-col">
+            <h4>Contactos</h4>
+            <p>Numero: +57 302 xxxx xxx<br />Correo: soporte@unilibre.edu</p>
+          </div>
+          <div class="footer-col">
+            <h4>Síguenos</h4>
+            <div class="social-icons">
+              <a href="#" class="social-icon si-fb" aria-label="Facebook">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="white">
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                </svg>
+              </a>
+              <a href="#" class="social-icon si-ig" aria-label="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                </svg>
+              </a>
+              <a href="#" class="social-icon si-x" aria-label="X">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="white">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copy">© 2026 myTeacher - Todos los derechos reservados</div>
+    </footer>
+ 
+    <script src="/Scripts/api.js"></script>
+    <script src="/Scripts/Estudiante/script_ver_tutor.js"></script>
+    <script src="/Scripts/global.js"></script>
+  </body>
+</html>

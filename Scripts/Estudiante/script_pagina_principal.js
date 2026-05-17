@@ -105,7 +105,7 @@ document.getElementById('tutorsContainer').addEventListener('click', function (e
 
   if (btnVer) {
     const id = btnVer.dataset.id;
-    window.location.href = `perfil_tutor.html?tutorId=${id}`;
+    window.location.href = `ver_tutor.html?tutorId=${id}`;
   }
 
   if (btnReservar) {
