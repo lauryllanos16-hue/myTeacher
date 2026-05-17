@@ -18,6 +18,7 @@ router.put('/:id', async (req, res) => {
     res.status(500).json({ error: 'Error interno del servidor.' });
   }
 });
-
+router.get('/ping', (req, res) => {
+  res.json({ ok: true });
+});
 module.exports = router;
-
