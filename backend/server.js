@@ -33,6 +33,8 @@ app.use('/api/tutores',  require('./routes/tutores'));
 app.use('/api/reservas', require('./routes/reservas'));
 app.use('/api/resenas',  require('./routes/resenas'));
 app.use('/api/materias', require('./routes/materias'));
+app.use('/api/usuarios', require('./routes/usuarios'));
+
 
 /* ══════════════════════════════
    RUTA BASE
