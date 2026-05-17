@@ -1,4 +1,4 @@
-//Informacion de los tutores
+// ── Avatar por defecto (igual que antes) ──────────────────────────────────────
 const DEFAULT_AVATAR =
   'data:image/svg+xml;charset=utf-8,' +
   encodeURIComponent(`
@@ -9,94 +9,117 @@ const DEFAULT_AVATAR =
   </svg>
 `);
 
-const tutores = [
-  {
-    nombre: 'Lionel Andres Messi Cuccittini',
-    rating: 5.0,
-    precio: '$40/Hora',
-    materia: 'Matematicas',
-    modalidad: 'Virtual / Presencial',
-    foto: '',
-  },
-  {
-    nombre: 'Maria Jose Fernandez Galvan',
-    rating: 5.0,
-    precio: '$45/Hora',
-    materia: 'Coreano',
-    modalidad: 'Virtual',
-    foto: '',
-  },
-];
+// ── Sesión ─────────────────────────────────────────────────────────────────────
+const SESSION_KEY = 'usuario';
 
+function getSession() {
+  try { return JSON.parse(sessionStorage.getItem(SESSION_KEY)); }
+  catch { return null; }
+}
+
+const user = getSession();
+if (!user || user.rol !== 'estudiante') {
+  window.location.href = '../Autenticacion/inicio_sesion.html';
+}
+
+// ── Render de tarjetas (mismas clases CSS que tenías) ─────────────────────────
 function renderTutores(lista) {
   const container = document.getElementById('tutorsContainer');
 
-  container.innerHTML = lista
-    .map(
-      (t, i) => `
-    <div class="tutor-card">
-      <img class="tutor-img" src="${t.foto || DEFAULT_AVATAR}" 
-           onerror="this.src='${DEFAULT_AVATAR}'">
+  if (!lista || lista.length === 0) {
+    container.innerHTML = `
+      <div class="empty-state">
+        <p>No encontramos tutores con esos filtros.</p>
+      </div>`;
+    return;
+  }
 
-      <div class="tutor-info">
-        <div class="tutor-name">${t.nombre}</div>
+  container.innerHTML = lista.map((t) => {
+    const foto       = t.foto_perfil || DEFAULT_AVATAR;
+    const rating     = Number(t.calificacion  ?? 0).toFixed(1);
+    const precio     = `$${Number(t.precio_hora ?? 0).toLocaleString('es-CO')}/Hora`;
+    const materia    = t.materias  || '—';
+    const modalidad  = t.modalidad || '—';
+    const nombre     = t.nombre    || 'Sin nombre';
+    const resenas    = t.total_resenas ?? 0;
 
-        <div class="tutor-meta">
-          <span class="star">&#11088;</span> ${t.rating}
-          <span class="sep">|</span> ${t.precio}
-          <span class="sep">|</span> ${t.materia}
+    return `
+      <div class="tutor-card">
+        <img class="tutor-img"
+             src="${foto}"
+             onerror="this.src='${DEFAULT_AVATAR}'"
+             alt="Foto de ${nombre}">
+
+        <div class="tutor-info">
+          <div class="tutor-name">${nombre}</div>
+
+          <div class="tutor-meta">
+            <span class="star">⭐</span> ${rating}
+            <span class="sep">|</span> ${precio}
+            <span class="sep">|</span> ${materia}
+            <span class="sep">|</span> <small>${resenas} reseñas</small>
+          </div>
+
+          <div class="tutor-modality">
+            Modalidad: <strong>${modalidad}</strong>
+          </div>
+
+          <div class="tutor-btns">
+            <button class="btn btn-secondary btn-ver"
+                    data-id="${t.id}">Ver perfil</button>
+            <button class="btn btn-primary btn-reservar"
+                    data-id="${t.id}">Reservar</button>
+          </div>
         </div>
-
-        <div class="tutor-modality">
-          Modalidad : <strong>${t.modalidad}</strong>
-        </div>
-
-        <div class="tutor-btns">
-          <button class="btn btn-secondary">Ver perfil</button>
-          <button class="btn btn-primary">Reservar</button>
-        </div>
-      </div>
-    </div>
-  `,
-    )
-    .join('');
+      </div>`;
+  }).join('');
 }
 
-//Funcionalidad botones para ver mas de los tutores recomendados o para reservarlos
-document
-  .getElementById('tutorsContainer')
-  .addEventListener('click', function (e) {
-    const btnVer = e.target.closest('.btn-ver');
-    const btnReservar = e.target.closest('.btn-reservar');
+// ── Carga desde el backend ─────────────────────────────────────────────────────
+async function cargarTutores(filtros = {}) {
+  const container = document.getElementById('tutorsContainer');
+  container.innerHTML = '<p class="loading-msg">Cargando tutores...</p>';
 
-    if (btnVer) {
-      const index = btnVer.dataset.index;
-      alert('Ver perfil de: ' + tutores[index].nombre);
-    }
+  try {
+    const filtrosLimpios = Object.fromEntries(
+      Object.entries(filtros).filter(([, v]) => v && v.trim() !== '')
+    );
 
-    if (btnReservar) {
-      const index = btnReservar.dataset.index;
-      const tutor = tutores[index];
+    const data = await window.myTeacherAPI.getTutores(filtrosLimpios);
+    const lista = Array.isArray(data) ? data : (data.data ?? []);
+    renderTutores(lista);
+  } catch (err) {
+    console.error('[myTeacher] Error al cargar tutores:', err);
+    container.innerHTML = `
+      <div class="error-state">
+        <p>No pudimos cargar los tutores. Verifica tu conexión.</p>
+        <button class="btn btn-primary" onclick="cargarTutores()">Reintentar</button>
+      </div>`;
+  }
+}
 
-      localStorage.setItem('tutorSeleccionado', JSON.stringify(tutor));
-      window.location.href = 'reservar.html';
-    }
-  });
+// ── Clicks en las tarjetas (delegación igual que antes) ───────────────────────
+document.getElementById('tutorsContainer').addEventListener('click', function (e) {
+  const btnVer      = e.target.closest('.btn-ver');
+  const btnReservar = e.target.closest('.btn-reservar');
 
-//Buscador de tutores al gusto del estudiante
+  if (btnVer) {
+    const id = btnVer.dataset.id;
+    window.location.href = `perfil_tutor.html?tutorId=${id}`;
+  }
+
+  if (btnReservar) {
+    const id = btnReservar.dataset.id;
+    window.location.href = `reservar.html?tutorId=${id}`;
+  }
+});
+
+// ── Buscador con filtros ───────────────────────────────────────────────────────
 document.querySelector('.btn-buscar').addEventListener('click', function () {
-  const selects = document.querySelectorAll('.field-row select');
-  const materia = selects[0].value;
-  const modalidad = selects[1].value;
-  const nivel = selects[2].value;
-
-  alert(`Buscando tutores de ${materia} (${modalidad}, ${nivel})`);
+  const materia   = document.getElementById('materiaSelect').value;
+  const modalidad = document.getElementById('modalidadSelect').value;
+  cargarTutores({ materia, modalidad });
 });
 
-// Para mostrarle mas tutores
-document.querySelector('.btn-ver-mas').addEventListener('click', function () {
-  alert('Cargando más tutores...');
-});
-
-//Para cargarle los demas tutores
-renderTutores(tutores);
+// ── Carga inicial ──────────────────────────────────────────────────────────────
+cargarTutores();
