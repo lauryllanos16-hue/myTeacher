@@ -1,7 +1,7 @@
 const express = require('express');
-const router  = express.Router();
-const bcrypt  = require('bcryptjs');
-const pool    = require('../db');
+const router = express.Router();
+const bcrypt = require('bcryptjs');
+const pool = require('../db');
 
 /* ══════════════════════════════
    POST /api/auth/login
@@ -11,17 +11,20 @@ router.post('/login', async (req, res) => {
   const { correo, password } = req.body;
 
   if (!correo || !password) {
-    return res.status(400).json({ error: 'Correo y contraseña son requeridos.' });
+    return res
+      .status(400)
+      .json({ error: 'Correo y contraseña son requeridos.' });
   }
 
   try {
-    const [rows] = await pool.query(
-      'SELECT * FROM usuarios WHERE correo = ?',
-      [correo]
-    );
+    const [rows] = await pool.query('SELECT * FROM usuarios WHERE correo = ?', [
+      correo,
+    ]);
 
     if (rows.length === 0) {
-      return res.status(401).json({ error: 'Correo o contraseña incorrectos.' });
+      return res
+        .status(401)
+        .json({ error: 'Correo o contraseña incorrectos.' });
     }
 
     const usuario = rows[0];
@@ -29,18 +32,37 @@ router.post('/login', async (req, res) => {
     // Comparar password
     const valido = await bcrypt.compare(password, usuario.password_hash);
     if (!valido) {
-      return res.status(401).json({ error: 'Correo o contraseña incorrectos.' });
+      return res
+        .status(401)
+        .json({ error: 'Correo o contraseña incorrectos.' });
+    }
+
+    // Devolver datos sin el hash
+    // Buscar perfilId según rol
+    let perfilId = null;
+    if (usuario.rol === 'estudiante') {
+      const [est] = await pool.query(
+        'SELECT id FROM estudiantes WHERE usuario_id = ?',
+        [usuario.id],
+      );
+      if (est.length > 0) perfilId = est[0].id;
+    } else if (usuario.rol === 'tutor') {
+      const [tut] = await pool.query(
+        'SELECT id FROM tutores WHERE usuario_id = ?',
+        [usuario.id],
+      );
+      if (tut.length > 0) perfilId = tut[0].id;
     }
 
     // Devolver datos sin el hash
     res.json({
-      id:     usuario.id,
+      id: usuario.id,
+      perfilId,
       nombre: usuario.nombre,
       correo: usuario.correo,
-      rol:    usuario.rol,
-      foto:   usuario.foto_perfil,
+      rol: usuario.rol,
+      foto: usuario.foto_perfil,
     });
-
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Error interno del servidor.' });
@@ -62,7 +84,7 @@ router.post('/registro', async (req, res) => {
     // Verificar si ya existe
     const [existe] = await pool.query(
       'SELECT id FROM usuarios WHERE correo = ?',
-      [correo]
+      [correo],
     );
 
     if (existe.length > 0) {
@@ -75,7 +97,7 @@ router.post('/registro', async (req, res) => {
     // Insertar usuario
     const [result] = await pool.query(
       'INSERT INTO usuarios (nombre, correo, password_hash, rol) VALUES (?, ?, ?, ?)',
-      [nombre, correo, hash, rol]
+      [nombre, correo, hash, rol],
     );
 
     const usuarioId = result.insertId;
@@ -84,22 +106,20 @@ router.post('/registro', async (req, res) => {
     if (rol === 'estudiante') {
       await pool.query(
         'INSERT INTO estudiantes (usuario_id, nivel_educativo) VALUES (?, ?)',
-        [usuarioId, nivel_educativo || 'Universitario']
+        [usuarioId, nivel_educativo || 'Universitario'],
       );
     } else if (rol === 'tutor') {
-      await pool.query(
-        'INSERT INTO tutores (usuario_id) VALUES (?)',
-        [usuarioId]
-      );
+      await pool.query('INSERT INTO tutores (usuario_id) VALUES (?)', [
+        usuarioId,
+      ]);
     }
 
     res.status(201).json({
-      id:     usuarioId,
+      id: usuarioId,
       nombre,
       correo,
       rol,
     });
-
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Error interno del servidor.' });

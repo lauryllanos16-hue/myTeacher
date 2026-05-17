@@ -1,7 +1,4 @@
-//Avatar por defecto
-const DEFAULT_AVATAR =
-  'data:image/svg+xml;charset=utf-8,' +
-  encodeURIComponent(`
+const DEFAULT_AVATAR = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(`
   <svg xmlns="http://www.w3.org/2000/svg" width="110" height="110">
     <rect width="110" height="110" fill="#dde4f5" rx="55"/>
     <circle cx="55" cy="42" r="22" fill="#a0aecb"/>
@@ -10,43 +7,45 @@ const DEFAULT_AVATAR =
 `);
 
 const avatarImg = document.getElementById('avatarImg');
-avatarImg.src = DEFAULT_AVATAR;
-avatarImg.onerror = function () {
-  this.src = DEFAULT_AVATAR;
-};
+avatarImg.onerror = () => { avatarImg.src = DEFAULT_AVATAR; };
 
-//Cambio de foto de perfil
+// ---- Cargar datos del usuario desde sessionStorage ----
+const usuario = JSON.parse(sessionStorage.getItem('usuario'));
+if (!usuario) {
+  window.location.href = '/HTML/Autenticacion/inicio_sesion.html';
+}
+
+function cargarPerfil() {
+  avatarImg.src = usuario.foto || DEFAULT_AVATAR;
+  document.getElementById('nombreTexto').textContent = usuario.nombre || '';
+  document.getElementById('correoTexto').textContent = usuario.correo || '';
+  document.getElementById('nivelTexto').textContent  = usuario.nivel_educativo || 'Universitario';
+}
+cargarPerfil();
+
+// ---- Cambiar foto (solo local por ahora) ----
 function cambiarFoto(event) {
   const file = event.target.files[0];
   if (!file) return;
   const reader = new FileReader();
-  reader.onload = function (e) {
-    avatarImg.src = e.target.result;
-  };
+  reader.onload = e => { avatarImg.src = e.target.result; };
   reader.readAsDataURL(file);
 }
 
-//Funcion del boton de editar perfil
+// ---- Editar perfil ----
 let editando = false;
 
 function toggleEditar() {
   editando = !editando;
   const form = document.getElementById('editForm');
-  const btn = document.getElementById('btnEditar');
-
+  const btn  = document.getElementById('btnEditar');
   if (editando) {
-    //Mostrar la informacion que ya estaba para que vea cual va a cambiar
-    document.getElementById('inputNombre').value =
-      document.getElementById('nombreTexto').textContent;
-    document.getElementById('inputCorreo').value =
-      document.getElementById('correoTexto').textContent;
+    document.getElementById('inputNombre').value = document.getElementById('nombreTexto').textContent;
+    document.getElementById('inputCorreo').value = document.getElementById('correoTexto').textContent;
     const nivelActual = document.getElementById('nivelTexto').textContent;
     const sel = document.getElementById('inputNivel');
     for (let i = 0; i < sel.options.length; i++) {
-      if (sel.options[i].text === nivelActual) {
-        sel.selectedIndex = i;
-        break;
-      }
+      if (sel.options[i].text === nivelActual) { sel.selectedIndex = i; break; }
     }
     form.style.display = 'block';
     btn.textContent = 'Cancelar edición';
@@ -62,71 +61,69 @@ function cancelarEditar() {
   document.getElementById('btnEditar').textContent = 'Editar perfil';
 }
 
-function guardarEditar() {
+async function guardarEditar() {
   const nombre = document.getElementById('inputNombre').value.trim();
   const correo = document.getElementById('inputCorreo').value.trim();
-  const nivel = document.getElementById('inputNivel').value;
+  const nivel  = document.getElementById('inputNivel').value;
 
   if (!nombre || !correo) {
     alert('Por favor completa todos los campos.');
     return;
   }
 
-  document.getElementById('nombreTexto').textContent = nombre;
-  document.getElementById('correoTexto').textContent = correo;
-  document.getElementById('nivelTexto').textContent = nivel;
+  try {
+    const datos = await window.myTeacherAPI.actualizarPerfilTutor(usuario.id, { nombre });
+    if (datos.error) { alert(datos.error); return; }
 
-  cancelarEditar();
+    usuario.nombre = nombre;
+    usuario.correo = correo;
+    usuario.nivel_educativo = nivel;
+    sessionStorage.setItem('usuario', JSON.stringify(usuario));
+
+    document.getElementById('nombreTexto').textContent = nombre;
+    document.getElementById('correoTexto').textContent = correo;
+    document.getElementById('nivelTexto').textContent  = nivel;
+    cancelarEditar();
+  } catch (err) {
+    alert('No se pudo guardar. Intenta de nuevo.');
+  }
 }
 
-//Informacion de las tutorias recientes
-const tutorias = [
-  {
-    materia: 'Matematicas',
-    tutor: 'Juan Perez',
-    fecha: '12 Marzo',
-    modalidad: 'Virtual',
-    calificado: false,
-  },
-  {
-    materia: 'Historia',
-    tutor: 'Laura Diaz',
-    fecha: '4 Marzo',
-    modalidad: 'Presencial',
-    calificado: false,
-  },
-];
-
-//Cargar las demas tutorias recientes
-function renderTutorias() {
+// ---- Cargar tutorías recientes desde el backend ----
+async function cargarTutorias() {
   const container = document.getElementById('tutoriasContainer');
-  container.innerHTML = tutorias.map((t, i) => `
-    <div class="section-card" id="tutoria-${i}">
-      <div class="info-grid">
-        <div class="info-row">
-          <div class="info-cell">Materia: <strong>${t.materia}</strong></div>
-          <div class="info-cell">Tutor: <strong>${t.tutor}</strong></div>
+  try {
+    const reservas = await window.myTeacherAPI.getReservas(usuario.perfilId);
+    if (!reservas.length) {
+      container.innerHTML = '<p style="text-align:center;color:#888;">No tienes tutorías recientes.</p>';
+      return;
+    }
+    container.innerHTML = reservas.map(r => `
+      <div class="section-card">
+        <div class="info-grid">
+          <div class="info-row">
+            <div class="info-cell">Materia: <strong>${r.materia}</strong></div>
+            <div class="info-cell">Tutor: <strong>${r.tutor}</strong></div>
+          </div>
+          <div class="info-row">
+            <div class="info-cell">Fecha: <strong>${r.fecha}</strong></div>
+            <div class="info-cell">Modalidad: <strong>${r.modalidad}</strong></div>
+          </div>
         </div>
-        <div class="info-row">
-          <div class="info-cell">Fecha: <strong>${t.fecha}</strong></div>
-          <div class="info-cell">Modalidad: <strong>${t.modalidad}</strong></div>
+        <div class="calificar-wrap" style="margin-top:14px;">
+          <button class="btn btn-primary" onclick="irACalificar(${r.id}, '${r.tutor}', '${r.materia}')">
+            ⭐ Calificar tutor
+          </button>
         </div>
       </div>
-      <div class="calificar-wrap" style="margin-top:14px;">
-        ${t.calificado
-          ? `<span style="color:#f5a623;font-size:14px;font-weight:600;">&#11088; Ya calificado</span>`
-          : `<button class="btn btn-primary" onclick="abrirModal(${i})">&#11088; Calificar tutor</button>`
-        }
-      </div>
-    </div>
-  `).join('');
+    `).join('');
+  } catch (err) {
+    container.innerHTML = '<p style="color:red;">Error al cargar tutorías.</p>';
+  }
 }
 
-renderTutorias();
-
-//Ventana emergente de la calificacion
-// Redirigir a reseñas al calificar
-function abrirModal(index) {
-  const t = tutorias[index];
-  window.location.href = `/HTML/Estudiante/reseñas.html?tutor=${encodeURIComponent(t.tutor)}&materia=${encodeURIComponent(t.materia)}`;
+function irACalificar(reservaId, tutor, materia) {
+  window.location.href = `/HTML/Estudiante/reseñas.html?reservaId=${reservaId}&tutor=${encodeURIComponent(tutor)}&materia=${encodeURIComponent(materia)}`;
 }
+
+cargarTutorias();
