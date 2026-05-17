@@ -1,5 +1,5 @@
 // Scripts/api.js
-const API = 'http://localhost:3000/api';
+const API = 'https://myteacher-production-e87b.up.railway.app/api';
 
 const myTeacherAPI = {
 
