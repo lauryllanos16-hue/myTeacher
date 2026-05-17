@@ -1,35 +1,43 @@
-//Validaciones de que lleno toda la informacion pedida
-document.getElementById('btnGuardar').addEventListener('click', function () {
-  const materia = document.getElementById('materia').value;
-  const precio = document.getElementById('precio').value.trim();
-  const presencial = document.getElementById('presencial').checked;
-  const virtual = document.getElementById('virtual').checked;
-  const ubicacion = document.getElementById('ubicacion').value.trim();
+document.getElementById('btnGuardar').addEventListener('click', async function () {
+  const materia     = document.getElementById('materia').value;
+  const precio      = document.getElementById('precio').value.trim();
+  const presencial  = document.getElementById('presencial').checked;
+  const virtual     = document.getElementById('virtual').checked;
+  const ubicacion   = document.getElementById('ubicacion').value.trim();
   const descripcion = document.getElementById('descripcion').value.trim();
 
-  if (!materia || materia === '') {
-    alert('Por favor selecciona una materia.');
-    return;
-  }
-  if (!precio) {
-    alert('Por favor ingresa el precio por hora.');
-    return;
-  }
-  if (!presencial && !virtual) {
-    alert('Por favor selecciona al menos una modalidad.');
-    return;
-  }
-  if (!ubicacion) {
-    alert('Por favor ingresa tu ubicación.');
-    return;
-  }
-  if (!descripcion) {
-    alert('Por favor ingresa tu descripción profesional.');
+  if (!materia)                return alert('Por favor selecciona una materia.');
+  if (!precio)                 return alert('Por favor ingresa el precio por hora.');
+  if (!presencial && !virtual) return alert('Por favor selecciona al menos una modalidad.');
+  if (!ubicacion)              return alert('Por favor ingresa tu ubicación.');
+  if (!descripcion)            return alert('Por favor ingresa tu descripción profesional.');
+
+  const usuario = JSON.parse(sessionStorage.getItem('usuario'));
+  if (!usuario) {
+    alert('Sesión expirada. Por favor regístrate de nuevo.');
+    window.location.href = '/HTML/Autenticacion/registro.html';
     return;
   }
 
-  // Envia todos los datos registrados
-  console.log({ materia, precio, presencial, virtual, ubicacion, descripcion });
-  alert('¡Perfil guardado correctamente!');
-  window.location.href = '../Tutor/inicio_tutor.html';
+  const modalidad = [presencial && 'presencial', virtual && 'virtual']
+    .filter(Boolean).join(',');
+
+  try {
+    const datos = await window.myTeacherAPI.actualizarPerfilTutor(usuario.id, {
+      descripcion,
+      precio_hora: precio,
+      modalidad,
+      ubicacion,
+      materias: [materia],
+    });
+
+    if (datos.error) {
+      alert(datos.error);
+      return;
+    }
+
+    window.location.href = '/HTML/Tutor/inicio_tutor.html';
+  } catch (err) {
+    alert('No se pudo guardar el perfil. Intenta de nuevo.');
+  }
 });
