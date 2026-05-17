@@ -1,4 +1,4 @@
-// v3
+// v4
 // Scripts/Tutor/script_perfiltutor.js
 const DEFAULT_AVATAR = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(`
   <svg xmlns="http://www.w3.org/2000/svg" width="110" height="110">
@@ -127,11 +127,27 @@ async function guardarEditar() {
   }
 
   // Disponibilidad
-  const diasIds = ['Lunes','Martes','Miercoles','Jueves','Viernes','Sabado'];
-  const diasNombres = ['Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+  const diasConfig = [
+    { id: 'inputLunes',     dia: 'Lunes' },
+    { id: 'inputMartes',    dia: 'Martes' },
+    { id: 'inputMiercoles', dia: 'Miércoles' },
+    { id: 'inputJueves',    dia: 'Jueves' },
+    { id: 'inputViernes',   dia: 'Viernes' },
+    { id: 'inputSabado',    dia: 'Sábado' },
+  ];
+
+  const disponibilidad = diasConfig
+    .map(({ id, dia }) => {
+      const val = document.getElementById(id)?.value.trim();
+      if (!val) return null;
+      const partes = val.split('–').map(s => s.trim());
+      if (partes.length !== 2) return null;
+      return { dia, hora_inicio: partes[0], hora_fin: partes[1] };
+    })
+    .filter(Boolean);
 
   try {
-    const datos = await window.myTeacherAPI.actualizarPerfilTutor(usuario.id, {
+    const datosPerfil = await window.myTeacherAPI.actualizarPerfilTutor(usuario.id, {
       nombre,
       descripcion: desc,
       precio_hora: precio,
@@ -140,7 +156,12 @@ async function guardarEditar() {
       materias: materias.split(',').map(m => m.trim()).filter(Boolean),
     });
 
-    if (datos.error) { alert(datos.error); return; }
+    if (datosPerfil.error) { alert(datosPerfil.error); return; }
+
+    if (disponibilidad.length > 0) {
+      const datosDisp = await window.myTeacherAPI.actualizarDisponibilidad(usuario.id, disponibilidad);
+      if (datosDisp.error) { alert(datosDisp.error); return; }
+    }
 
     document.getElementById('nombreTexto').textContent    = nombre;
     document.getElementById('correoTexto').textContent    = correo;
@@ -153,6 +174,9 @@ async function guardarEditar() {
     usuario.nombre = nombre;
     sessionStorage.setItem('usuario', JSON.stringify(usuario));
     cancelarEditar();
+
+    // Recargar disponibilidad
+    await cargarPerfil();
     alert('Perfil actualizado correctamente.');
   } catch (err) {
     alert('No se pudo guardar. Intenta de nuevo.');

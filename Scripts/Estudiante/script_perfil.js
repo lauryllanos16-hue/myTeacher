@@ -72,7 +72,7 @@ async function guardarEditar() {
   }
 
   try {
-    const datos = await window.myTeacherAPI.actualizarPerfilTutor(usuario.id, { nombre });
+    const datos = await window.myTeacherAPI.actualizarPerfilEstudiante(usuario.id, { nombre, nivel_educativo: nivel });
     if (datos.error) { alert(datos.error); return; }
 
     usuario.nombre = nombre;
@@ -84,11 +84,11 @@ async function guardarEditar() {
     document.getElementById('correoTexto').textContent = correo;
     document.getElementById('nivelTexto').textContent  = nivel;
     cancelarEditar();
+    alert('Perfil actualizado correctamente.');
   } catch (err) {
     alert('No se pudo guardar. Intenta de nuevo.');
   }
 }
-
 // ---- Cargar tutorías recientes desde el backend ----
 async function cargarTutorias() {
   const container = document.getElementById('tutoriasContainer');
