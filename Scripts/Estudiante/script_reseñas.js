@@ -1,75 +1,62 @@
-//Datos de las reseñas
-const comentariosData = [
-  {
-    nombre: 'María López',
-    estrellas: 5,
-    materia: 'Matemáticas',
-    fecha: '12 Marzo 2026',
-    texto: '"El tutor explica muy bien y tiene mucha paciencia."',
-  },
-  {
-    nombre: 'Carlos Pérez',
-    estrellas: 4,
-    materia: 'Álgebra',
-    fecha: '5 Marzo 2026',
-    texto: '"La clase fue clara y resolvió todas mis dudas."',
-  },
-  {
-    nombre: 'Laura Gómez',
-    estrellas: 5,
-    materia: 'Cálculo',
-    fecha: '2 Marzo 2026',
-    texto: '"Muy recomendado, explica paso a paso."',
-  },
-  {
-    nombre: 'Andrés Torres',
-    estrellas: 4,
-    materia: 'Física',
-    fecha: '28 Feb 2026',
-    texto: '"Muy buen tutor, puntual y claro en sus explicaciones."',
-  },
-  {
-    nombre: 'Sofía Martínez',
-    estrellas: 5,
-    materia: 'Química',
-    fecha: '20 Feb 2026',
-    texto: '"Excelente metodología, aprendí mucho en poco tiempo."',
-  },
-  {
-    nombre: 'Diego Ramírez',
-    estrellas: 3,
-    materia: 'Trigonometría',
-    fecha: '15 Feb 2026',
-    texto: '"Buena clase, aunque a veces va un poco rápido."',
-  },
-];
+// ---- Obtener parámetros de la URL ----
+const params = new URLSearchParams(window.location.search);
+const reservaId = params.get('reservaId');
+const tutorNombre = params.get('tutor');
+const materia = params.get('materia');
+const params = new URLSearchParams(window.location.search);
+const reservaId = params.get('reservaId');
+const tutorId = params.get('tutorId'); // ← viene de la URL
+const usuario = JSON.parse(sessionStorage.getItem('usuario'));
+if (!usuario) window.location.href = '/HTML/Autenticacion/inicio_sesion.html';
 
 const ITEMS_POR_PAGINA = 3;
 let mostrandoHasta = ITEMS_POR_PAGINA;
+let resenasData = [];
 
-//Cargar los demas comentarios
+// ---- Cargar reseñas del tutor ----
+async function cargarResenas() {
+  if (!tutorId) return;
+  try {
+    const datos = await window.myTeacherAPI.getResenas(tutorId);
+    resenasData = datos.resenas || [];
+    document.getElementById('promedioGlobal').textContent =
+      datos.promedio || '0.0';
+    document.getElementById('totalResenas').textContent = datos.total || 0;
+    renderComentarios();
+  } catch (err) {
+    console.error('Error cargando reseñas:', err);
+  }
+}
+
 function renderComentarios() {
   const lista = document.getElementById('listaComentarios');
   const btnVerMas = document.getElementById('btnVerMas');
-  const slice = comentariosData.slice(0, mostrandoHasta);
+  const slice = resenasData.slice(0, mostrandoHasta);
+
+  if (slice.length === 0) {
+    lista.innerHTML =
+      '<p style="text-align:center;color:#888;">No hay reseñas todavía.</p>';
+    btnVerMas.style.display = 'none';
+    return;
+  }
 
   lista.innerHTML = slice
     .map(
       (c) => `
     <div class="comentario-item">
       <div class="comentario-header">
-        <span class="comentario-nombre">${c.nombre}</span>
-        <span class="comentario-estrellas">${'★'.repeat(c.estrellas)}${'☆'.repeat(5 - c.estrellas)}</span>
+        <span class="comentario-nombre">${c.estudiante}</span>
+        <span class="comentario-estrellas">${'★'.repeat(c.calificacion)}${'☆'.repeat(5 - c.calificacion)}</span>
       </div>
-      <p class="comentario-meta">${c.materia} – ${c.fecha}</p>
-      <p class="comentario-texto">${c.texto}</p>
+      <p class="comentario-meta">${c.materia} – ${new Date(c.created_at).toLocaleDateString('es-CO', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+      <p class="comentario-texto">"${c.comentario || ''}"</p>
     </div>
   `,
     )
     .join('');
 
   btnVerMas.style.display =
-    mostrandoHasta >= comentariosData.length ? 'none' : 'inline-block';
+    mostrandoHasta >= resenasData.length ? 'none' : 'inline-block';
 }
 
 function verMas() {
@@ -77,9 +64,8 @@ function verMas() {
   renderComentarios();
 }
 
-//Permite escoger las estrellas para darle una nota al tutor
+// ---- Estrellas ----
 let calificacionSeleccionada = 0;
-
 const estrellas = document.querySelectorAll('#starSelector .star');
 
 estrellas.forEach((star) => {
@@ -89,7 +75,6 @@ estrellas.forEach((star) => {
       s.classList.toggle('active', parseInt(s.dataset.val) <= val),
     );
   });
-
   star.addEventListener('mouseleave', () => {
     estrellas.forEach((s) =>
       s.classList.toggle(
@@ -98,7 +83,6 @@ estrellas.forEach((star) => {
       ),
     );
   });
-
   star.addEventListener('click', () => {
     calificacionSeleccionada = parseInt(star.dataset.val);
     estrellas.forEach((s) =>
@@ -110,10 +94,16 @@ estrellas.forEach((star) => {
   });
 });
 
-//Que guarde la informacion del comentario y vereficacion de que este todo llenado
-function enviarComentario() {
+// ---- Enviar reseña ----
+async function enviarComentario() {
   const texto = document.getElementById('inputComentario').value.trim();
-
+  const datos = await window.myTeacherAPI.crearResena({
+    reserva_id: parseInt(reservaId),
+    estudiante_id: usuario.perfilId,
+    tutor_id: parseInt(tutorId),
+    calificacion: calificacionSeleccionada,
+    comentario: texto,
+  });
   if (calificacionSeleccionada === 0) {
     alert('Por favor selecciona una calificación.');
     return;
@@ -122,36 +112,35 @@ function enviarComentario() {
     alert('Por favor escribe un comentario.');
     return;
   }
+  if (!reservaId) {
+    alert('No se encontró la reserva.');
+    return;
+  }
 
-  const nuevo = {
-    nombre: 'Tú',
-    estrellas: calificacionSeleccionada,
-    materia: 'Tu materia',
-    fecha: new Date().toLocaleDateString('es-CO', {
-      day: 'numeric',
-      month: 'long',
-      year: 'numeric',
-    }),
-    texto: `"${texto}"`,
-  };
+  try {
+    const datos = await window.myTeacherAPI.crearResena({
+      reserva_id: parseInt(reservaId),
+      estudiante_id: usuario.perfilId,
+      tutor_id: window._tutorId,
+      calificacion: calificacionSeleccionada,
+      comentario: texto,
+    });
 
-  comentariosData.unshift(nuevo);
-  mostrandoHasta = ITEMS_POR_PAGINA;
+    if (datos.error) {
+      alert(datos.error);
+      return;
+    }
 
-  // Actualizar promedio
-  const promedio = (
-    comentariosData.reduce((acc, c) => acc + c.estrellas, 0) /
-    comentariosData.length
-  ).toFixed(1);
-  document.getElementById('promedioGlobal').textContent = promedio;
-  document.getElementById('totalResenas').textContent = comentariosData.length;
-
-  // Limpiar formulario
-  document.getElementById('inputComentario').value = '';
-  calificacionSeleccionada = 0;
-  estrellas.forEach((s) => s.classList.remove('active'));
-
-  renderComentarios();
+    alert('¡Reseña enviada correctamente!');
+    document.getElementById('inputComentario').value = '';
+    calificacionSeleccionada = 0;
+    estrellas.forEach((s) => s.classList.remove('active'));
+    await cargarResenas();
+  } catch (err) {
+    alert('No se pudo enviar la reseña. Intenta de nuevo.');
+  }
 }
 
-renderComentarios();
+// ---- Iniciar ----
+// Agregar api.js al HTML antes de este script
+cargarResenas();
