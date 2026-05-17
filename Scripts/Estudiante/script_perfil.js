@@ -94,10 +94,12 @@ async function cargarTutorias() {
   const container = document.getElementById('tutoriasContainer');
   try {
     const reservas = await window.myTeacherAPI.getReservas(usuario.perfilId);
-    if (!reservas.length) {
+    
+    if (!reservas || reservas.error || !reservas.length) {
       container.innerHTML = '<p style="text-align:center;color:#888;">No tienes tutorías recientes.</p>';
       return;
     }
+
     container.innerHTML = reservas.map(r => `
       <div class="section-card">
         <div class="info-grid">
@@ -118,10 +120,9 @@ async function cargarTutorias() {
       </div>
     `).join('');
   } catch (err) {
-    container.innerHTML = '<p style="color:red;">Error al cargar tutorías.</p>';
+    container.innerHTML = '<p style="text-align:center;color:#888;">No tienes tutorías recientes.</p>';
   }
 }
-
 function irACalificar(reservaId, tutor, materia) {
   window.location.href = `/HTML/Estudiante/reseñas.html?reservaId=${reservaId}&tutor=${encodeURIComponent(tutor)}&materia=${encodeURIComponent(materia)}`;
 }
