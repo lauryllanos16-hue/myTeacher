@@ -8,15 +8,20 @@ const app = express();
    MIDDLEWARES
    ══════════════════════════════ */
 app.use(cors({
-  origin: [
-    'https://my-teacher-3rcz.vercel.app',
-    'http://localhost:5500',
-    'http://127.0.0.1:5500'
-  ],
+  origin: function(origin, callback) {
+    // Permitir cualquier subdominio de vercel.app y localhost
+    if (!origin || 
+        origin.includes('vercel.app') || 
+        origin.includes('localhost') || 
+        origin.includes('127.0.0.1')) {
+      callback(null, true);
+    } else {
+      callback(new Error('No permitido por CORS'));
+    }
+  },
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type'],
 }));
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
