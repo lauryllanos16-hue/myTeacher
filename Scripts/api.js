@@ -49,13 +49,15 @@ window.myTeacherAPI = {
       body: JSON.stringify(datos),
     }).then(r => r.json()),
 
-  // MATERIAS
+ // MATERIAS
   getMaterias: () =>
     fetch(`${API}/materias`).then(r => r.json()),
+
+  // TUTORES - actualizar perfil
   actualizarPerfilTutor: (id, datos) =>
-  fetch(`${API}/tutores/${id}`, {
-    method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(datos),
-  }).then(r => r.json()),
+    fetch(`${API}/tutores/${id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(datos),
+    }).then(r => r.json()),
 };
