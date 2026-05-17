@@ -25,7 +25,9 @@ app.use(cors({
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+app.get('/api/test', (req, res) => {
+  res.json({ ok: true, version: 2 });
+});
 /* ══════════════════════════════
    RUTAS
    ══════════════════════════════ */
