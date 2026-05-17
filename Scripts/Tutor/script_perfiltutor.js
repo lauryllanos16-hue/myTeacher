@@ -1,4 +1,4 @@
-// v3
+// v4
 // Scripts/Tutor/script_perfiltutor.js
 const DEFAULT_AVATAR = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(`
   <svg xmlns="http://www.w3.org/2000/svg" width="110" height="110">
