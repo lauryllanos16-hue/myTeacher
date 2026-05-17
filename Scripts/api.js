@@ -52,4 +52,10 @@ window.myTeacherAPI = {
   // MATERIAS
   getMaterias: () =>
     fetch(`${API}/materias`).then(r => r.json()),
+  actualizarPerfilTutor: (id, datos) =>
+  fetch(`${API}/tutores/${id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(datos),
+  }).then(r => r.json()),
 };
