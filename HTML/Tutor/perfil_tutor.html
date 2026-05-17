@@ -81,14 +81,16 @@
 
         <div class="profile-info">
           <p class="profile-name">
-            <strong>Nombre:</strong> <span id="nombreTexto">Juan Perez</span>
+            <strong>Nombre:</strong>
+            <span id="nombreTexto">Juan Perez</span>
           </p>
           <p class="profile-email">
             <strong>Correo:</strong>
             <span id="correoTexto">JuanPerez@email.com</span>
           </p>
           <p class="profile-rating">
-            ⭐ <span id="ratingTexto">4.8</span>
+            ⭐
+            <span id="ratingTexto">4.8</span>
             <span class="reviews">(25 reseñas)</span>
           </p>
         </div>
@@ -96,18 +98,22 @@
         <div class="info-grid" style="margin-top: 16px">
           <div class="info-row">
             <div class="info-cell">
-              Materias: <span id="materiasTexto">Matematicas, Algebra</span>
+              Materias:
+              <span id="materiasTexto">Matematicas, Algebra</span>
             </div>
             <div class="info-cell">
-              Ubicacion: <span id="ubicacionTexto">Barranquilla</span>
+              Ubicacion:
+              <span id="ubicacionTexto">Barranquilla</span>
             </div>
           </div>
           <div class="info-row">
             <div class="info-cell">
-              Precio por hora: <span id="precioTexto">$20</span>
+              Precio por hora:
+              <span id="precioTexto">$20</span>
             </div>
             <div class="info-cell">
-              Modalidad: <span id="modalidadTexto">Virtual/Presencial</span>
+              Modalidad:
+              <span id="modalidadTexto">Virtual/Presencial</span>
             </div>
           </div>
         </div>
@@ -130,8 +136,9 @@
               event.preventDefault();
               toggleEditar();
             "
-            >Editar perfil</a
           >
+            Editar perfil
+          </a>
         </div>
       </div>
 
@@ -183,7 +190,7 @@
             rows="3"
             style="
               width: 100%;
-              font-family: &quot;Nunito&quot;, sans-serif;
+              font-family: 'Nunito', sans-serif;
               font-size: 13.5px;
               font-weight: 600;
               color: #1a2a3a;
@@ -195,38 +202,62 @@
             "
           ></textarea>
         </div>
-        <div class="edit-grid" style="margin-top: 16px;">
-  <div class="edit-grid-row">
-    <div class="edit-grid-cell">
-      <label>Lunes:</label>
-      <input type="text" id="inputLunes" placeholder="ej: 3:00PM – 7:00PM"/>
-    </div>
-    <div class="edit-grid-cell">
-      <label>Martes:</label>
-      <input type="text" id="inputMartes" placeholder="ej: 2:00PM – 6:00PM"/>
-    </div>
-  </div>
-  <div class="edit-grid-row">
-    <div class="edit-grid-cell">
-      <label>Miércoles:</label>
-      <input type="text" id="inputMiercoles" placeholder="ej: 4:00PM – 8:00PM"/>
-    </div>
-    <div class="edit-grid-cell">
-      <label>Jueves:</label>
-      <input type="text" id="inputJueves" placeholder="ej: (vacío si no hay)"/>
-    </div>
-  </div>
-  <div class="edit-grid-row">
-    <div class="edit-grid-cell">
-      <label>Viernes:</label>
-      <input type="text" id="inputViernes" placeholder="ej: 1:00PM – 5:00PM"/>
-    </div>
-    <div class="edit-grid-cell">
-      <label>Sábado:</label>
-      <input type="text" id="inputSabado" placeholder="ej: (vacío si no hay)"/>
-    </div>
-  </div>
-</div>
+        <div class="edit-grid" style="margin-top: 16px">
+          <div class="edit-grid-row">
+            <div class="edit-grid-cell">
+              <label>Lunes:</label>
+              <input
+                type="text"
+                id="inputLunes"
+                placeholder="ej: 3:00PM – 7:00PM"
+              />
+            </div>
+            <div class="edit-grid-cell">
+              <label>Martes:</label>
+              <input
+                type="text"
+                id="inputMartes"
+                placeholder="ej: 2:00PM – 6:00PM"
+              />
+            </div>
+          </div>
+          <div class="edit-grid-row">
+            <div class="edit-grid-cell">
+              <label>Miércoles:</label>
+              <input
+                type="text"
+                id="inputMiercoles"
+                placeholder="ej: 4:00PM – 8:00PM"
+              />
+            </div>
+            <div class="edit-grid-cell">
+              <label>Jueves:</label>
+              <input
+                type="text"
+                id="inputJueves"
+                placeholder="ej: (vacío si no hay)"
+              />
+            </div>
+          </div>
+          <div class="edit-grid-row">
+            <div class="edit-grid-cell">
+              <label>Viernes:</label>
+              <input
+                type="text"
+                id="inputViernes"
+                placeholder="ej: 1:00PM – 5:00PM"
+              />
+            </div>
+            <div class="edit-grid-cell">
+              <label>Sábado:</label>
+              <input
+                type="text"
+                id="inputSabado"
+                placeholder="ej: (vacío si no hay)"
+              />
+            </div>
+          </div>
+        </div>
 
         <div class="edit-form-inner" style="margin-top: 8px">
           <div class="edit-form-btns">
@@ -241,7 +272,7 @@
       </div>
 
       <!-- Cuadro que muestra las estadisticas del tutor -->
-      <div class="section-card">
+      <div class="section-card" id="estadisticas">
         <div class="section-header">
           <div class="badge">📊 Estadísticas</div>
         </div>
@@ -250,11 +281,18 @@
             <div class="info-cell">Clases impartidas: 120</div>
             <div class="info-cell">Estudiantes atendidos: 60</div>
           </div>
-          <div class="info-row" style="display: flex; justify-content: center;">
-  <div class="info-cell" style="border-right: none; text-align: center; justify-content: center; flex: none;">
-    Calificacion promedio: ⭐ 4.8
-  </div>
-</div>
+          <div class="info-row" style="display: flex; justify-content: center">
+            <div
+              class="info-cell"
+              style="
+                border-right: none;
+                text-align: center;
+                justify-content: center;
+                flex: none;
+              ">
+              Calificacion promedio: ⭐ 4.8
+            </div>
+          </div>
         </div>
       </div>
 
