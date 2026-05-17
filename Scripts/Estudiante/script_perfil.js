@@ -113,7 +113,7 @@ async function cargarTutorias() {
           </div>
         </div>
         <div class="calificar-wrap" style="margin-top:14px;">
-          <button class="btn btn-primary" onclick="irACalificar(${r.id}, '${r.tutor}', '${r.materia}')">
+          <button class="btn btn-primary" onclick="irACalificar(${r.id}, '${r.tutor}', '${r.materia}', ${r.tutor_id})">
             ⭐ Calificar tutor
           </button>
         </div>
@@ -123,8 +123,8 @@ async function cargarTutorias() {
     container.innerHTML = '<p style="text-align:center;color:#888;">No tienes tutorías recientes.</p>';
   }
 }
-function irACalificar(reservaId, tutor, materia) {
-  window.location.href = `/HTML/Estudiante/reseñas.html?reservaId=${reservaId}&tutor=${encodeURIComponent(tutor)}&materia=${encodeURIComponent(materia)}`;
+function irACalificar(reservaId, tutor, materia, tutorId) {
+  window.location.href = `/HTML/Estudiante/reseñas.html?reservaId=${reservaId}&tutor=${encodeURIComponent(tutor)}&materia=${encodeURIComponent(materia)}&tutorId=${tutorId}`;
 }
 
 cargarTutorias();
