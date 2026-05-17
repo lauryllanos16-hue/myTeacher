@@ -168,7 +168,7 @@ async function guardarEditar() {
       // Disponibilidad
 
       if (partes.length !== 2) return null;
-      return { dia, hora_inicio: partes[0], hora_fin: partes[1] };
+      return { dia, hora_inicio: convertirHora(partes[0]), hora_fin: convertirHora(partes[1]) };
     })
     .filter(Boolean);
 
@@ -222,4 +222,15 @@ async function guardarEditar() {
   } catch (err) {
     alert('No se pudo guardar. Intenta de nuevo.');
   }
+}
+function convertirHora(horaStr) {
+  // Convierte "3:00PM" a "15:00:00"
+  const match = horaStr.match(/(\d+):(\d+)(AM|PM)/i);
+  if (!match) return horaStr;
+  let horas = parseInt(match[1]);
+  const minutos = match[2];
+  const periodo = match[3].toUpperCase();
+  if (periodo === 'PM' && horas !== 12) horas += 12;
+  if (periodo === 'AM' && horas === 12) horas = 0;
+  return `${String(horas).padStart(2, '0')}:${minutos}:00`;
 }
