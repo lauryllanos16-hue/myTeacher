@@ -36,16 +36,17 @@ function renderTutores(lista) {
     return;
   }
 
-  container.innerHTML = lista.map((t) => {
-    const foto = t.foto_perfil || DEFAULT_AVATAR;
-    const rating = Number(t.calificacion ?? 0).toFixed(1);
-    const precio = `$${Number(t.precio_hora ?? 0).toLocaleString('es-CO')}/Hora`;
-    const materia = t.materias || '—';
-    const modalidad = t.modalidad || '—';
-    const nombre = t.nombre || 'Sin nombre';
-    const resenas = t.total_resenas ?? 0;
+  container.innerHTML = lista
+    .map((t) => {
+      const foto = t.foto_perfil || DEFAULT_AVATAR;
+      const rating = Number(t.calificacion ?? 0).toFixed(1);
+      const precio = `$${Number(t.precio_hora ?? 0).toLocaleString('es-CO')}/Hora`;
+      const materia = t.materias || '—';
+      const modalidad = t.modalidad || '—';
+      const nombre = t.nombre || 'Sin nombre';
+      const resenas = t.total_resenas ?? 0;
 
-    return `
+      return `
       <div class="tutor-card">
         <img class="tutor-img"
              src="${foto}"
@@ -66,12 +67,13 @@ function renderTutores(lista) {
             <button class="btn btn-secondary btn-ver"
                     data-id="${t.id}">Ver perfil</button>
             <button class="btn btn-primary btn-reservar"
-                    data-id="${t.tutor_id}"
-                    data-userid="${t.id}">Reservar</button>
+    data-id="${t.tutor_id}"
+    data-userid="${t.id}">Reservar</button>
           </div>
         </div>
       </div>`;
-  }).join('');
+    })
+    .join('');
 }
 // ── Carga desde el backend ─────────────────────────────────────────────────────
 async function cargarTutores(filtros = {}) {
