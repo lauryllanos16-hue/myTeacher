@@ -1,8 +1,9 @@
-
+//v2
 // ── Sesión y parámetros URL ────────────────────────────────────────────────────
 const user    = JSON.parse(sessionStorage.getItem('usuario'));
 const params  = new URLSearchParams(window.location.search);
-const tutorId = params.get('tutorId');
+const tutorId = params.get('tutorId');  // tutor_id de tabla tutores (para POST reserva)
+const userId  = params.get('userId');   // id de tabla usuarios (para GET info tutor)
 
 if (!tutorId) window.location.href = 'inicio_estudiante.html';
 
@@ -11,21 +12,17 @@ let tutorData = null;
 
 async function cargarTutor() {
   try {
-    const res  = await fetch(`${API}/tutores/${tutorId}`);
+    const res  = await fetch(`${API}/tutores/${userId}`);
     const data = await res.json();
 
     if (data.error) throw new Error(data.error);
     tutorData = data;
 
-    // Llenar datos fijos
     document.getElementById('tutorNombre').textContent  = data.nombre   || '—';
     document.getElementById('tutorMateria').textContent = data.materias || '—';
     document.getElementById('tutorNivel').textContent   = user?.nivel_educativo || 'No definido';
 
-    // Llenar select de fechas con disponibilidad real
     llenarFechas(data.disponibilidad || []);
-
-    // Ajustar radios de modalidad según lo que ofrece el tutor
     ajustarModalidad(data.modalidad);
 
   } catch (err) {
@@ -48,7 +45,6 @@ function llenarFechas(disponibilidad) {
     return;
   }
 
-  // Generar próximas fechas (30 días) que coincidan con los días disponibles
   const diasSemana = {
     'Lunes': 1, 'Martes': 2, 'Miércoles': 3, 'Jueves': 4,
     'Viernes': 5, 'Sábado': 6, 'Domingo': 0
@@ -68,42 +64,38 @@ function llenarFechas(disponibilidad) {
 
   fechas.forEach(({ fecha, disp }) => {
     const label = fecha.toLocaleDateString('es-CO', { day: 'numeric', month: 'long', weekday: 'long' });
-    const value = fecha.toISOString().split('T')[0]; // YYYY-MM-DD para el backend
+    const value = fecha.toISOString().split('T')[0];
     const opt   = document.createElement('option');
     opt.value       = value;
     opt.textContent = label;
-    opt.dataset.dispId = disp ? JSON.stringify(disp) : '';
     selectFecha.appendChild(opt);
   });
 
-  // Cargar horas al seleccionar fecha
   selectFecha.addEventListener('change', () => llenarHoras(disponibilidad, selectFecha.value));
   llenarHoras(disponibilidad, selectFecha.value);
 }
 
 function llenarHoras(disponibilidad, fechaValue) {
   const selectHora  = document.getElementById('selectHora');
-  const selectFecha = document.getElementById('selectFecha');
   selectHora.innerHTML = '';
 
-  const fechaDate   = new Date(fechaValue + 'T12:00:00');
-  const diaSemana   = fechaDate.getDay();
-  const diasSemana  = { 'Lunes':1,'Martes':2,'Miércoles':3,'Jueves':4,'Viernes':5,'Sábado':6,'Domingo':0 };
-  const disp        = disponibilidad.find(d => diasSemana[d.dia] === diaSemana);
+  const fechaDate  = new Date(fechaValue + 'T12:00:00');
+  const diaSemana  = fechaDate.getDay();
+  const diasSemana = { 'Lunes':1,'Martes':2,'Miércoles':3,'Jueves':4,'Viernes':5,'Sábado':6,'Domingo':0 };
+  const disp       = disponibilidad.find(d => diasSemana[d.dia] === diaSemana);
 
   if (!disp) {
     selectHora.innerHTML = '<option value="">Sin horario</option>';
     return;
   }
 
-  // Generar horas entre hora_inicio y hora_fin cada 1 hora
   const [hIni] = disp.hora_inicio.split(':').map(Number);
   const [hFin] = disp.hora_fin.split(':').map(Number);
 
   for (let h = hIni; h < hFin; h++) {
-    const opt   = document.createElement('option');
-    const ampm  = h < 12 ? 'AM' : 'PM';
-    const h12   = h % 12 === 0 ? 12 : h % 12;
+    const opt  = document.createElement('option');
+    const ampm = h < 12 ? 'AM' : 'PM';
+    const h12  = h % 12 === 0 ? 12 : h % 12;
     opt.value       = `${String(h).padStart(2,'0')}:00:00`;
     opt.textContent = `${h12}:00 ${ampm}`;
     selectHora.appendChild(opt);
@@ -124,7 +116,6 @@ function ajustarModalidad(modalidad) {
     radioVirt.checked  = true;
     radioPres.disabled = true;
   }
-  // Si es Virtual/Presencial ambos quedan habilitados
 }
 
 // ── Confirmar reserva → POST /api/reservas ────────────────────────────────────
@@ -137,8 +128,6 @@ async function confirmarReserva() {
   if (!modalidad)      { alert('Selecciona una modalidad.'); return; }
   if (!user)           { alert('Sesión expirada.'); return; }
 
-  // Obtener materia_id — usamos la primera materia del tutor
-  // Si quieres que el estudiante elija la materia, hay que agregar un select
   const materiaNombre = tutorData?.materias?.split(',')[0]?.trim();
   const materiaId     = await obtenerMateriaId(materiaNombre);
 
@@ -162,7 +151,6 @@ async function confirmarReserva() {
 
     if (data.error) { alert(data.error); return; }
 
-    // Mostrar modal de éxito
     const fechaLabel = document.getElementById('selectFecha')
       .options[document.getElementById('selectFecha').selectedIndex].text;
     const horaLabel  = document.getElementById('selectHora')
