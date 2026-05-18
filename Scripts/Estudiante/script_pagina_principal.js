@@ -13,8 +13,11 @@ const DEFAULT_AVATAR =
 const SESSION_KEY = 'usuario';
 
 function getSession() {
-  try { return JSON.parse(sessionStorage.getItem(SESSION_KEY)); }
-  catch { return null; }
+  try {
+    return JSON.parse(sessionStorage.getItem(SESSION_KEY));
+  } catch {
+    return null;
+  }
 }
 
 const user = getSession();
@@ -34,16 +37,17 @@ function renderTutores(lista) {
     return;
   }
 
-  container.innerHTML = lista.map((t) => {
-    const foto       = t.foto_perfil || DEFAULT_AVATAR;
-    const rating     = Number(t.calificacion  ?? 0).toFixed(1);
-    const precio     = `$${Number(t.precio_hora ?? 0).toLocaleString('es-CO')}/Hora`;
-    const materia    = t.materias  || '—';
-    const modalidad  = t.modalidad || '—';
-    const nombre     = t.nombre    || 'Sin nombre';
-    const resenas    = t.total_resenas ?? 0;
+  container.innerHTML = lista
+    .map((t) => {
+      const foto = t.foto_perfil || DEFAULT_AVATAR;
+      const rating = Number(t.calificacion ?? 0).toFixed(1);
+      const precio = `$${Number(t.precio_hora ?? 0).toLocaleString('es-CO')}/Hora`;
+      const materia = t.materias || '—';
+      const modalidad = t.modalidad || '—';
+      const nombre = t.nombre || 'Sin nombre';
+      const resenas = t.total_resenas ?? 0;
 
-    return `
+      return `
       <div class="tutor-card">
         <img class="tutor-img"
              src="${foto}"
@@ -66,13 +70,14 @@ function renderTutores(lista) {
 
           <div class="tutor-btns">
             <button class="btn btn-secondary btn-ver"
-                    data-id="${t.id}">Ver perfil</button>
+        data-id="${t.id}">Ver perfil</button>
             <button class="btn btn-primary btn-reservar"
-                    data-id="${t.id}">Reservar</button>
+        data-id="${t.tutor_id}">Reservar</button>
           </div>
         </div>
       </div>`;
-  }).join('');
+    })
+    .join('');
 }
 
 // ── Carga desde el backend ─────────────────────────────────────────────────────
@@ -82,7 +87,7 @@ async function cargarTutores(filtros = {}) {
 
   try {
     const filtrosLimpios = Object.fromEntries(
-      Object.entries(filtros).filter(([, v]) => v && v.trim() !== '')
+      Object.entries(filtros).filter(([, v]) => v && v.trim() !== ''),
     );
 
     const data = await window.myTeacherAPI.getTutores(filtrosLimpios);
@@ -99,24 +104,26 @@ async function cargarTutores(filtros = {}) {
 }
 
 // ── Clicks en las tarjetas (delegación igual que antes) ───────────────────────
-document.getElementById('tutorsContainer').addEventListener('click', function (e) {
-  const btnVer      = e.target.closest('.btn-ver');
-  const btnReservar = e.target.closest('.btn-reservar');
+document
+  .getElementById('tutorsContainer')
+  .addEventListener('click', function (e) {
+    const btnVer = e.target.closest('.btn-ver');
+    const btnReservar = e.target.closest('.btn-reservar');
 
-  if (btnVer) {
-    const id = btnVer.dataset.id;
-    window.location.href = `ver_tutor.html?tutorId=${id}`;
-  }
+    if (btnVer) {
+      const id = btnVer.dataset.id;
+      window.location.href = `ver_tutor.html?tutorId=${id}`;
+    }
 
-  if (btnReservar) {
-    const id = btnReservar.dataset.id;
-    window.location.href = `reservar.html?tutorId=${id}`;
-  }
-});
+    if (btnReservar) {
+      const id = btnReservar.dataset.id;
+      window.location.href = `reservar.html?tutorId=${id}`;
+    }
+  });
 
 // ── Buscador con filtros ───────────────────────────────────────────────────────
 document.querySelector('.btn-buscar').addEventListener('click', function () {
-  const materia   = document.getElementById('materiaSelect').value;
+  const materia = document.getElementById('materiaSelect').value;
   const modalidad = document.getElementById('modalidadSelect').value;
   cargarTutores({ materia, modalidad });
 });
