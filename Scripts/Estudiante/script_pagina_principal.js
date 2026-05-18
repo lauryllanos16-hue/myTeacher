@@ -25,7 +25,6 @@ if (!user || user.rol !== 'estudiante') {
   window.location.href = '../Autenticacion/inicio_sesion.html';
 }
 
-// ── Render de tarjetas (mismas clases CSS que tenías) ─────────────────────────
 function renderTutores(lista) {
   const container = document.getElementById('tutorsContainer');
 
@@ -37,49 +36,43 @@ function renderTutores(lista) {
     return;
   }
 
-  container.innerHTML = lista
-    .map((t) => {
-      const foto = t.foto_perfil || DEFAULT_AVATAR;
-      const rating = Number(t.calificacion ?? 0).toFixed(1);
-      const precio = `$${Number(t.precio_hora ?? 0).toLocaleString('es-CO')}/Hora`;
-      const materia = t.materias || '—';
-      const modalidad = t.modalidad || '—';
-      const nombre = t.nombre || 'Sin nombre';
-      const resenas = t.total_resenas ?? 0;
+  container.innerHTML = lista.map((t) => {
+    const foto = t.foto_perfil || DEFAULT_AVATAR;
+    const rating = Number(t.calificacion ?? 0).toFixed(1);
+    const precio = `$${Number(t.precio_hora ?? 0).toLocaleString('es-CO')}/Hora`;
+    const materia = t.materias || '—';
+    const modalidad = t.modalidad || '—';
+    const nombre = t.nombre || 'Sin nombre';
+    const resenas = t.total_resenas ?? 0;
 
-      return `
+    return `
       <div class="tutor-card">
         <img class="tutor-img"
              src="${foto}"
              onerror="this.src='${DEFAULT_AVATAR}'"
              alt="Foto de ${nombre}">
-
         <div class="tutor-info">
           <div class="tutor-name">${nombre}</div>
-
           <div class="tutor-meta">
             <span class="star">⭐</span> ${rating}
             <span class="sep">|</span> ${precio}
             <span class="sep">|</span> ${materia}
             <span class="sep">|</span> <small>${resenas} reseñas</small>
           </div>
-
           <div class="tutor-modality">
             Modalidad: <strong>${modalidad}</strong>
           </div>
-
           <div class="tutor-btns">
             <button class="btn btn-secondary btn-ver"
-        data-id="${t.id}">Ver perfil</button>
+                    data-id="${t.id}">Ver perfil</button>
             <button class="btn btn-primary btn-reservar"
-        data-id="${t.tutor_id}">Reservar</button>
+                    data-id="${t.tutor_id}"
+                    data-userid="${t.id}">Reservar</button>
           </div>
         </div>
       </div>`;
-    })
-    .join('');
+  }).join('');
 }
-
 // ── Carga desde el backend ─────────────────────────────────────────────────────
 async function cargarTutores(filtros = {}) {
   const container = document.getElementById('tutorsContainer');
@@ -116,8 +109,9 @@ document
     }
 
     if (btnReservar) {
-      const id = btnReservar.dataset.id;
-      window.location.href = `reservar.html?tutorId=${id}`;
+      const tutorId = btnReservar.dataset.id;
+      const userId = btnReservar.dataset.userid;
+      window.location.href = `reservar.html?tutorId=${tutorId}&userId=${userId}`;
     }
   });
 
