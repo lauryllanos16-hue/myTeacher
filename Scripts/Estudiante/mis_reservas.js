@@ -25,9 +25,11 @@ async function cargarReservas() {
     container.innerHTML = '<p style="text-align:center;color:#888;">Error al cargar reservas.</p>';
   }
 }
-if (!fechaStr) return '—';
+function formatearFecha(fechaStr) {
+  if (!fechaStr) return '—';
   const fecha = new Date(fechaStr);
   return fecha.toLocaleDateString('es-CO', { day: 'numeric', month: 'long', year: 'numeric' });
+}
 
   function estadoInfo(estado) {
   const map = {
